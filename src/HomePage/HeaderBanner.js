@@ -11,7 +11,7 @@ function HeaderBanner() {
 
     return (
         <div className="header-banner">
-            <h1>TEIOC - Évaluation des Stagiaires</h1>
+            <h1>TEIOC - Assessment of Interns Platform</h1>
             <button onClick={handleConnectClick} className="connect-button">
                 Se connecter
             </button>
