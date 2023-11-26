@@ -1,16 +1,16 @@
-// App.js
 import React from 'react';
-import TopicList from './TopicList';
+import HomePage from './HomePage/HomePage';
 
 function App() {
     return (
-        <div>
-            <h1>Page d'Accueil</h1>
-            <TopicList />
+        <div className="app">
+            <HomePage />
         </div>
     );
 }
 
 export default App;
+
+
 
 
