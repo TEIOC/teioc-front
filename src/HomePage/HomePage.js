@@ -9,7 +9,9 @@ function HomePage() {
     return (
         <div className="home-page">
             <HeaderBanner/>
+            <div className="list-separator"></div>
             <TopicList />
+            <div className="list-separator"></div>
             <InternList />
         </div>
     );
