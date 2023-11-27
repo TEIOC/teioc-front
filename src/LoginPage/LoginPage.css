@@ -1,0 +1,73 @@
+/* LoginPage.css */
+
+/* Styles de base pour la cohérence */
+.login-page {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #333;
+    background-color: #f8f8f8;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.login-page h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* Styles spécifiques pour le formulaire de connexion */
+.login-form {
+    /* Ajoutez des styles pour le formulaire ici */
+}
+
+.login-form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Styles pour les boutons */
+.login-button,
+.register-button {
+    background-color: transparent;
+    color: #007bff;
+    padding: 10px 20px;
+    border: 2px solid #fff;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 16px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.login-button:hover,
+.register-button:hover {
+    background-color: #fff;
+    color: #007bff;
+    border-color: #007bff;
+}
+
+/* Styles pour le lien "Mot de passe oublié ?" */
+.forgot-password-link {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.forgot-password-link:hover {
+    color: #0056b3;
+}
+
+/* Marge supérieure pour l'espacement vertical entre les éléments */
+.options {
+    margin-top: 20px;
+}

@@ -12,13 +12,7 @@ function HeaderBanner() {
     return (
         <div className="header-banner">
             <h1>TEIOC - Assessment of Interns Platform</h1>
-            <button onClick={handleConnectClick} className="connect-button">
-                Se connecter
-            </button>
-            {/* Utilisez Link si vous utilisez React Router */}
-            {/* <Link to="/connexion" className="connect-button">
-          Se connecter
-        </Link> */}
+            <Link to="/login" className="connect-button">Login</Link>
         </div>
     );
 }
