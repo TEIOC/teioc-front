@@ -1,12 +1,19 @@
-/// LoginPage.js
+// LoginPage.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import LoginForm from './LoginForm';
 import './LoginPage.css';
 
 function LoginPage() {
+    const navigate = useNavigate();
+
+    const handleLoginSuccess = (userData) => {
+        navigate('/intern-home', { state: { internName: userData.name } });
+    };
+
     return (
         <div className="login-page">
-            <LoginForm />
+            <LoginForm onLoginSuccess={handleLoginSuccess} />
         </div>
     );
 }
