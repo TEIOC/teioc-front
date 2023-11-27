@@ -1,5 +1,3 @@
-// UserGreeting.js
-
 import React from 'react';
 
 function InternHomePage({ internName }) {
