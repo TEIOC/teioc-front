@@ -17,27 +17,58 @@
     margin-bottom: 20px;
 }
 
-/* Styles spécifiques pour le formulaire de connexion */
-.login-form {
-    /* Ajoutez des styles pour le formulaire ici */
-}
 
 .login-form label {
     display: block;
     margin-bottom: 10px;
 }
 
+/* LoginPage.css */
+.login-form {
+    /* Add padding to the form */
+    padding: 20px;
+    /* If you want to center the form within its parent container */
+    margin: 0 auto;
+}
+
 .login-form input[type="text"],
 .login-form input[type="password"] {
-    width: 100%;
+    /* Adjust width to account for padding */
+    width: calc(100% - 20px); /* This assumes a total padding of 20px */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 
+.login-heading {
+    color: #007bff;
+    margin-bottom: 20px;
+    margin-left: 10px; /* Adjust this value to align with the input fields */
+    /* If padding is used for input alignment instead of margin, use padding-left */
+    /* Adjust this value as needed to align perfectly with your form inputs */
+}
+
 /* Styles pour les boutons */
-.login-button,
+/* LoginPage.css */
+.login-button {
+    background-color: #007bff;  /* Blue background */
+    color: #fff;                /* White text */
+    padding: 12px 20px;         /* Adequate padding for a better look */
+    border: none;               /* Remove border */
+    border-radius: 4px;         /* Rounded corners */
+    font-size: 16px;            /* Slightly larger font size */
+    font-weight: 500;           /* Medium font weight */
+    cursor: pointer;            /* Cursor change to indicate clickability */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.login-button:hover {
+    background-color: #0056b3;  /* Darker blue on hover */
+    color: #fff;                /* Maintain white text on hover */
+}
+
+/* ... rest of your existing styles ... */
 .register-button {
     background-color: transparent;
     color: #007bff;
@@ -70,4 +101,37 @@
 /* Marge supérieure pour l'espacement vertical entre les éléments */
 .options {
     margin-top: 20px;
+}
+
+.header-separator {
+    height: 20px; /* Or any other value you find suitable */
+}
+
+.main-content {
+    max-width: 600px; /* Same width as the form */
+    margin: auto; /* Center align */
+    padding: 20px; /* Add some padding */
+}
+
+/* LoginPage.css */
+.register-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.register-link {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.register-link:hover {
+    color: #0056b3;
+}
+
+.form-footer {
+    display: flex;
+    justify-content: space-between; /* This will push the button and link to opposite ends */
+    align-items: center;
+    margin-top: 10px; /* Add some space above the footer */
 }
