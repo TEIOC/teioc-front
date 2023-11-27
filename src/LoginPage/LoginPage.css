@@ -1,7 +1,5 @@
-/* LoginPage.css */
-
-/* Styles de base pour la cohérence */
-.login-page {
+/* Base Styles for Login and Main Content Areas */
+.base-page-style {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #333;
     background-color: #f8f8f8;
@@ -12,126 +10,110 @@
     border-radius: 4px;
 }
 
-.login-page h2 {
+.base-page-style h2 {
     color: #007bff;
     margin-bottom: 20px;
 }
 
+/* Style for the header banner */
+.header-banner {
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
+    padding: 20px;
+    text-align: center; /* Center the text */
+    border-radius: 4px;
+}
 
-.login-form label {
+/* Centering the login title */
+.login-title {
+    text-align: center; /* Centers the title */
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+/* General Form Styles */
+.form-style {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.form-style label {
     display: block;
     margin-bottom: 10px;
 }
 
-/* LoginPage.css */
-.login-form {
-    /* Add padding to the form */
-    padding: 20px;
-    /* If you want to center the form within its parent container */
-    margin: 0 auto;
-}
-
-.login-form input[type="text"],
-.login-form input[type="password"] {
-    /* Adjust width to account for padding */
-    width: calc(100% - 20px); /* This assumes a total padding of 20px */
+.form-style input[type="text"],
+.form-style input[type="password"] {
+    width: calc(100% - 20px);
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
 }
 
-.login-heading {
-    color: #007bff;
-    margin-bottom: 20px;
-    margin-left: 10px; /* Adjust this value to align with the input fields */
-    /* If padding is used for input alignment instead of margin, use padding-left */
-    /* Adjust this value as needed to align perfectly with your form inputs */
+.form-footer {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-/* Styles pour les boutons */
-/* LoginPage.css */
-.login-button {
-    background-color: #007bff;  /* Blue background */
-    color: #fff;                /* White text */
-    padding: 12px 20px;         /* Adequate padding for a better look */
-    border: none;               /* Remove border */
-    border-radius: 4px;         /* Rounded corners */
-    font-size: 16px;            /* Slightly larger font size */
-    font-weight: 500;           /* Medium font weight */
-    cursor: pointer;            /* Cursor change to indicate clickability */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+.form-footer .link-style, .link-style {
+    margin-left: auto;
 }
 
-.login-button:hover {
-    background-color: #0056b3;  /* Darker blue on hover */
-    color: #fff;                /* Maintain white text on hover */
+/* Adjusting the form container to separate it from the header */
+.form-container {
+    background-color: #f8f8f8; /* Light background color */
+    padding: 20px;
+    margin: auto;
+    margin-top: 20px; /* Adds space between the header and the form */
+    max-width: 600px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
 }
 
-/* ... rest of your existing styles ... */
-.register-button {
-    background-color: transparent;
-    color: #007bff;
-    padding: 10px 20px;
-    border: 2px solid #fff;
-    cursor: pointer;
+/* Button Styles */
+.button-style {
+    background-color: #007bff;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
     border-radius: 4px;
     font-size: 16px;
-    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
 }
 
-.login-button:hover,
-.register-button:hover {
-    background-color: #fff;
-    color: #007bff;
-    border-color: #007bff;
+.button-style:hover {
+    background-color: #0056b3;
 }
 
-/* Styles pour le lien "Mot de passe oublié ?" */
-.forgot-password-link {
+/* Link Styles */
+.link-style {
     color: #007bff;
     text-decoration: underline;
     cursor: pointer;
 }
 
-.forgot-password-link:hover {
+.link-style:hover {
     color: #0056b3;
 }
 
-/* Marge supérieure pour l'espacement vertical entre les éléments */
-.options {
+/* Utility Class for Margins */
+.margin-top-20 {
     margin-top: 20px;
 }
 
-.header-separator {
-    height: 20px; /* Or any other value you find suitable */
-}
 
-.main-content {
-    max-width: 600px; /* Same width as the form */
-    margin: auto; /* Center align */
-    padding: 20px; /* Add some padding */
-}
-
-/* LoginPage.css */
+/* Adjusted style for the register section */
 .register-section {
+    text-align: center; /* Centers the content */
     margin-top: 20px;
-    text-align: center;
 }
 
-.register-link {
-    color: #007bff;
-    text-decoration: underline;
-    cursor: pointer;
-}
-
-.register-link:hover {
-    color: #0056b3;
-}
-
-.form-footer {
-    display: flex;
-    justify-content: space-between; /* This will push the button and link to opposite ends */
-    align-items: center;
-    margin-top: 10px; /* Add some space above the footer */
+/* Style for the container of the register link to keep text and link close */
+.register-container {
+    display: inline-block; /* Allows the container to size according to its content */
 }

@@ -1,5 +1,6 @@
+// AppRoutes.js
 import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import HomePage from './HomePage/HomePage';
 import LoginPage from './LoginPage/LoginPage';
 
@@ -12,7 +13,7 @@ function AppRoutes() {
     );
 }
 
-export default AppRoutes; // Export the component
+export default AppRoutes;
 
 
 

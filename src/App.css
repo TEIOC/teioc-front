@@ -1,4 +1,5 @@
-body {
+/* General body style - sets the basic font, color, and background for the entire application */
+.body-style {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
   background-color: #f8f8f8;
@@ -7,44 +8,126 @@ body {
   line-height: 1.6;
 }
 
-.container {
+/* Main container style - used for primary content areas, providing consistent margins, padding, and box shadows */
+.main-container {
   width: 80%;
   margin: auto;
   overflow: hidden;
   padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
-header {
+/* Header style - sets the look and feel of the header including background, text color, and layout */
+.header-style {
   background: #007bff;
   color: #fff;
   padding: 20px 0;
   text-align: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   border-radius: 4px;
 }
 
-h1 {
+/* Heading styles - defines styles for various heading levels used throughout the application */
+.heading-style {
+  color: #007bff;
   margin: 0;
+  margin-bottom: 20px;
 }
 
-/* Styles for buttons and inputs if needed */
-.button {
+/* Adjusted header heading style for better visibility */
+.header-heading-style {
+  color: #fff; /* White color for visibility against the blue background */
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+/* Form style - applies to form layouts including padding and margin */
+.form-style {
+  padding: 20px;
+  margin: 0 auto;
+}
+
+/* Label style - used for form labels to ensure consistent display and spacing */
+.label-style {
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Input style - standardizes the appearance of input elements */
+.input-style {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+/* Button style - provides a uniform look for buttons including color, padding, and hover effects */
+.button-style {
   background-color: #007bff;
   color: white;
   border: none;
   padding: 10px 20px;
   border-radius: 4px;
   cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-.button:hover {
+.button-style:hover {
   background-color: #0056b3;
 }
 
-.input {
-  border: 1px solid #ddd;
-  padding: 10px;
+/* Link style - defines the appearance of hyperlinks */
+.link-style {
+  color: #007bff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.link-style:hover {
+  color: #0056b3;
+}
+
+/* Utility class for adding a top margin */
+.margin-top {
+  margin-top: 20px;
+}
+
+/* Pagination style - used for pagination controls */
+.pagination-style {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination-style button,
+.pagination-style a {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  text-decoration: none;
   border-radius: 4px;
 }
+
+.pagination-style button:hover,
+.pagination-style a:hover {
+  background-color: #0056b3;
+}
+
+.pagination-style .active {
+  background-color: #0056b3;
+}
+
+
+
 
 
 

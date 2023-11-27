@@ -1,10 +1,11 @@
+/* HeaderBanner.css */
 .header-banner {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #007bff; /* Blue background color */
+    color: #fff; /* White text color */
     padding: 20px;
-    display: flex; /* Utilisez flexbox pour aligner les éléments horizontalement */
-    justify-content: space-between; /* Espace entre le titre et le bouton */
-    align-items: center; /* Centre les éléments verticalement */
+    display: flex; /* Align elements horizontally */
+    justify-content: space-between; /* Space between title and button */
+    align-items: center; /* Vertically center elements */
 }
 
 .connect-button {
@@ -19,8 +20,9 @@
 }
 
 .connect-button:hover {
-    background-color: #fff;
-    color: #007bff;
-    border-color: #007bff;
+    background-color: #fff; /* White background on hover */
+    color: #007bff; /* Blue text on hover */
+    border-color: #007bff; /* Blue border on hover */
 }
+
 

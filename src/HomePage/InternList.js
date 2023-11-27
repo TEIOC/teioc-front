@@ -1,6 +1,7 @@
+// InternList.js
 import React, { useState, useEffect } from 'react';
 import './HomePage.css';
-import Pagination from './Pagination'; // Import the Pagination component
+import Pagination from './Pagination';
 
 function InternList() {
     const [interns, setInterns] = useState([]);
@@ -14,23 +15,19 @@ function InternList() {
             .catch(error => console.error('Error fetching interns:', error));
     }, []);
 
-    // Calculate the number of pages
     const pageCount = Math.ceil(interns.length / itemsPerPage);
-
-    // Get current page items
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = interns.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <div className="entity-list">
-            <h2>Interns list</h2>
+            <h2>Interns List</h2>
             <ul>
                 {currentItems.map(intern => (
-                    <li className="intern-item" key={intern.id}>{intern.name}</li>
+                    <li key={intern.id}>{intern.name}</li>
                 ))}
             </ul>
             <Pagination currentPage={currentPage} pageCount={pageCount} onPageChange={paginate} />

@@ -1,6 +1,7 @@
+// TopicList.js
 import React, { useState, useEffect } from 'react';
 import './HomePage.css';
-import Pagination from './Pagination'; // Import the Pagination component
+import Pagination from './Pagination';
 
 function TopicList() {
     const [topics, setTopics] = useState([]);
@@ -14,23 +15,19 @@ function TopicList() {
             .catch(error => console.error('Error fetching topics:', error));
     }, []);
 
-    // Calculate the number of pages
     const pageCount = Math.ceil(topics.length / itemsPerPage);
-
-    // Get current page items
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
     const currentItems = topics.slice(indexOfFirstItem, indexOfLastItem);
 
-    // Change page
     const paginate = pageNumber => setCurrentPage(pageNumber);
 
     return (
         <div className="entity-list">
-            <h2>Topics list</h2>
+            <h2>Topics List</h2>
             <ul>
                 {currentItems.map(topic => (
-                    <li className="topic-item" key={topic.id}>{topic.name}</li>
+                    <li key={topic.id}>{topic.name}</li>
                 ))}
             </ul>
             <Pagination currentPage={currentPage} pageCount={pageCount} onPageChange={paginate} />
@@ -39,4 +36,5 @@ function TopicList() {
 }
 
 export default TopicList;
+
 

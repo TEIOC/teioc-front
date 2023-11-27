@@ -1,3 +1,4 @@
+/* HomePage.css */
 .entity-list {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #333;
@@ -63,8 +64,9 @@
 }
 
 .list-separator {
-  margin-top: 20px; /* Espacement vertical entre les deux listes */
+  margin-top: 20px;
 }
+
 
 
 
