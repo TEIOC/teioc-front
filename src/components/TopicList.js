@@ -1,40 +1,25 @@
-// TopicList.js
-import React, { useState, useEffect } from 'react';
-import Pagination from './Pagination';
+import React, { useState, useEffect, useRef } from 'react';
+import DataTable from './DataTable'; // Importez le composant DataTable
 import { fetchTopics } from '../api/api';
 
 function TopicList() {
-    const [topics, setTopics] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 10;
+  const [topics, setTopics] = useState([]);
 
-    useEffect(() => {
-        // Utilisez la fonction d'appel API pour récupérer la liste des sujets
-        fetchTopics()
-            .then(data => setTopics(data))
-            .catch(error => console.error('Error fetching topics:', error));
-    }, []);
+  useEffect(() => {
+    // Utilisez la fonction d'appel API pour récupérer la liste des sujets
+    fetchTopics()
+      .then((data) => setTopics(data))
+      .catch((error) => console.error('Error fetching topics:', error));
+  }, []);
 
-    const pageCount = Math.ceil(topics.length / itemsPerPage);
-    const indexOfLastItem = currentPage * itemsPerPage;
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-    const currentItems = topics.slice(indexOfFirstItem, indexOfLastItem);
+  const columnsToShow = ['id', 'name']; // Spécifiez les colonnes que vous souhaitez afficher
 
-    const paginate = pageNumber => setCurrentPage(pageNumber);
-
-    return (
-        <div className="entity-list">
-            <h2>Topics List</h2>
-            <ul>
-                {currentItems.map(topic => (
-                    <li key={topic.id}>{topic.name}</li>
-                ))}
-            </ul>
-            <Pagination currentPage={currentPage} pageCount={pageCount} onPageChange={paginate} />
-        </div>
-    );
+  return (
+    <div className="entity-list">
+      <h2>Topics List</h2>
+      <DataTable data={topics} columnsToShow={columnsToShow} />
+    </div>
+  );
 }
 
 export default TopicList;
-
-
