@@ -1,9 +1,9 @@
 // AppRoutes.js
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import HomePage from './HomePage/HomePage';
-import LoginPage from './LoginPage/LoginPage';
-import InternHomePage from "./InternHomePage/InternHomePage";
+import { Routes, Route } from 'react-router-dom';
+import HomePage from './pages/HomePage/HomePage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import InternHomePage from "./pages/InternHomePage/InternHomePage";
 
 function AppRoutes() {
     return (

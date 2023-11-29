@@ -1,19 +1,18 @@
-// InternList.js
 import React, { useState, useEffect } from 'react';
-import './HomePage.css';
 import Pagination from './Pagination';
+import { fetchInterns } from '../api/api'; // Importez la fonction d'appel API
 
 function InternList() {
-    const [interns, setInterns] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    const itemsPerPage = 10;
+  const [interns, setInterns] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 10;
 
-    useEffect(() => {
-        fetch('http://localhost:8080/interns')
-            .then(response => response.json())
-            .then(data => setInterns(data))
-            .catch(error => console.error('Error fetching interns:', error));
-    }, []);
+  useEffect(() => {
+    // Utilisez la fonction d'appel API pour récupérer la liste des stagiaires
+    fetchInterns()
+      .then(data => setInterns(data))
+      .catch(error => console.error('Error fetching interns:', error));
+  }, []);
 
     const pageCount = Math.ceil(interns.length / itemsPerPage);
     const indexOfLastItem = currentPage * itemsPerPage;

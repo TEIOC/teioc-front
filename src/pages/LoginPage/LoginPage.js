@@ -1,7 +1,7 @@
 // LoginPage.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginForm from './LoginForm';
+import LoginForm from '../../components/LoginForm';
 import './LoginPage.css';
 
 function LoginPage() {

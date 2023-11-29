@@ -1,17 +1,17 @@
-// HeaderBanner.js
+// NavBar.js
 import React from 'react';
-import './HeaderBanner.css';
+import './NavBar.css';
 import { Link } from 'react-router-dom';
 
-function HeaderBanner() {
+function NavBar() {
     return (
         <div className="header-banner">
             <h1>TEIOC - Assessment of Interns Platform</h1>
-            <Link to="/login" className="connect-button">Login</Link>
+            <Link to="/login" className="navbar-button">Login</Link>
         </div>
     );
 }
 
-export default HeaderBanner;
+export default NavBar;
 
 

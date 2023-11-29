@@ -1,7 +1,7 @@
 // TopicList.js
 import React, { useState, useEffect } from 'react';
-import './HomePage.css';
 import Pagination from './Pagination';
+import { fetchTopics } from '../api/api';
 
 function TopicList() {
     const [topics, setTopics] = useState([]);
@@ -9,8 +9,8 @@ function TopicList() {
     const itemsPerPage = 10;
 
     useEffect(() => {
-        fetch('http://localhost:8080/topics')
-            .then(response => response.json())
+        // Utilisez la fonction d'appel API pour récupérer la liste des sujets
+        fetchTopics()
             .then(data => setTopics(data))
             .catch(error => console.error('Error fetching topics:', error));
     }, []);

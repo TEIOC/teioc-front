@@ -1,14 +1,14 @@
 // HomePage.js
 import React from 'react';
-import InternList from './InternList';
-import TopicList from './TopicList';
-import HeaderBanner from './HeaderBanner';
+import InternList from '../../components/InternList';
+import TopicList from '../../components/TopicList';
+import NavBar from '../../components/NavBar';
 import './HomePage.css';
 
 function HomePage() {
     return (
         <div className="home-page">
-            <HeaderBanner/>
+            <NavBar/>
             <div className="list-separator"></div>
             <TopicList />
             <div className="list-separator"></div>
@@ -16,5 +16,8 @@ function HomePage() {
         </div>
     );
 }
+
+// css for this file
+
 
 export default HomePage;
