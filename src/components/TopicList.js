@@ -12,7 +12,7 @@ function TopicList() {
       .catch((error) => console.error('Error fetching topics:', error));
   }, []);
 
-  const columnsToShow = ['Id', 'Name']; // Spécifiez les colonnes que vous souhaitez afficher
+  const columnsToShow = ['id', 'name']; // Spécifiez les colonnes que vous souhaitez afficher
 
   return (
     <div className="entity-list">
