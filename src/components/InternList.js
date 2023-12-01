@@ -20,7 +20,7 @@ function InternList() {
       <h2>Interns List</h2>
       <DataTable
         data={interns}
-        columnsToShow={['id', 'name', 'email']}
+        columnsToShow={['Id', 'Name', 'Email']}
       />
     </div>
   );
