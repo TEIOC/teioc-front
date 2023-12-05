@@ -3,21 +3,21 @@ import React from 'react';
 import InternList from '../../components/InternList';
 import TopicList from '../../components/TopicList';
 import NavBar from '../../components/NavBar';
-import Seperator from '../../components/Seperator';
+import Separator from '../../components/Separator';
+import SurveyList from '../../components/SurveyList';
 
 function HomePage() {
     return (
         <div className="home-page">
             <NavBar/>
-            <Seperator />
+            <Separator />
             <InternList />
-            <Seperator />
+            <Separator />
             <TopicList />
+            <Separator />
+            <SurveyList />
         </div>
     );
 }
-
-// css for this file
-
 
 export default HomePage;
