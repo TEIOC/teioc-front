@@ -1,8 +1,9 @@
 import React from 'react';
-function Seperator() {
+import '../styles/separator.css';
+function Separator() {
     return (
         <div className="list-separator"></div>
     );
 }
 
-export default Seperator;
+export default Separator;
