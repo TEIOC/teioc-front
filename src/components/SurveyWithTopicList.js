@@ -22,10 +22,10 @@ function SurveyWithTopicList() {
         getSurveysAndTopics();
     }, []);
 
-    const columnsToShow = ['topicName', 'name']; // Les clés de vos données
+    const columnsToShow = ['topicName', 'name'];
     const columnTitles = {
-        topicName: 'Topic' ,// Titre personnalisé pour 'topicName'
-        name: 'Survey Name' // Titre personnalisé pour 'name'
+        topicName: 'Topic' ,
+        name: 'Survey Name'
     };
 
     return (
@@ -34,7 +34,7 @@ function SurveyWithTopicList() {
             <DataTable
                 data={surveysWithTopics}
                 columnsToShow={columnsToShow}
-                columnTitles={columnTitles} // Passer les titres personnalisés
+                columnTitles={columnTitles}
             />
         </div>
     );

@@ -1,6 +1,5 @@
-const API_BASE_URL = 'http://localhost:8080'; // L'URL de base de votre API
+const API_BASE_URL = 'http://localhost:8080';
 
-// Fonction pour récupérer la liste des stagiaires depuis l'API
 export const fetchInterns = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/interns`);
@@ -11,12 +10,10 @@ export const fetchInterns = async () => {
     return data;
   } catch (error) {
     console.error('Error fetching interns:', error);
-    throw error; // Vous pouvez choisir de gérer l'erreur ici ou la remonter à l'appelant.
+    throw error;
   }
 };
 
-
-// Fonction pour récupérer la liste des sujets depuis l'API
 export const fetchTopics = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/topics`);
@@ -27,11 +24,10 @@ export const fetchTopics = async () => {
     return data;
   } catch (error) {
     console.error('Error fetching topics:', error);
-    throw error; // Vous pouvez choisir de gérer l'erreur ici ou la remonter à l'appelant.
+    throw error;
   }
 };
 
-// Fonction pour récupérer la liste des sondages depuis l'API
 export const fetchSurveys = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/surveys`);
@@ -42,6 +38,6 @@ export const fetchSurveys = async () => {
     return data;
   } catch (error) {
     console.error('Error fetching surveys:', error);
-    throw error; // Vous pouvez choisir de gérer l'erreur ici ou la remonter à l'appelant.
+    throw error;
   }
 };
