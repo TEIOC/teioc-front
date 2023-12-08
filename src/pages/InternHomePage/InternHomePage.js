@@ -1,13 +1,22 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import NavBar from "../../components/NavBar";
 import Separator from "../../components/Separator";
 import SurveyWithTopicList from "../../components/SurveyWithTopicList";
 
 function InternHomePage({ internName }) {
-    const [isLoggedIn] = useState(true);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        localStorage.removeItem("userToken");
+        navigate('/login');
+    };
+
     return (
         <div className="home-page">
-            <NavBar isLoggedIn={isLoggedIn} />
+            <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
             <Separator />
             <SurveyWithTopicList />
         </div>
@@ -15,3 +24,4 @@ function InternHomePage({ internName }) {
 }
 
 export default InternHomePage;
+
