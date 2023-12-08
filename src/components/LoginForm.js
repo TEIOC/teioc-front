@@ -23,9 +23,9 @@ function LoginForm({ onLoginSuccess }) {
 			}
 
 			const data = await response.json();
-			onLoginSuccess(data); // Callback function to handle the successful login
+			onLoginSuccess(data);
 		} catch (err) {
-			setError(err.message); // Handle and display errors
+			setError(err.message);
 		}
 	};
 

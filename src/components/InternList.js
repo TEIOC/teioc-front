@@ -4,7 +4,6 @@ import { fetchInterns } from '../api/api';
 
 function InternList() {
     const [interns, setInterns] = useState([]);
-
     useEffect(() => {
         fetchInterns()
             .then((data) => {
@@ -12,12 +11,11 @@ function InternList() {
             })
             .catch((error) => console.error('Error fetching interns:', error));
     }, []);
-
-    const columnsToShow = ['id', 'name', 'email']; // Les clés de vos données
+    const columnsToShow = ['id', 'name', 'email'];
     const columnTitles = {
-        id: 'ID', // Titre personnalisé pour 'id'
-        name: 'Name', // Titre personnalisé pour 'name'
-        email: 'Email' // Titre personnalisé pour 'email'
+        id: 'ID',
+        name: 'Name',
+        email: 'Email'
     };
 
     return (
@@ -26,7 +24,7 @@ function InternList() {
             <DataTable
                 data={interns}
                 columnsToShow={columnsToShow}
-                columnTitles={columnTitles} // Passer les titres personnalisés
+                columnTitles={columnTitles}
             />
         </div>
     );
