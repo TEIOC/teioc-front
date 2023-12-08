@@ -10,11 +10,10 @@ const DataTable = ({ data, columnsToShow, columnTitles }) => {
             if ($.fn.DataTable.isDataTable(tableRef.current)) {
                 $(tableRef.current).DataTable().destroy();
             }
-
             $(tableRef.current).DataTable({
                 data: data,
                 columns: columnsToShow.map(column => ({
-                    title: columnTitles[column], // Utiliser le titre personnalisé
+                    title: columnTitles[column],
                     data: column
                 })),
                 paging: true,
@@ -25,14 +24,14 @@ const DataTable = ({ data, columnsToShow, columnTitles }) => {
                 responsive: true,
             });
         }
-    }, [data, columnsToShow, columnTitles]); // Ajouter columnTitles aux dépendances
+    }, [data, columnsToShow, columnTitles]);
 
     return (
         <table ref={tableRef} className="display">
             <thead>
             <tr>
                 {columnsToShow.map(column => (
-                    <th key={column}>{columnTitles[column]}</th> // Utiliser le titre personnalisé
+                    <th key={column}>{columnTitles[column]}</th>
                 ))}
             </tr>
             </thead>

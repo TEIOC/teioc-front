@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DataTable from './DataTable'; // Importez le composant DataTable
+import DataTable from './DataTable';
 import { fetchSurveys } from '../api/api';
 
 function SurveyList() {
@@ -11,10 +11,10 @@ function SurveyList() {
             .catch((error) => console.error('Error fetching surveys:', error));
     }, []);
 
-    const columnsToShow = ['id', 'name']; // Les clés de vos données
+    const columnsToShow = ['id', 'name'];
     const columnTitles = {
-        id: 'ID', // Titre personnalisé pour 'id'
-        name: 'Survey Name' // Titre personnalisé pour 'name'
+        id: 'ID',
+        name: 'Survey Name'
     };
 
     return (
@@ -23,7 +23,7 @@ function SurveyList() {
             <DataTable
                 data={surveys}
                 columnsToShow={columnsToShow}
-                columnTitles={columnTitles} // Passer les titres personnalisés
+                columnTitles={columnTitles}
             />
         </div>
     );
