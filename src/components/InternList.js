@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DataTable from './DataTable'; // Importez le composant DataTable
+import DataTable from './DataTable';
 import { fetchInterns } from '../api/api';
 
 function InternList() {

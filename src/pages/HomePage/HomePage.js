@@ -1,4 +1,3 @@
-// HomePage.js
 import React, {useState} from 'react';
 import InternList from '../../components/InternList';
 import TopicList from '../../components/TopicList';

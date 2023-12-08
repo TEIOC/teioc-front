@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import DataTable from './DataTable'; // Importez le composant DataTable
+import DataTable from './DataTable';
 import { fetchTopics } from '../api/api';
 
 function TopicList() {
@@ -11,10 +11,10 @@ function TopicList() {
             .catch((error) => console.error('Error fetching topics:', error));
     }, []);
 
-    const columnsToShow = ['id', 'name']; // Les clés de vos données
+    const columnsToShow = ['id', 'name'];
     const columnTitles = {
-        id: 'ID', // Titre personnalisé pour 'id'
-        name: 'Topic Name' // Titre personnalisé pour 'name'
+        id: 'ID',
+        name: 'Topic Name'
     };
 
     return (
@@ -23,7 +23,7 @@ function TopicList() {
             <DataTable
                 data={topics}
                 columnsToShow={columnsToShow}
-                columnTitles={columnTitles} // Passer les titres personnalisés
+                columnTitles={columnTitles}
             />
         </div>
     );
