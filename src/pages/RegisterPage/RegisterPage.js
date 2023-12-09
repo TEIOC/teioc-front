@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import './RegisterPage.css'; // Réutilisation des mêmes styles que la page de connexion
+import './RegisterPage.css';
 
 const api = axios.create({
     baseURL: 'http://localhost:8080',
