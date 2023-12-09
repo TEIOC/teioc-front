@@ -14,6 +14,20 @@ export const fetchInterns = async () => {
   }
 };
 
+export const fetchInternById = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/interns/${id}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error('Error fetching intern: ', error);
+    throw error;
+  }
+};
+
 export const fetchTopics = async () => {
   try {
     const response = await fetch(`${API_BASE_URL}/topics`);
