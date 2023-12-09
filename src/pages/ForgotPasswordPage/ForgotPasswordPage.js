@@ -1,4 +1,4 @@
-// ForgotPassword.js
+// ForgotPasswordPage.js
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -10,7 +10,7 @@ const api = axios.create({
     withCredentials: true,
 });
 
-const ForgotPassword = () => {
+const ForgotPasswordPage = () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
@@ -75,4 +75,4 @@ const ForgotPassword = () => {
     );
 };
 
-export default ForgotPassword;
+export default ForgotPasswordPage;
