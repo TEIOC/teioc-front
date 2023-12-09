@@ -21,6 +21,8 @@ const RegisterForm = () => {
     const [error, setError] = useState('');
     const [phoneError, setPhoneError] = useState('');
     const [emailError, setEmailError] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
+    const [isSuccessVisible, setIsSuccessVisible] = useState(false);
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
@@ -68,18 +70,45 @@ const RegisterForm = () => {
             // Concaténer le nom et le prénom
             const name = `${nom} ${prenom}`;
 
-            const response = await api.post('/auth/register', {
-                name, // Envoyer le nom concaténé
+            const response = await api.post('/interns', {
+                name,
                 email: username,
                 password,
-                societe,
-                numeroTelephone,
+                company: societe,
+                contactDetails: numeroTelephone,
+                creationDate: new Date(),
+                status: 0,
             });
 
             console.log('Inscription réussie :', response.data);
+            setSuccessMessage('Compte créé avec succès.');
+            setIsSuccessVisible(true);
+            setError('');
+
+            setTimeout(() => {
+                setIsSuccessVisible(false);
+            }, 1000);
+
+            if (response.status === 200) {
+                const responseMail = await api.post('/email/activate', {
+                    email: username,
+                });
+
+                console.log('Envoi du mail d\'activation du compte effectuée :', responseMail.data);
+                setSuccessMessage('Envoi du mail d\'activation du compte effectuée.');
+                setIsSuccessVisible(true);
+                setError('');
+
+                setTimeout(() => {
+                    setIsSuccessVisible(false);
+                }, 1000);
+            }
 
             // Rediriger l'utilisateur vers la page de connexion après une inscription réussie
-            navigate('/login');
+            setTimeout(() => {
+                navigate('/login');
+            }, 1500);
+
         } catch (error) {
             if (error.response) {
                 setError('Erreur d\'inscription', error.response.data);
@@ -145,6 +174,7 @@ const RegisterForm = () => {
                     </div>
                 </form>
                 {error && <div className="error-message">{error}</div>}
+                {isSuccessVisible && <div className="success-popup show">{successMessage}</div>}
             </div>
         </div>
     );
