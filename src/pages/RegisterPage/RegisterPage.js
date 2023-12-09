@@ -45,6 +45,20 @@ const RegisterForm = () => {
         }
 
         // Vérification du mot de passe
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;;
+        if (!passwordRegex.test(password)) {
+            setEmailError(`
+            Veuillez entrer un mot de passe valide : 
+            - Au moins une lettre majuscule ou minuscule.
+            - Au moins un chiffre.
+            - La longueur minimale du mot de passe est de 8 caractères.
+            `);
+            return;
+        } else {
+            setEmailError('');
+        }
+
+        // Vérification du mot de passe
         if (password !== confirmPassword) {
             setError('Les mots de passe ne correspondent pas.');
             return;
