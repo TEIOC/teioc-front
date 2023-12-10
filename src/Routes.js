@@ -4,9 +4,9 @@ import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import InternHomePage from "./pages/InternHomePage/InternHomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import ActivateInternPage from './pages/ActivateInternPage/ActivateInternPage';
 import ForgotPasswordPage from "./pages/ForgotPasswordPage/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage";
+import ActivateInternPage from "./pages/ActivateInternPage/ActivateInternPage";
 
 function AppRoutes() {
     return (
