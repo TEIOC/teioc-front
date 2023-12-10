@@ -1,139 +1,65 @@
-/* APP CSS */
-/* General body style - sets the basic font, color, and background for the entire application */
-.body-style {
+/* Styles de Base */
+.base-style {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
+  color: #555; /* Couleur de police plus moderne */
   background-color: #f8f8f8;
-  margin: 0;
-  padding: 0;
-  line-height: 1.6;
-}
-
-/* Main container style - used for primary content areas, providing consistent margins, padding, and box shadows */
-.main-container {
-  width: 80%;
-  margin: auto;
-  overflow: hidden;
-  padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 4px;
 }
 
-/* Header style - sets the look and feel of the header including background, text color, and layout */
-.header-style {
-  background: #007bff;
-  color: #fff;
-  padding: 20px 0;
+.base-style.max-width-600 {
+  max-width: 600px;
+  margin: auto;
+  padding: 20px;
+}
+
+.base-style.center-text {
   text-align: center;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 4px;
 }
 
-/* Heading styles - defines styles for various heading levels used throughout the application */
-.heading-style {
-  color: #007bff;
-  margin: 0;
-  margin-bottom: 20px;
-}
-
-/* Adjusted header heading style for better visibility */
-.header-heading-style {
-  color: #fff;
-  /* White color for visibility against the blue background */
-  margin: 0;
-  margin-bottom: 20px;
-}
-
-/* Form style - applies to form layouts including padding and margin */
+/* Styles de Formulaire */
 .form-style {
   padding: 20px;
   margin: 0 auto;
 }
 
-/* Label style - used for form labels to ensure consistent display and spacing */
-.label-style {
+.form-style label {
   display: block;
   margin-bottom: 10px;
 }
 
-/* Input style - standardizes the appearance of input elements */
-.input-style {
+.form-style input[type="text"],
+.form-style input[type="password"] {
   width: calc(100% - 20px);
-  padding: 10px;
+  padding: 12px; /* Légèrement plus grand pour une meilleure expérience utilisateur */
   margin-bottom: 20px;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
 
-/* Button style - provides a uniform look for buttons including color, padding, and hover effects */
+/* Ajoutez ce style pour le bouton Login dans le formulaire */
 .button-style {
-  background-color: #007bff;
-  color: white;
-  border: none;
+  background-color: #007bff; /* Couleur de fond bleue identique à la bannière */
+  color: white; /* Texte blanc pour un contraste moderne */
+  border: 2px solid #fff; /* Ajout de la bordure blanche */
   padding: 10px 20px;
-  border-radius: 4px;
-  cursor: pointer;
   font-size: 16px;
-  font-weight: 500;
-  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Ajout de la transition pour la couleur et la bordure */
+  border-radius: 4px;
 }
 
 .button-style:hover {
-  background-color: #0056b3;
+  background-color: white; /* Fond blanc au survol */
+  color: #007bff; /* Texte bleu au survol */
+  border-color: #007bff; /* Bordure bleue au survol */
 }
 
-/* Link style - defines the appearance of hyperlinks */
-.link-style {
-  color: #007bff;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.link-style:hover {
-  color: #0056b3;
-}
-
-/* Utility class for adding a top margin */
-.margin-top {
+/* Classe utilitaire pour les marges */
+.margin-top-20 {
   margin-top: 20px;
 }
 
 
-/* ENTITY */
-.entity-list {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  color: #333;
-  background-color: #f8f8f8;
-  max-width: 600px;
-  margin: auto;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-}
 
-.entity-list h2 {
-  color: #00346bd1;
-  margin-bottom: 20px;
-}
 
-.entity-list ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.entity-list li {
-  border-bottom: 1px solid #ddd;
-  padding: 10px;
-  transition: background-color 0.3s;
-}
-
-.entity-list li:last-child {
-  border-bottom: none;
-}
-
-.entity-list li:hover {
-  background-color: #f0f0f0;
-}

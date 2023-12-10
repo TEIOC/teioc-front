@@ -15,7 +15,7 @@ function InternHomePage({ internName }) {
     };
 
     return (
-        <div className="home-page">
+        <div>
             <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
             <Separator />
             <SurveyWithTopicList />
@@ -24,4 +24,5 @@ function InternHomePage({ internName }) {
 }
 
 export default InternHomePage;
+
 

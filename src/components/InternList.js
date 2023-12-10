@@ -4,6 +4,7 @@ import { fetchInterns } from '../api/api';
 
 function InternList() {
     const [interns, setInterns] = useState([]);
+
     useEffect(() => {
         fetchInterns()
             .then((data) => {
@@ -11,6 +12,7 @@ function InternList() {
             })
             .catch((error) => console.error('Error fetching interns:', error));
     }, []);
+
     const columnsToShow = ['id', 'name', 'email'];
     const columnTitles = {
         id: 'ID',
@@ -18,9 +20,10 @@ function InternList() {
         email: 'Email'
     };
 
+    // Utilisation de la classe "base-style" et "max-width-600" pour appliquer les styles généraux
     return (
-        <div className="entity-list">
-            <h2>Interns List</h2>
+        <div className="base-style max-width-600">
+            <h2 className="center-text">Interns List</h2>
             <DataTable
                 data={interns}
                 columnsToShow={columnsToShow}

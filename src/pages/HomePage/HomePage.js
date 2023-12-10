@@ -8,7 +8,7 @@ import SurveyList from '../../components/SurveyList';
 function HomePage() {
     const [isLoggedIn] = useState(false);
     return (
-        <div className="home-page">
+        <div>
             <NavBar isLoggedIn={isLoggedIn} />
             <Separator />
             <InternList />

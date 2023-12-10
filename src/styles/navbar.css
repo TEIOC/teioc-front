@@ -1,40 +1,32 @@
-/* NavBar*/
+/* Styles de Bannière et de Navigation */
 .header-banner {
-  background-color: #00346bd1;
-  /* Blue background color */
-  color: #fff;
-  /* White text color */
-  padding: 20px;
-  display: flex;
-  /* Align elements horizontally */
-  justify-content: space-between;
-  /* Space between title and button */
-  align-items: center;
-  /* Vertically center elements */
+    background-color: #007bff; /* Couleur de fond bleue moderne */
+    color: #fff; /* Couleur du texte blanc */
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    text-align: center; /* Centrer le texte horizontalement */
 }
 
 .navbar-button {
-  background-color: #00346bd1;
-  /* White background color */
-  color: white;
-  /* Blue text color */
-  border: 2px solid #00346bd1;
-  /* Blue border */
-  padding: 10px 20px;
-  /* Some padding */
-  font-size: 16px;
-  /* Set a font size */
-  cursor: pointer;
-  /* Mouse pointer on hover */
-  transition: all 0.3s ease 0s;
-  /* Transition effect when hovering */
+    background-color: #007bff; /* Couleur de fond bleue identique à la bannière */
+    color: white; /* Texte blanc pour un contraste moderne */
+    border: 2px solid #fff; /* Ajout de la bordure blanche */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Ajout de la transition pour la couleur et la bordure */
+    border-radius: 4px;
 }
 
 .navbar-button:hover {
-  background-color: #fff;
-  /* White background on hover */
-  color: #00346bd1;
-  /* Blue text on hover */
-  border-color: #00346bd1;
-  /* Blue border on hover */
+    background-color: #fff; /* Fond blanc au survol */
+    color: #007bff; /* Texte bleu au survol */
+    border-color: #007bff; /* Bordure bleue au survol */
 }
+
+
+
+

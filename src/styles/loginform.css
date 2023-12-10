@@ -1,0 +1,76 @@
+/* Styles du formulaire de connexion */
+.login-form {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #555;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.login-form h2 {
+    text-align: center;
+}
+
+.login-form .form {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.login-form .form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.login-form .form input[type="text"],
+.login-form .form input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.login-form .button {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.login-form .button:hover {
+    background-color: white;
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.login-form .form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.login-form .link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-form .link:hover {
+    text-decoration: underline;
+}
+
+.login-form .error-message {
+    color: red;
+    text-align: center;
+}
+
+.login-form .register-section {
+    text-align: center;
+    margin-top: 20px;
+}

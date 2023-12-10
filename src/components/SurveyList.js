@@ -17,9 +17,10 @@ function SurveyList() {
         name: 'Survey Name'
     };
 
+    // Utilisation de la classe "base-style" et "max-width-600" pour appliquer les styles généraux
     return (
-        <div className="entity-list">
-            <h2>Surveys List</h2>
+        <div className="base-style max-width-600">
+            <h2 className="center-text">Surveys List</h2>
             <DataTable
                 data={surveys}
                 columnsToShow={columnsToShow}
@@ -30,4 +31,5 @@ function SurveyList() {
 }
 
 export default SurveyList;
+
 

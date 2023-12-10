@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import '../styles/loginform.css'; // Importez le fichier CSS pour le formulaire de connexion
 
 function LoginForm({ onLoginSuccess }) {
 	const [email, setEmail] = useState("");
@@ -30,38 +31,46 @@ function LoginForm({ onLoginSuccess }) {
 	};
 
 	return (
-		<div>
-			<div className="header-banner">
-				<h1>TEIOC - Assessment of Interns Platform</h1>
-			</div>
-			<div className="form-container">
-				<h2 className="login-title">Login</h2>
-				<form className="form-style" onSubmit={handleLoginClick}>
-					<label htmlFor="email">Email</label>
-					<input type="text" id="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+		<div className="login-form">
+			<h2>Login</h2>
+			<form className="form" onSubmit={handleLoginClick}>
+				<label htmlFor="email">Email</label>
+				<input
+					type="text"
+					id="email"
+					name="email"
+					value={email}
+					onChange={(e) => setEmail(e.target.value)}
+				/>
 
-					<label htmlFor="password">Password</label>
-					<input type="password" id="password" name="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+				<label htmlFor="password">Password</label>
+				<input
+					type="password"
+					id="password"
+					name="password"
+					value={password}
+					onChange={(e) => setPassword(e.target.value)}
+				/>
 
-					<div className="form-footer">
-						<button type="submit" className="button-style">
-							Login
-						</button>
-						<Link to="/forgot-password" className="link-style">
-							Forgot password?
-						</Link>
-					</div>
-				</form>
-				{error && <div className="error-message">{error}</div>}
-				<div className="register-section">
-					Don't have an account?{" "}
-					<Link to="/register" className="link-style">
-						Register
+				<div className="form-footer">
+					<button type="submit" className="button">
+						Login
+					</button>
+					<Link to="/forgot-password" className="link">
+						Forgot password?
 					</Link>
 				</div>
+			</form>
+			{error && <div className="error-message">{error}</div>}
+			<div className="register-section">
+				Don't have an account?{" "}
+				<Link to="/register" className="link">
+					Register
+				</Link>
 			</div>
 		</div>
 	);
 }
 
 export default LoginForm;
+
