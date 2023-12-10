@@ -1,6 +1,6 @@
 import React from 'react';
-import NavBar from "../components/common/NavBar";
-import Separator from "../components/common/Separator";
+import NavBar from "../components/navigation/NavBar";
+import Separator from "../components/navigation/Separator";
 import RegisterForm from "../components/forms/RegisterForm";
 
 function RegisterPage() {
