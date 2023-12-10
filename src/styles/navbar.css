@@ -1,41 +1,40 @@
-/* Styles de Bannière et de Navigation */
 .header-title {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #fff; /* Text color */
-    font-size: 36px; /* Adjust the font size as needed */
-    font-weight: bold; /* Adjust the font weight if needed */
-    text-align: center; /* Center the text horizontally */
-    margin-bottom: 20px; /* Adjust the margin if needed */
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
 }
 .header-banner {
-    background-color: #00346bd1; /* Use the "bleue moderne" color code */
-    color: #fff; /* Couleur du texte blanc */
+    background-color: #00346bd1;
+    color: #fff;
     padding: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-radius: 4px;
-    text-align: center; /* Centrer le texte horizontalement */
+    text-align: center;
 }
 
 .navbar-button {
-    background-color: #00346bd1; /* Use the same color as the header banner */
-    color: white; /* Texte blanc pour un contraste moderne */
-    border: 2px solid #fff; /* Ajout de la bordure blanche */
+    background-color: #00346bd1;
+    color: white;
+    border: 2px solid #fff;
     padding: 10px 20px;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Use the same font as the title */
-    font-size: 16px; /* Use the same font size as the title */
-    font-weight: bold; /* Use the same font weight as the title */
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Ajout de la transition pour la couleur et la bordure */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     border-radius: 4px;
-    text-decoration: none; /* Remove underline */
+    text-decoration: none;
 }
 
 .navbar-button:hover {
-    background-color: white; /* Fond blanc au survol */
-    color: #00346bd1; /* Use the same color as the header banner for the hover effect */
-    border-color: #00346bd1; /* Use the same color as the header banner for the hover effect */
+    background-color: white;
+    color: #00346bd1;
+    border-color: #00346bd1;
 }
 
 

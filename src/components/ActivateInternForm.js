@@ -25,12 +25,11 @@ const ActivateInternPage = () => {
     }, [id]);
 
     return (
-        <div className="form-container"> {/* Use the same CSS class for consistency */}
-            <div className="form-title"> {/* Use the same CSS class for the form title */}
+        <div className="form-container">
+            <div className="form-title">
                 <h2>Account Activation</h2>
             </div>
 
-            {/* Display success message or error message */}
             {successMessage && <div className="success-message">{successMessage}</div>}
             {error && <div className="error-message">{error}</div>}
         </div>

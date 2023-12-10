@@ -31,8 +31,8 @@ function LoginForm({ onLoginSuccess }) {
 	};
 
 	return (
-		<div className="form-container"> {/* Utilisez la classe CSS générique pour le formulaire */}
-			<div className="form-title"> {/* Utilisez la classe CSS générique pour le titre du formulaire */}
+		<div className="form-container">
+			<div className="form-title">
 				<h2>Login</h2>
 			</div>
 			<form className="form" onSubmit={handleLoginClick}>
@@ -54,19 +54,19 @@ function LoginForm({ onLoginSuccess }) {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 
-				<div className="form-footer"> {/* Utilisez la classe CSS générique pour le pied de formulaire */}
-					<button type="submit" className="button"> {/* Utilisez la classe CSS générique pour le bouton */}
+				<div className="form-footer">
+					<button type="submit" className="button">
 						Login
 					</button>
-					<Link to="/forgot-password" className="link"> {/* Utilisez la classe CSS générique pour le lien */}
+					<Link to="/forgot-password" className="link">
 						Forgot password?
 					</Link>
 				</div>
 			</form>
-			{error && <div className="error-message">{error}</div>} {/* Utilisez la classe CSS générique pour le message d'erreur */}
-			<div className="additional-section"> {/* Utilisez la classe CSS générique pour la section supplémentaire */}
+			{error && <div className="error-message">{error}</div>}
+			<div className="additional-section">
 				Don't have an account?{" "}
-				<Link to="/register" className="link"> {/* Utilisez la classe CSS générique pour le lien */}
+				<Link to="/register" className="link">
 					Register
 				</Link>
 			</div>

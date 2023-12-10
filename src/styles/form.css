@@ -1,4 +1,3 @@
-/* Styles du formulaire générique */
 .form-container {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #555;
@@ -40,7 +39,7 @@
 }
 
 .form-container .button {
-    background-color: #00346bd1; /* Utilisez une nuance plus claire de bleu */
+    background-color: #00346bd1;
     color: white;
     border: 2px solid #fff;
     padding: 10px 20px;
@@ -52,8 +51,8 @@
 
 .form-container .button:hover {
     background-color: white;
-    color: #00346bd1; /* Utilisez la même nuance plus claire de bleu pour l'effet de survol */
-    border-color: #00346bd1; /* Utilisez la même nuance plus claire de bleu pour l'effet de survol */
+    color: #00346bd1;
+    border-color: #00346bd1;
 }
 
 .form-container .form-footer {
@@ -64,7 +63,7 @@
 }
 
 .form-container .link {
-    color: #00346bd1; /* Utilisez la même nuance plus claire de bleu pour les liens */
+    color: #00346bd1;
     text-decoration: none;
 }
 

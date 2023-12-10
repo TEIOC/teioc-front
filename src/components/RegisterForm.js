@@ -113,11 +113,11 @@ const RegisterForm = () => {
     };
 
     return (
-        <div className="form-container"> {/* Use the same CSS class */}
-            <div className="form-title"> {/* Use the same CSS class for the form title */}
+        <div className="form-container">
+            <div className="form-title">
                 <h2>Register</h2>
             </div>
-            <form className="form" onSubmit={handleSubmit}> {/* Use the same CSS class for the form */}
+            <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
                 <input
                     type="text"
@@ -183,11 +183,11 @@ const RegisterForm = () => {
                 />
                 {phoneError && <div className="error-message">{phoneError}</div>}
 
-                <div className="form-footer"> {/* Use the same CSS class for the form footer */}
-                    <button type="submit" className="button"> {/* Use the same CSS class for the button */}
+                <div className="form-footer">
+                    <button type="submit" className="button">
                         Register
                     </button>
-                    <Link to="/login" className="link"> {/* Use the same CSS class for the link */}
+                    <Link to="/login" className="link">
                         Already have an account? Login
                     </Link>
                 </div>
