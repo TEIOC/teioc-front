@@ -4,8 +4,6 @@ import HomePage from './pages/HomePage/HomePage';
 import LoginPage from './pages/LoginPage/LoginPage';
 import InternHomePage from "./pages/InternHomePage/InternHomePage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import ForgotPasswordForm from './components/ForgotPasswordForm';
-import ResetPasswordForm from './components/./ResetPasswordForm';
 import ActivateInternPage from './pages/ActivateInternPage/ActivateInternPage';
 import ForgotPasswordPage from "./pages/ForgotPasswordPage/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage";
