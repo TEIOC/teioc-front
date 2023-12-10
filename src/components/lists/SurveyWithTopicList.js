@@ -29,9 +29,8 @@ function SurveyWithTopicList() {
         name: 'Survey Name'
     };
 
-    // Utilisation de la classe "base-style" et "max-width-600" pour appliquer les styles généraux
     return (
-        <div className="base-style max-width-600">
+        <div>
             <h2 className="list-title">Topics and Surveys List</h2>
             <DataTable
                 data={surveysWithTopics}

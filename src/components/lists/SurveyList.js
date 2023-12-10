@@ -18,7 +18,6 @@ function SurveyList() {
         name: 'Survey Name'
     };
 
-    // Utilisation de la classe "base-style" et "max-width-600" pour appliquer les styles généraux
     return (
         <div className="base-style max-width-600">
             <h2 className="list-title">Surveys List</h2>
