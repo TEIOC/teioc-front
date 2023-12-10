@@ -1,40 +1,47 @@
-/* NavBar*/
+.header-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
 .header-banner {
-  background-color: #00346bd1;
-  /* Blue background color */
-  color: #fff;
-  /* White text color */
-  padding: 20px;
-  display: flex;
-  /* Align elements horizontally */
-  justify-content: space-between;
-  /* Space between title and button */
-  align-items: center;
-  /* Vertically center elements */
+    background-color: #00346bd1;
+    color: #fff;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    text-align: center;
 }
 
 .navbar-button {
-  background-color: #00346bd1;
-  /* White background color */
-  color: white;
-  /* Blue text color */
-  border: 2px solid #00346bd1;
-  /* Blue border */
-  padding: 10px 20px;
-  /* Some padding */
-  font-size: 16px;
-  /* Set a font size */
-  cursor: pointer;
-  /* Mouse pointer on hover */
-  transition: all 0.3s ease 0s;
-  /* Transition effect when hovering */
+    background-color: #00346bd1;
+    color: white;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border-radius: 4px;
+    text-decoration: none;
 }
 
 .navbar-button:hover {
-  background-color: #fff;
-  /* White background on hover */
-  color: #00346bd1;
-  /* Blue text on hover */
-  border-color: #00346bd1;
-  /* Blue border on hover */
+    background-color: white;
+    color: #00346bd1;
+    border-color: #00346bd1;
 }
+
+
+
+
+
+
+
+
+

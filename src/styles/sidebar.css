@@ -1,0 +1,30 @@
+.sidebar {
+    width: 200px;
+    background-color: #f3f3f3;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #00346bd1;
+    font-size: 16px;
+}
+
+.sidebar a:hover {
+    text-decoration: underline;
+    color: #00346bd1;
+}
+
+

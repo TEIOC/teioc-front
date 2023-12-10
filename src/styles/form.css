@@ -1,0 +1,82 @@
+.form-container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #555;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-title {
+    font-size: 16px;
+    color: #00346bd1;
+}
+
+.form-container h2 {
+    text-align: center;
+}
+
+.form-container .form {
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.form-container .form label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.form-container .form input[type="text"],
+.form-container .form input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-container .button {
+    background-color: #00346bd1;
+    color: white;
+    border: 2px solid #fff;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    border-radius: 4px;
+}
+
+.form-container .button:hover {
+    background-color: white;
+    color: #00346bd1;
+    border-color: #00346bd1;
+}
+
+.form-container .form-footer {
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form-container .link {
+    color: #00346bd1;
+    text-decoration: none;
+}
+
+.form-container .link:hover {
+    text-decoration: underline;
+}
+
+.form-container .error-message {
+    color: red;
+    text-align: center;
+}
+
+.form-container .additional-section {
+    text-align: center;
+    margin-top: 20px;
+}

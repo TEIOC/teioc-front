@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchTopics } from '../api/api';
+import { fetchTopics } from '../../api/api';
+import '../../styles/list.css'
 
 function TopicList() {
     const [topics, setTopics] = useState([]);
@@ -18,8 +19,8 @@ function TopicList() {
     };
 
     return (
-        <div className="entity-list">
-            <h2>Topics List</h2>
+        <div className="base-style max-width-600">
+            <h2 className="list-title">Topics List</h2>
             <DataTable
                 data={topics}
                 columnsToShow={columnsToShow}
@@ -30,4 +31,5 @@ function TopicList() {
 }
 
 export default TopicList;
+
 

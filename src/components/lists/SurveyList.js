@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchSurveys } from '../api/api';
+import { fetchSurveys } from '../../api/api';
+import '../../styles/list.css'
 
 function SurveyList() {
     const [surveys, setSurveys] = useState([]);
@@ -18,8 +19,8 @@ function SurveyList() {
     };
 
     return (
-        <div className="entity-list">
-            <h2>Surveys List</h2>
+        <div className="base-style max-width-600">
+            <h2 className="list-title">Surveys List</h2>
             <DataTable
                 data={surveys}
                 columnsToShow={columnsToShow}
@@ -30,4 +31,5 @@ function SurveyList() {
 }
 
 export default SurveyList;
+
 

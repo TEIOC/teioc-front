@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavBar from "../../components/NavBar";
-import Separator from "../../components/Separator";
-import SurveyWithTopicList from "../../components/SurveyWithTopicList";
+import NavBar from "../components/navigation/NavBar";
+import Separator from "../components/navigation/Separator";
+import SurveyWithTopicList from "../components/lists/SurveyWithTopicList";
+import InternHomeSidebar from "../components/navigation/InternHomeSidebar";
 
 function InternHomePage({ internName }) {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -15,13 +16,19 @@ function InternHomePage({ internName }) {
     };
 
     return (
-        <div className="home-page">
+        <div>
             <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
             <Separator />
-            <SurveyWithTopicList />
+            <div className="layout-container">
+                <InternHomeSidebar />
+                <div className="content-area">
+                    <SurveyWithTopicList />
+                </div>
+            </div>
         </div>
     );
 }
 
 export default InternHomePage;
+
 
