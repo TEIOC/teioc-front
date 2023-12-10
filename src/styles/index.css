@@ -18,6 +18,24 @@
   text-align: center;
 }
 
+.layout-container {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  height: 100vh;
+  padding: 20px;
+}
 
-
+.content-area {
+  flex-grow: 1;
+  padding: 20px;
+  width: calc(100% - 240px);
+  max-width: 600px;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-left: 20px;
+  justify-content: center;
+}
 
