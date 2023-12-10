@@ -1,6 +1,7 @@
 /* Styles de Base */
 .base-style {
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
   color: #555; /* Couleur de police plus moderne */
   background-color: #f8f8f8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -16,6 +17,12 @@
 .base-style.center-text {
   text-align: center;
 }
+
+.list-title {
+  font-size: 24px;
+  color: #00346bd1;
+}
+
 
 /* Styles de Formulaire */
 .form-style {
@@ -39,7 +46,7 @@
 
 /* Ajoutez ce style pour le bouton Login dans le formulaire */
 .button-style {
-  background-color: #007bff; /* Couleur de fond bleue identique à la bannière */
+  background-color: #00346bd1; /* Use the "bleue moderne" color code */
   color: white; /* Texte blanc pour un contraste moderne */
   border: 2px solid #fff; /* Ajout de la bordure blanche */
   padding: 10px 20px;
@@ -51,15 +58,11 @@
 
 .button-style:hover {
   background-color: white; /* Fond blanc au survol */
-  color: #007bff; /* Texte bleu au survol */
-  border-color: #007bff; /* Bordure bleue au survol */
+  color: #00346bd1; /* Use the same lighter blue for the hover effect */
+  border-color: #00346bd1; /* Use the same lighter blue for the hover effect */
 }
 
 /* Classe utilitaire pour les marges */
 .margin-top-20 {
   margin-top: 20px;
 }
-
-
-
-

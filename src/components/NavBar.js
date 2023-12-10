@@ -7,8 +7,8 @@ function NavBar({ isLoggedIn, onLogout }) {
     const isLoginPage = location.pathname === '/login';
 
     return (
-        <div style={{ backgroundColor: '#007bff', color: '#fff', padding: '20px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderRadius: '4px' }}>
-            <h1>TEIOC - Assessment of Interns Platform</h1>
+        <div className="header-banner">
+            <h1 className="header-title">TEIOC - Assessment of Interns Platform</h1>
             {!isLoginPage && isLoggedIn && (
                 <button onClick={onLogout} className="navbar-button">Logout</button>
             )}

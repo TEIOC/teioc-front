@@ -1,6 +1,14 @@
 /* Styles de Bannière et de Navigation */
+.header-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #fff; /* Text color */
+    font-size: 36px; /* Adjust the font size as needed */
+    font-weight: bold; /* Adjust the font weight if needed */
+    text-align: center; /* Center the text horizontally */
+    margin-bottom: 20px; /* Adjust the margin if needed */
+}
 .header-banner {
-    background-color: #007bff; /* Couleur de fond bleue moderne */
+    background-color: #00346bd1; /* Use the "bleue moderne" color code */
     color: #fff; /* Couleur du texte blanc */
     padding: 20px;
     display: flex;
@@ -11,21 +19,29 @@
 }
 
 .navbar-button {
-    background-color: #007bff; /* Couleur de fond bleue identique à la bannière */
+    background-color: #00346bd1; /* Use the same color as the header banner */
     color: white; /* Texte blanc pour un contraste moderne */
     border: 2px solid #fff; /* Ajout de la bordure blanche */
     padding: 10px 20px;
-    font-size: 16px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Use the same font as the title */
+    font-size: 16px; /* Use the same font size as the title */
+    font-weight: bold; /* Use the same font weight as the title */
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Ajout de la transition pour la couleur et la bordure */
     border-radius: 4px;
+    text-decoration: none; /* Remove underline */
 }
 
 .navbar-button:hover {
-    background-color: #fff; /* Fond blanc au survol */
-    color: #007bff; /* Texte bleu au survol */
-    border-color: #007bff; /* Bordure bleue au survol */
+    background-color: white; /* Fond blanc au survol */
+    color: #00346bd1; /* Use the same color as the header banner for the hover effect */
+    border-color: #00346bd1; /* Use the same color as the header banner for the hover effect */
 }
+
+
+
+
+
 
 
 

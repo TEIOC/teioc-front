@@ -32,7 +32,9 @@ function LoginForm({ onLoginSuccess }) {
 
 	return (
 		<div className="login-form">
-			<h2>Login</h2>
+			<div className="login-title">
+				<h2>Login</h2>
+			</div>
 			<form className="form" onSubmit={handleLoginClick}>
 				<label htmlFor="email">Email</label>
 				<input

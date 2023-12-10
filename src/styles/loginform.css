@@ -10,6 +10,11 @@
     padding: 20px;
 }
 
+.login-title {
+    font-size: 16px;
+    color: #00346bd1; /* Use the "bleue moderne" color code */
+}
+
 .login-form h2 {
     text-align: center;
 }
@@ -31,10 +36,12 @@
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-size: 16px;
+
 }
 
 .login-form .button {
-    background-color: #007bff;
+    background-color: #00346bd1; /* Use a lighter shade of blue */
     color: white;
     border: 2px solid #fff;
     padding: 10px 20px;
@@ -46,18 +53,19 @@
 
 .login-form .button:hover {
     background-color: white;
-    color: #007bff;
-    border-color: #007bff;
+    color: #00346bd1; /* Use the same lighter blue for the hover effect */
+    border-color: #00346bd1; /* Use the same lighter blue for the hover effect */
 }
 
 .login-form .form-footer {
+    font-size: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .login-form .link {
-    color: #007bff;
+    color: #00346bd1; /* Use the same lighter blue for links */
     text-decoration: none;
 }
 
@@ -74,3 +82,4 @@
     text-align: center;
     margin-top: 20px;
 }
+
