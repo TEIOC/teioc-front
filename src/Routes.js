@@ -1,12 +1,12 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
-import LoginPage from './pages/LoginPage/LoginPage';
-import InternHomePage from "./pages/InternHomePage/InternHomePage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import ForgotPasswordPage from "./pages/ForgotPasswordPage/ForgotPasswordPage";
-import ResetPasswordPage from "./pages/ResetPasswordPage/ResetPasswordPage";
-import ActivateInternPage from "./pages/ActivateInternPage/ActivateInternPage";
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
+import InternHomePage from "./pages/InternHomePage";
+import RegisterPage from "./pages/RegisterPage";
+import ForgotPasswordPage from "./pages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
+import ActivateInternPage from "./pages/ActivateInternPage";
 
 function AppRoutes() {
     return (

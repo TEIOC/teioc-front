@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
-import InternList from '../../components/InternList';
-import TopicList from '../../components/TopicList';
-import NavBar from '../../components/NavBar';
-import Separator from '../../components/Separator';
-import SurveyList from '../../components/SurveyList';
+import InternList from '../components/lists/InternList';
+import TopicList from '../components/lists/TopicList';
+import NavBar from "../components/common/NavBar";
+import Separator from "../components/common/Separator";
+import SurveyList from '../components/lists/SurveyList';
 
 function HomePage() {
     const [isLoggedIn] = useState(false);

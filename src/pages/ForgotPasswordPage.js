@@ -1,7 +1,7 @@
 import React from 'react';
-import ForgotPasswordForm from '../../components/ForgotPasswordForm';
-import NavBar from "../../components/NavBar";
-import Separator from "../../components/Separator";
+import ForgotPasswordForm from '../components/forms/ForgotPasswordForm';
+import NavBar from "../components/common/NavBar";
+import Separator from "../components/common/Separator";
 
 function ForgotPasswordPage() {
     return (

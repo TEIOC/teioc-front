@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import '../styles/form.css';
+import '../../styles/form.css';
 
 const api = axios.create({
     baseURL: 'http://localhost:8080',

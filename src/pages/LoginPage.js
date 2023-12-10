@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import LoginForm from '../../components/LoginForm';
-import NavBar from "../../components/NavBar";
-import Separator from "../../components/Separator";
+import LoginForm from '../components/forms/LoginForm';
+import NavBar from "../components/common/NavBar";
+import Separator from "../components/common/Separator";
 
 function LoginPage() {
     const navigate = useNavigate();

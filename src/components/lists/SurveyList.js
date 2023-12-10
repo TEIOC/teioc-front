@@ -1,29 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchTopics } from '../api/api';
-import '../styles/list.css'
+import { fetchSurveys } from '../../api/api';
+import '../../styles/list.css'
 
-function TopicList() {
-    const [topics, setTopics] = useState([]);
+function SurveyList() {
+    const [surveys, setSurveys] = useState([]);
 
     useEffect(() => {
-        fetchTopics()
-            .then((data) => setTopics(data))
-            .catch((error) => console.error('Error fetching topics:', error));
+        fetchSurveys()
+            .then((data) => setSurveys(data))
+            .catch((error) => console.error('Error fetching surveys:', error));
     }, []);
 
     const columnsToShow = ['id', 'name'];
     const columnTitles = {
         id: 'ID',
-        name: 'Topic Name'
+        name: 'Survey Name'
     };
 
     // Utilisation de la classe "base-style" et "max-width-600" pour appliquer les styles généraux
     return (
         <div className="base-style max-width-600">
-            <h2 className="list-title">Topics List</h2>
+            <h2 className="list-title">Surveys List</h2>
             <DataTable
-                data={topics}
+                data={surveys}
                 columnsToShow={columnsToShow}
                 columnTitles={columnTitles}
             />
@@ -31,6 +31,6 @@ function TopicList() {
     );
 }
 
-export default TopicList;
+export default SurveyList;
 
 

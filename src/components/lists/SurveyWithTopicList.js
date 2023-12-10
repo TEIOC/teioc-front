@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchSurveys, fetchTopics } from '../api/api';
-import '../styles/list.css'
+import { fetchSurveys, fetchTopics } from '../../api/api';
+import '../../styles/list.css'
 
 function SurveyWithTopicList() {
     const [surveysWithTopics, setSurveysWithTopics] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import '../styles/form.css'; // Importez le fichier CSS générique pour le formulaire
+import '../../styles/form.css'; // Importez le fichier CSS générique pour le formulaire
 
 function LoginForm({ onLoginSuccess }) {
 	const [email, setEmail] = useState("");

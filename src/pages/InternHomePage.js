@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import NavBar from "../../components/NavBar";
-import Separator from "../../components/Separator";
-import SurveyWithTopicList from "../../components/SurveyWithTopicList";
-import InternHomeSidebar from "../../components/InternHomeSidebar";
+import NavBar from "../components/common/NavBar";
+import Separator from "../components/common/Separator";
+import SurveyWithTopicList from "../components/lists/SurveyWithTopicList";
+import InternHomeSidebar from "../components/InternHomeSidebar";
 
 function InternHomePage({ internName }) {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
