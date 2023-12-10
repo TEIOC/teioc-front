@@ -1,5 +1,5 @@
-/* Styles du formulaire de connexion */
-.login-form {
+/* Styles du formulaire générique */
+.form-container {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #555;
     background-color: #f8f8f8;
@@ -10,38 +10,37 @@
     padding: 20px;
 }
 
-.login-title {
+.form-title {
     font-size: 16px;
-    color: #00346bd1; /* Use the "bleue moderne" color code */
+    color: #00346bd1;
 }
 
-.login-form h2 {
+.form-container h2 {
     text-align: center;
 }
 
-.login-form .form {
+.form-container .form {
     padding: 20px;
     margin: 0 auto;
 }
 
-.login-form .form label {
+.form-container .form label {
     display: block;
     margin-bottom: 10px;
 }
 
-.login-form .form input[type="text"],
-.login-form .form input[type="password"] {
+.form-container .form input[type="text"],
+.form-container .form input[type="password"] {
     width: calc(100% - 20px);
     padding: 12px;
     margin-bottom: 20px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 16px;
-
 }
 
-.login-form .button {
-    background-color: #00346bd1; /* Use a lighter shade of blue */
+.form-container .button {
+    background-color: #00346bd1; /* Utilisez une nuance plus claire de bleu */
     color: white;
     border: 2px solid #fff;
     padding: 10px 20px;
@@ -51,35 +50,34 @@
     border-radius: 4px;
 }
 
-.login-form .button:hover {
+.form-container .button:hover {
     background-color: white;
-    color: #00346bd1; /* Use the same lighter blue for the hover effect */
-    border-color: #00346bd1; /* Use the same lighter blue for the hover effect */
+    color: #00346bd1; /* Utilisez la même nuance plus claire de bleu pour l'effet de survol */
+    border-color: #00346bd1; /* Utilisez la même nuance plus claire de bleu pour l'effet de survol */
 }
 
-.login-form .form-footer {
+.form-container .form-footer {
     font-size: 16px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.login-form .link {
-    color: #00346bd1; /* Use the same lighter blue for links */
+.form-container .link {
+    color: #00346bd1; /* Utilisez la même nuance plus claire de bleu pour les liens */
     text-decoration: none;
 }
 
-.login-form .link:hover {
+.form-container .link:hover {
     text-decoration: underline;
 }
 
-.login-form .error-message {
+.form-container .error-message {
     color: red;
     text-align: center;
 }
 
-.login-form .register-section {
+.form-container .additional-section {
     text-align: center;
     margin-top: 20px;
 }
-

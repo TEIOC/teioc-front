@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import '../styles/loginform.css'; // Importez le fichier CSS pour le formulaire de connexion
+import '../styles/form.css'; // Importez le fichier CSS générique pour le formulaire
 
 function LoginForm({ onLoginSuccess }) {
 	const [email, setEmail] = useState("");
@@ -31,8 +31,8 @@ function LoginForm({ onLoginSuccess }) {
 	};
 
 	return (
-		<div className="login-form">
-			<div className="login-title">
+		<div className="form-container"> {/* Utilisez la classe CSS générique pour le formulaire */}
+			<div className="form-title"> {/* Utilisez la classe CSS générique pour le titre du formulaire */}
 				<h2>Login</h2>
 			</div>
 			<form className="form" onSubmit={handleLoginClick}>
@@ -54,19 +54,19 @@ function LoginForm({ onLoginSuccess }) {
 					onChange={(e) => setPassword(e.target.value)}
 				/>
 
-				<div className="form-footer">
-					<button type="submit" className="button">
+				<div className="form-footer"> {/* Utilisez la classe CSS générique pour le pied de formulaire */}
+					<button type="submit" className="button"> {/* Utilisez la classe CSS générique pour le bouton */}
 						Login
 					</button>
-					<Link to="/forgot-password" className="link">
+					<Link to="/forgot-password" className="link"> {/* Utilisez la classe CSS générique pour le lien */}
 						Forgot password?
 					</Link>
 				</div>
 			</form>
-			{error && <div className="error-message">{error}</div>}
-			<div className="register-section">
+			{error && <div className="error-message">{error}</div>} {/* Utilisez la classe CSS générique pour le message d'erreur */}
+			<div className="additional-section"> {/* Utilisez la classe CSS générique pour la section supplémentaire */}
 				Don't have an account?{" "}
-				<Link to="/register" className="link">
+				<Link to="/register" className="link"> {/* Utilisez la classe CSS générique pour le lien */}
 					Register
 				</Link>
 			</div>
@@ -75,4 +75,5 @@ function LoginForm({ onLoginSuccess }) {
 }
 
 export default LoginForm;
+
 

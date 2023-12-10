@@ -18,51 +18,6 @@
   text-align: center;
 }
 
-.list-title {
-  font-size: 24px;
-  color: #00346bd1;
-}
 
 
-/* Styles de Formulaire */
-.form-style {
-  padding: 20px;
-  margin: 0 auto;
-}
 
-.form-style label {
-  display: block;
-  margin-bottom: 10px;
-}
-
-.form-style input[type="text"],
-.form-style input[type="password"] {
-  width: calc(100% - 20px);
-  padding: 12px; /* Légèrement plus grand pour une meilleure expérience utilisateur */
-  margin-bottom: 20px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-/* Ajoutez ce style pour le bouton Login dans le formulaire */
-.button-style {
-  background-color: #00346bd1; /* Use the "bleue moderne" color code */
-  color: white; /* Texte blanc pour un contraste moderne */
-  border: 2px solid #fff; /* Ajout de la bordure blanche */
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Ajout de la transition pour la couleur et la bordure */
-  border-radius: 4px;
-}
-
-.button-style:hover {
-  background-color: white; /* Fond blanc au survol */
-  color: #00346bd1; /* Use the same lighter blue for the hover effect */
-  border-color: #00346bd1; /* Use the same lighter blue for the hover effect */
-}
-
-/* Classe utilitaire pour les marges */
-.margin-top-20 {
-  margin-top: 20px;
-}
