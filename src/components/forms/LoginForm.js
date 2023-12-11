@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axiosInstance from "../../services/AxiosInstance";
+
 import { Link } from "react-router-dom";
 import '../../styles/form.css'; // Importez le fichier CSS générique pour le formulaire
 
@@ -11,19 +13,12 @@ function LoginForm({ onLoginSuccess }) {
 		event.preventDefault();
 
 		try {
-			const response = await fetch("http://localhost:8080/auth/login", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ email, password }),
+			const response = await axiosInstance.post("/auth/login", {
+				email,
+				password,
 			});
 
-			if (!response.ok) {
-				throw new Error("Login failed");
-			}
-
-			const data = await response.json();
+			const data = response.data;
 			onLoginSuccess(data);
 		} catch (err) {
 			setError(err.message);
