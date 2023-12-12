@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/form.css';
-
-const api = axios.create({
-    baseURL: 'http://localhost:8080',
-    withCredentials: true,
-});
+import axiosInstance from '../../services/AxiosInstance';
 
 const RegisterForm = () => {
     const [firstName, setFirstName] = useState('');
@@ -21,10 +17,67 @@ const RegisterForm = () => {
     const [emailError, setEmailError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [isSuccessVisible, setIsSuccessVisible] = useState(false);
+    const [isFormSubmitted, setIsFormSubmitted] = useState(false);
     const navigate = useNavigate();
+
+    // Centralized Axios call for user registration
+    const registerUser = async () => {
+        try {
+            const name = `${firstName} ${lastName}`;
+
+            const response = await axiosInstance.post('/interns', {
+                name,
+                email,
+                password,
+                company,
+                contactDetails: phoneNumber,
+                creationDate: new Date(),
+                status: 0,
+            });
+
+            console.log('Registration successful:', response.data);
+            setSuccessMessage('Account created successfully.');
+            setIsSuccessVisible(true);
+            setError('');
+            setIsFormSubmitted(true);
+
+            setTimeout(() => {
+                setIsSuccessVisible(false);
+            }, 1000);
+
+            if (response.status === 200) {
+                const responseMail = await axiosInstance.post('/email/activate', {
+                    email,
+                });
+
+                console.log('Account activation email sent:', responseMail.data);
+                setSuccessMessage('Account activation email sent.');
+
+                setTimeout(() => {
+                    setIsSuccessVisible(false);
+                }, 1000);
+            }
+
+            setTimeout(() => {
+                navigate('/login');
+            }, 1500);
+        } catch (error) {
+            if (error.response) {
+                setError('Registration error', error.response.data);
+            } else if (error.request) {
+                setError('No response from server');
+            } else {
+                setError('Error during request setup:', error.message);
+            }
+        }
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        if (isFormSubmitted) {
+            return;
+        }
 
         const phoneRegex = /^[0-9]{10}$/;
         if (!phoneRegex.test(phoneNumber)) {
@@ -60,56 +113,8 @@ const RegisterForm = () => {
             return;
         }
 
-        try {
-            const name = `${firstName} ${lastName}`;
-
-            const response = await api.post('/interns', {
-                name,
-                email,
-                password,
-                company,
-                contactDetails: phoneNumber,
-                creationDate: new Date(),
-                status: 0,
-            });
-
-            console.log('Registration successful:', response.data);
-            setSuccessMessage('Account created successfully.');
-            setIsSuccessVisible(true);
-            setError('');
-
-            setTimeout(() => {
-                setIsSuccessVisible(false);
-            }, 1000);
-
-            if (response.status === 200) {
-                const responseMail = await api.post('/email/activate', {
-                    email,
-                });
-
-                console.log('Account activation email sent:', responseMail.data);
-                setSuccessMessage('Account activation email sent.');
-                setIsSuccessVisible(true);
-                setError('');
-
-                setTimeout(() => {
-                    setIsSuccessVisible(false);
-                }, 1000);
-            }
-
-            setTimeout(() => {
-                navigate('/login');
-            }, 1500);
-
-        } catch (error) {
-            if (error.response) {
-                setError('Registration error', error.response.data);
-            } else if (error.request) {
-                setError('No response from server');
-            } else {
-                setError('Error during request setup:', error.message);
-            }
-        }
+        // Centralized Axios call for user registration
+        await registerUser();
     };
 
     return (
@@ -136,7 +141,7 @@ const RegisterForm = () => {
                     onChange={(e) => setLastName(e.target.value)}
                 />
 
-                <label htmlFor="email">Email Address</label>
+                <label htmlFor="email">Email</label>
                 <input
                     type="text"
                     id="email"
@@ -184,7 +189,11 @@ const RegisterForm = () => {
                 {phoneError && <div className="error-message">{phoneError}</div>}
 
                 <div className="form-footer">
-                    <button type="submit" className="button">
+                    <button
+                        type="submit"
+                        className="button"
+                        disabled={isFormSubmitted}
+                    >
                         Register
                     </button>
                     <Link to="/login" className="link">
@@ -193,10 +202,11 @@ const RegisterForm = () => {
                 </div>
             </form>
             {error && <div className="error-message">{error}</div>}
-            {isSuccessVisible && <div className="success-message">{successMessage}</div>}
+            {isSuccessVisible && <div className="success-popup">{successMessage}</div>}
         </div>
     );
-
 };
 
 export default RegisterForm;
+
+
