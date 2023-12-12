@@ -80,3 +80,16 @@
     text-align: center;
     margin-top: 20px;
 }
+
+/* Updated styles for centering the success message */
+.success-popup {
+    background-color: #4caf50; /* Green background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Padding */
+    border-radius: 4px; /* Rounded corners */
+    text-align: center; /* Center-align text */
+    font-size: 16px; /* Font size */
+    margin: 10px auto; /* Center horizontally by setting left and right margin to auto */
+    width: fit-content; /* Adjust the width to fit the content */
+}
+

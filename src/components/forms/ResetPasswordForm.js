@@ -75,7 +75,6 @@ const ResetPasswordForm = () => {
     };
 
     return (
-
         <div className="form-container">
             <h2 className="form-title">Reset Password</h2>
             <form className="form" onSubmit={handleSubmit}>
