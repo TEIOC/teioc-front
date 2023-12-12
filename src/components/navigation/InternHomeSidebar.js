@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/sidebar.css';
-import GetLoggedinIntern from '../../hooks/GetLoggedinIntern'; // Import the hook
+import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 
 const InternHomeSidebar = () => {
-    const intern = GetLoggedinIntern(); // Get the logged-in intern using the custom hook
+    const intern = GetLoggedinIntern();
 
     return (
         <div className="sidebar">
