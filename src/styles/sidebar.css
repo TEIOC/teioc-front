@@ -7,6 +7,14 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.sidebar .title {
+    color: #00346bd1;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+
 .sidebar ul {
     list-style-type: none;
     padding: 0;

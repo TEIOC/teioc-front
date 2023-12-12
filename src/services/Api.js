@@ -20,6 +20,16 @@ export const fetchInternById = async (id) => {
 	}
 };
 
+export const fetchInternByEmail = async (email) => {
+	try {
+		const response = await axiosInstance.get(`/interns/email/${email}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching intern info:', error);
+		throw error;
+	}
+};
+
 export const fetchTopics = async () => {
 	try {
 		const response = await axiosInstance.get('/topics');
