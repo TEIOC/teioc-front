@@ -14,13 +14,14 @@ export const fetchInterns = async () => {
 
 export const fetchInternById = async (id) => {
 	try {
-		const response = await fetch(`${API_BASE_URL}/interns/${id}`);
+		const response = await axiosInstance.get(`/interns/${id}`);
 		return response.data;
 	} catch (error) {
 		console.error("Error fetching intern: ", error);
 		throw error;
 	}
 };
+
 
 export const fetchTopics = async () => {
 	try {

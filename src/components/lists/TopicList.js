@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchTopics } from '../../services/api';
+import { fetchTopics } from '../../services/Api';
 import '../../styles/list.css'
 
 function TopicList() {

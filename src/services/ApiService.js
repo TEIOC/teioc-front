@@ -1,4 +1,4 @@
-import { getToken } from './authService';
+import { getToken } from './AuthService';
 
 const makeAuthenticatedRequest = async (url, options = {}) => {
     const token = getToken();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import '../../styles/form.css';
-import { activateIntern } from '../../services/api';
+import { activateIntern } from '../../services/Api';
 
 const ActivateInternPage = () => {
     const [error, setError] = useState('');
