@@ -30,7 +30,7 @@ function AvailableSurveyList() {
     const columnsToShow = ['topicName', 'name'];
     const columnTitles = {
         topicName: 'Topic',
-        name: 'Survey Name'
+        name: 'Survey'
     };
 
     return (

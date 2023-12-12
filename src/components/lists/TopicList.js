@@ -15,7 +15,7 @@ function TopicList() {
     const columnsToShow = ['id', 'name'];
     const columnTitles = {
         id: 'ID',
-        name: 'Topic Name'
+        name: 'Topic'
     };
 
     return (

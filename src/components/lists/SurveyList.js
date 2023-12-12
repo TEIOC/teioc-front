@@ -15,7 +15,7 @@ function SurveyList() {
     const columnsToShow = ['id', 'name'];
     const columnTitles = {
         id: 'ID',
-        name: 'Survey Name'
+        name: 'Survey'
     };
 
     return (

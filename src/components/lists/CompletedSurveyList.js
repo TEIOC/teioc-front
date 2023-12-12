@@ -46,7 +46,7 @@ function CompletedSurveyList() {
     const columnsToShow = ['topicName', 'name', 'score', 'duration'];
     const columnTitles = {
         topicName: 'Topic',
-        name: 'Survey Name',
+        name: 'Survey',
         score: 'Score',
         duration: 'Duration',
     };
