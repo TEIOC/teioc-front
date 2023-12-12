@@ -1,14 +1,16 @@
 import axios from "axios";
 
-const axiosInstance = axios.create({
+const axiosConfig = axios.create({
 	baseURL: "http://localhost:8080",
+	withCredentials: true,
 	headers: {
 		"Content-Type": "application/json",
 		"Accept": "*/*",
 		"Access-Control-Allow-Origin": "*",
 	},
 });
-axiosInstance.interceptors.request.use((config) => {
+
+axiosConfig.interceptors.request.use((config) => {
 	const token = localStorage.getItem("jwt");
 	if (token) {
 		config.headers["Authorization"] = `Bearer ${token}`;
@@ -16,4 +18,4 @@ axiosInstance.interceptors.request.use((config) => {
 	return config;
 });
 
-export default axiosInstance;
+export default axiosConfig;

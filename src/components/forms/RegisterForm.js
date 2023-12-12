@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/form.css';
-
-const api = axios.create({
-    baseURL: 'http://localhost:8080',
-    withCredentials: true,
-});
+import axiosConfig from "../../services/AxiosConfig";
 
 const RegisterForm = () => {
     const [firstName, setFirstName] = useState('');
@@ -63,7 +59,7 @@ const RegisterForm = () => {
         try {
             const name = `${firstName} ${lastName}`;
 
-            const response = await api.post('/interns', {
+            const response = await axiosConfig.post('/interns', {
                 name,
                 email,
                 password,
@@ -83,7 +79,7 @@ const RegisterForm = () => {
             }, 1000);
 
             if (response.status === 200) {
-                const responseMail = await api.post('/email/activate', {
+                const responseMail = await axiosConfig.post('/email/activate', {
                     email,
                 });
 

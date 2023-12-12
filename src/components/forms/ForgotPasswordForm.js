@@ -2,11 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/form.css'
-
-const api = axios.create({
-    baseURL: 'http://localhost:8080',
-    withCredentials: true,
-});
+import axiosConfig from "../../services/AxiosConfig";
 
 const ForgotPasswordForm = () => {
     const [email, setEmail] = useState('');
@@ -18,7 +14,7 @@ const ForgotPasswordForm = () => {
         e.preventDefault();
 
         try {
-            const response = await api.post('/email/reset-password', {
+            const response = await axiosConfig.post('/email/reset-password', {
                 email,
             });
 

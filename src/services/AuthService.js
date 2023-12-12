@@ -4,7 +4,6 @@ const getToken = () => {
 
 const isAuthenticated = () => {
     const token = getToken();
-    // Ici, vous pouvez ajouter une logique pour vérifier si le token est toujours valide
     return !!token;
 };
 
@@ -13,3 +12,5 @@ const logout = () => {
 };
 
 export { getToken, isAuthenticated, logout };
+
+

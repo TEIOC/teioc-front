@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axiosInstance from "../../services/AxiosInstance";
+import axiosConfig from "../../services/AxiosConfig";
 import { Link } from "react-router-dom";
 import '../../styles/form.css';
 
@@ -12,7 +12,7 @@ function LoginForm({ onLoginSuccess }) {
 		event.preventDefault();
 
 		try {
-			const response = await axiosInstance.post("/auth/login", {
+			const response = await axiosConfig.post("/auth/login", {
 				email,
 				password,
 			});

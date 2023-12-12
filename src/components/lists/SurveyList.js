@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchSurveys } from '../../services/api';
+import { fetchSurveys } from '../../services/Api';
 import '../../styles/list.css'
 
 function SurveyList() {

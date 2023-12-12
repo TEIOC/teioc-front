@@ -2,13 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/form.css'
-import {fetchInternById} from "../../services/api";
-
-
-const api = axios.create({
-    baseURL: 'http://localhost:8080',
-    withCredentials: true,
-});
+import {fetchInternById} from "../../services/Api";
+import axiosConfig from "../../services/AxiosConfig";
 
 const ResetPasswordForm = () => {
     const [email, setEmail] = useState('');
@@ -50,7 +45,7 @@ const ResetPasswordForm = () => {
         }
 
         try {
-            const response = await api.post('/interns/reset-password', {
+            const response = await axiosConfig.post('/interns/reset-password', {
                 email,
                 password,
             });

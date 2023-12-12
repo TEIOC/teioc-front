@@ -1,10 +1,10 @@
-import axiosInstance from "./AxiosInstance";
+import axiosConfig from "./AxiosConfig";
 
 const API_BASE_URL = "http://localhost:8080";
 
 export const fetchInterns = async () => {
 	try {
-		const response = await axiosInstance.get("/interns");
+		const response = await axiosConfig.get("/interns");
 		return response.data;
 	} catch (error) {
 		console.error("Error fetching interns:", error);
@@ -25,7 +25,7 @@ export const fetchInternById = async (id) => {
 export const fetchTopics = async () => {
 	try {
 		// const response = await fetch(`${API_BASE_URL}/topics`);
-		const response = await axiosInstance.get("/topics");
+		const response = await axiosConfig.get("/topics");
     return response.data;
 	} catch (error) {
 		console.error("Error fetching topics:", error);
@@ -36,7 +36,7 @@ export const fetchTopics = async () => {
 export const fetchSurveys = async () => {
 	try {
 		// const response = await fetch(`${API_BASE_URL}/surveys`);
-		const response = await axiosInstance.get("/surveys");
+		const response = await axiosConfig.get("/surveys");
 		return response.data;
 	} catch (error) {
 		console.error("Error fetching surveys:", error);
@@ -59,7 +59,7 @@ export const activateIntern = async (id) => {
 
 		// const data = await response.json();
 		// return data;
-    const response = await axiosInstance.put(`/interns/${id}/activate`);
+    const response = await axiosConfig.put(`/interns/${id}/activate`);
     return response.data;
 	} catch (error) {
 		console.error("Error activating intern:", error);
@@ -83,7 +83,7 @@ export const deactivateIntern = async (id) => {
 		// const data = await response.json();
 		// return data;
 
-    const response = await axiosInstance.put(`/interns/${id}/deactivate`);
+    const response = await axiosConfig.put(`/interns/${id}/deactivate`);
     return response.data;
 	} catch (error) {
 		console.error("Error deactivating intern:", error);

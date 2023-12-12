@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchInterns } from '../../services/api';
+import { fetchInterns } from '../../services/Api';
 import '../../styles/list.css'
 
 function InternList() {
