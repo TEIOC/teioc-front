@@ -10,9 +10,9 @@ export const fetchInterns = async () => {
 	}
 };
 
-export const fetchInternById = async (id) => {
+export const fetchInternById = async (intern_id) => {
 	try {
-		const response = await axiosInstance.get(`/interns/${id}`);
+		const response = await axiosInstance.get(`/interns/${intern_id}`);
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching intern: ', error);
@@ -30,12 +30,22 @@ export const fetchInternByEmail = async (email) => {
 	}
 };
 
-export const fetchPathwaysForIntern = async (internId) => {
+export const fetchPathwaysForIntern = async (intern_id) => {
 	try {
-		const response = await axiosInstance.get(`/pathways/intern/${internId}`);
+		const response = await axiosInstance.get(`/pathways/intern/${intern_id}`);
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching pathways:', error);
+		throw error;
+	}
+};
+
+export const fetchRemainingSurveys = async (intern_id) => {
+	try {
+		const response = await axiosInstance.get(`/surveys/remaining-surveys/${intern_id}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching remaining surveys:', error);
 		throw error;
 	}
 };

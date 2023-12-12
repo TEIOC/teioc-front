@@ -1,27 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchSurveys, fetchTopics } from '../../services/Api';
-import '../../styles/list.css'
+import { fetchRemainingSurveys, fetchTopics } from '../../services/Api';
+import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
+import '../../styles/list.css';
 
 function SurveyWithTopicList() {
     const [surveysWithTopics, setSurveysWithTopics] = useState([]);
+    const intern = GetLoggedinIntern();
 
     useEffect(() => {
         const getSurveysAndTopics = async () => {
             try {
-                const [surveys, topics] = await Promise.all([fetchSurveys(), fetchTopics()]);
-                const combinedData = surveys.map(survey => {
-                    const topic = topics.find(t => t.id === survey.topicId);
-                    return { ...survey, topicName: topic ? topic.name : 'Unknown' };
-                });
-                setSurveysWithTopics(combinedData);
+                if (intern && intern.id) {
+                    const [remainingSurveys, topics] = await Promise.all([fetchRemainingSurveys(intern.id), fetchTopics()]);
+                    const combinedData = remainingSurveys.map(survey => {
+                        const topic = topics.find(t => t.id === survey.topicId);
+                        return { ...survey, topicName: topic ? topic.name : 'Unknown' };
+                    });
+                    setSurveysWithTopics(combinedData);
+                }
             } catch (error) {
-                console.error('Error fetching surveys or topics:', error);
+                console.error('Error fetching remaining surveys or topics:', error);
             }
         };
 
         getSurveysAndTopics();
-    }, []);
+    }, [intern]);
 
     const columnsToShow = ['topicName', 'name'];
     const columnTitles = {
@@ -42,3 +46,4 @@ function SurveyWithTopicList() {
 }
 
 export default SurveyWithTopicList;
+
