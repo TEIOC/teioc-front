@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import '../../styles/form.css'
-import {fetchInternById} from "../../services/Api";
-import axiosInstance from "../../services/AxiosInstance";
+import '../../styles/form.css';
+import { fetchInternById } from '../../services/Api';
+import axiosInstance from '../../services/AxiosInstance';
+
 const ResetPasswordForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -43,7 +44,7 @@ const ResetPasswordForm = () => {
         }
 
         try {
-            const response = await axiosInstance.post('/interns/reset-password', {
+            const response = await axiosInstance.post('/email/reset-password', {
                 email,
                 password,
             });
@@ -57,11 +58,11 @@ const ResetPasswordForm = () => {
 
             setTimeout(() => {
                 setIsSuccessVisible(false);
-            }, 1000);
+            }, 10000);
 
             setTimeout(() => {
-                navigate("/login");
-            }, 1100);
+                navigate('/login');
+            }, 1500);
         } catch (error) {
             if (error.response) {
                 setError('Error requesting password reset', error.response.data);
@@ -82,7 +83,11 @@ const ResetPasswordForm = () => {
                 <label htmlFor="password">Password</label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <label htmlFor="confirmPassword">Confirm Password</label>
-                <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                <input
+                    type="password"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                />
                 <div className="form-footer">
                     <button type="submit" className="button">
                         Reset password

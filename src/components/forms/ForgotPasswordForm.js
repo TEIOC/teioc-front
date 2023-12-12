@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/form.css'
-import AxiosInstance from "../../services/AxiosInstance";
+import '../../styles/form.css';
+import AxiosInstance from '../../services/AxiosInstance';
 
 const ForgotPasswordForm = () => {
     const [email, setEmail] = useState('');
@@ -26,7 +26,7 @@ const ForgotPasswordForm = () => {
 
             setTimeout(() => {
                 setIsSuccessVisible(false);
-            }, 1000);
+            }, 10000);
 
         } catch (error) {
             if (error.response) {
@@ -67,4 +67,5 @@ const ForgotPasswordForm = () => {
 };
 
 export default ForgotPasswordForm;
+
 
