@@ -1,15 +1,13 @@
-const getToken = () => {
+export const getToken = () => {
     return localStorage.getItem('jwt');
 };
 
-const isAuthenticated = () => {
+export const isAuthenticated = () => {
     const token = getToken();
-    // Ici, vous pouvez ajouter une logique pour vérifier si le token est toujours valide
+    // You can add logic to check if the token is still valid here
     return !!token;
 };
 
-const logout = () => {
+export const logout = () => {
     localStorage.removeItem('jwt');
 };
-
-export { getToken, isAuthenticated, logout };

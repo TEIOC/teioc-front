@@ -1,13 +1,11 @@
-import axiosInstance from "./AxiosInstance";
-
-const API_BASE_URL = "http://localhost:8080";
+import axiosInstance from './AxiosInstance';
 
 export const fetchInterns = async () => {
 	try {
-		const response = await axiosInstance.get("/interns");
+		const response = await axiosInstance.get('/interns');
 		return response.data;
 	} catch (error) {
-		console.error("Error fetching interns:", error);
+		console.error('Error fetching interns:', error);
 		throw error;
 	}
 };
@@ -17,77 +15,48 @@ export const fetchInternById = async (id) => {
 		const response = await axiosInstance.get(`/interns/${id}`);
 		return response.data;
 	} catch (error) {
-		console.error("Error fetching intern: ", error);
+		console.error('Error fetching intern: ', error);
 		throw error;
 	}
 };
 
-
 export const fetchTopics = async () => {
 	try {
-		// const response = await fetch(`${API_BASE_URL}/topics`);
-		const response = await axiosInstance.get("/topics");
-    return response.data;
+		const response = await axiosInstance.get('/topics');
+		return response.data;
 	} catch (error) {
-		console.error("Error fetching topics:", error);
+		console.error('Error fetching topics:', error);
 		throw error;
 	}
 };
 
 export const fetchSurveys = async () => {
 	try {
-		// const response = await fetch(`${API_BASE_URL}/surveys`);
-		const response = await axiosInstance.get("/surveys");
+		const response = await axiosInstance.get('/surveys');
 		return response.data;
 	} catch (error) {
-		console.error("Error fetching surveys:", error);
+		console.error('Error fetching surveys:', error);
 		throw error;
 	}
 };
 
 export const activateIntern = async (id) => {
 	try {
-		// const response = await fetch(`${API_BASE_URL}/interns/${id}/activate`, {
-		// 	method: "PUT",
-		// 	headers: {
-		// 		"Content-Type": "application/json",
-		// 	},
-		// });
-
-		// if (!response.ok) {
-		// 	throw new Error("Network response was not ok");
-		// }
-
-		// const data = await response.json();
-		// return data;
-    const response = await axiosInstance.put(`/interns/${id}/activate`);
-    return response.data;
+		const response = await axiosInstance.put(`/interns/${id}/activate`);
+		return response.data;
 	} catch (error) {
-		console.error("Error activating intern:", error);
+		console.error('Error activating intern:', error);
 		throw error;
 	}
 };
 
 export const deactivateIntern = async (id) => {
 	try {
-		// const response = await fetch(`${API_BASE_URL}/interns/${id}/deactivate`, {
-		// 	method: "PUT",
-		// 	headers: {
-		// 		"Content-Type": "application/json",
-		// 	},
-		// });
-
-		// if (!response.ok) {
-		// 	throw new Error("Network response was not ok");
-		// }
-
-		// const data = await response.json();
-		// return data;
-
-    const response = await axiosInstance.put(`/interns/${id}/deactivate`);
-    return response.data;
+		const response = await axiosInstance.put(`/interns/${id}/deactivate`);
+		return response.data;
 	} catch (error) {
-		console.error("Error deactivating intern:", error);
+		console.error('Error deactivating intern:', error);
 		throw error;
 	}
 };
+

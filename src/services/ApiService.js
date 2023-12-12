@@ -9,7 +9,17 @@ const makeAuthenticatedRequest = async (url, options = {}) => {
     }
 
     const newOptions = { ...options, headers };
-    return fetch(url, newOptions);
+
+    try {
+        const response = await fetch(url, newOptions);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response;
+    } catch (error) {
+        console.error('Error making authenticated request:', error);
+        throw error;
+    }
 };
 
 export { makeAuthenticatedRequest };

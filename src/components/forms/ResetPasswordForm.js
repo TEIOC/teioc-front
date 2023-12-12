@@ -3,13 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/form.css'
 import {fetchInternById} from "../../services/Api";
-
-
-const api = axios.create({
-    baseURL: 'http://localhost:8080',
-    withCredentials: true,
-});
-
+import axiosInstance from "../../services/AxiosInstance";
 const ResetPasswordForm = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -50,7 +44,7 @@ const ResetPasswordForm = () => {
         }
 
         try {
-            const response = await api.post('/interns/reset-password', {
+            const response = await axiosInstance.post('/interns/reset-password', {
                 email,
                 password,
             });
@@ -82,29 +76,31 @@ const ResetPasswordForm = () => {
 
     return (
 
-            <div className="form-container">
-                <h2 className="form-title">Reset Password</h2>
-                <form className="form" onSubmit={handleSubmit}>
-                    <label htmlFor="email">Email</label>
-                    <input type="text" value={email} disabled />
-                    <label htmlFor="password">Password</label>
-                    <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-                    <label htmlFor="confirmPassword">Confirm Password</label>
-                    <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-                    <div className="form-footer">
-                        <button type="submit" className="button">
-                            Reset password
-                        </button>
-                        <Link to="/login" className="link">
-                            Back to login page
-                        </Link>
-                    </div>
-                </form>
-                {error && <div className="error-message">{error}</div>}
-                {isSuccessVisible && <div className="success-popup show">{successMessage}</div>}
-            </div>
+        <div className="form-container">
+            <h2 className="form-title">Reset Password</h2>
+            <form className="form" onSubmit={handleSubmit}>
+                <label htmlFor="email">Email</label>
+                <input type="text" value={email} disabled />
+                <label htmlFor="password">Password</label>
+                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                <div className="form-footer">
+                    <button type="submit" className="button">
+                        Reset password
+                    </button>
+                    <Link to="/login" className="link">
+                        Back to login page
+                    </Link>
+                </div>
+            </form>
+            {error && <div className="error-message">{error}</div>}
+            {isSuccessVisible && <div className="success-popup show">{successMessage}</div>}
+        </div>
     );
 };
 
 export default ResetPasswordForm;
+
+
 
