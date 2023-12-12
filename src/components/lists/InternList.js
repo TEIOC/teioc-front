@@ -23,7 +23,7 @@ function InternList() {
 
     return (
         <div className="base-style max-width-600">
-            <h2 className="list-title">Interns List</h2>
+            <h2 className="list-title">Interns</h2>
             <DataTable
                 data={interns}
                 columnsToShow={columnsToShow}

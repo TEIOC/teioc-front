@@ -20,7 +20,7 @@ function SurveyList() {
 
     return (
         <div className="base-style max-width-600">
-            <h2 className="list-title">Surveys List</h2>
+            <h2 className="list-title">Surveys</h2>
             <DataTable
                 data={surveys}
                 columnsToShow={columnsToShow}

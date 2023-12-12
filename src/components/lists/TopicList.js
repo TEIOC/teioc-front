@@ -20,7 +20,7 @@ function TopicList() {
 
     return (
         <div className="base-style max-width-600">
-            <h2 className="list-title">Topics List</h2>
+            <h2 className="list-title">Topics</h2>
             <DataTable
                 data={topics}
                 columnsToShow={columnsToShow}
