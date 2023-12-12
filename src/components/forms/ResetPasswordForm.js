@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import '../../styles/form.css'
+import {fetchInternById} from "../../api/api";
 
 
 const api = axios.create({
@@ -20,13 +21,16 @@ const ResetPasswordForm = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Your code to fetch email based on ID
+        fetchInternById(id)
+            .then((data) => {
+                setEmail(data.email);
+            })
+            .catch((error) => console.error('Error fetching intern:', error));
     }, [id]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        // Password validation
         const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
         if (!passwordRegex.test(password)) {
             setError(`
@@ -40,7 +44,6 @@ const ResetPasswordForm = () => {
             setError('');
         }
 
-        // Password confirmation
         if (password !== confirmPassword) {
             setError('Passwords do not match.');
             return;
@@ -54,7 +57,6 @@ const ResetPasswordForm = () => {
 
             console.log('Password reset successful:', response.data);
 
-            // Show success popup and redirect to login
             setSuccessMessage('Password reset successful.');
             setIsSuccessVisible(true);
             setEmail('');
