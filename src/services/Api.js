@@ -30,22 +30,12 @@ export const fetchInternByEmail = async (email) => {
 	}
 };
 
-export const fetchTopics = async () => {
+export const fetchPathwaysForIntern = async (internId) => {
 	try {
-		const response = await axiosInstance.get('/topics');
+		const response = await axiosInstance.get(`/pathways/intern/${internId}`);
 		return response.data;
 	} catch (error) {
-		console.error('Error fetching topics:', error);
-		throw error;
-	}
-};
-
-export const fetchSurveys = async () => {
-	try {
-		const response = await axiosInstance.get('/surveys');
-		return response.data;
-	} catch (error) {
-		console.error('Error fetching surveys:', error);
+		console.error('Error fetching pathways:', error);
 		throw error;
 	}
 };
@@ -66,6 +56,26 @@ export const deactivateIntern = async (id) => {
 		return response.data;
 	} catch (error) {
 		console.error('Error deactivating intern:', error);
+		throw error;
+	}
+};
+
+export const fetchTopics = async () => {
+	try {
+		const response = await axiosInstance.get('/topics');
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching topics:', error);
+		throw error;
+	}
+};
+
+export const fetchSurveys = async () => {
+	try {
+		const response = await axiosInstance.get('/surveys');
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching surveys:', error);
 		throw error;
 	}
 };

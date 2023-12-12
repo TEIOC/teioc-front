@@ -4,9 +4,10 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import InternHomePage from "./pages/InternHomePage";
 import RegisterPage from "./pages/RegisterPage";
+import ActivateInternPage from "./pages/ActivateInternPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
-import ActivateInternPage from "./pages/ActivateInternPage";
+import InternPathwaysPage from "./pages/InternPathwaysPage"
 
 function AppRoutes() {
     return (
@@ -14,10 +15,12 @@ function AppRoutes() {
             <Route path="/" element={<HomePage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
-            <Route path="/intern-home" element={<InternHomePage />} />
+            <Route path='/activate/:id' element={<ActivateInternPage />} />
             <Route path='/forgot-password' element={<ForgotPasswordPage />} />
             <Route path='/reset-password/:id' element={<ResetPasswordPage />} />
-            <Route path='/activate/:id' element={<ActivateInternPage />} />
+            <Route path="/intern-home" element={<InternHomePage />} />
+            <Route path="/assessments" element={<InternPathwaysPage />} />
+
         </Routes>
     );
 }

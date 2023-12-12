@@ -1,25 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { fetchInternByEmail} from "../../services/Api";
-import {getEmailFromToken} from "../../services/AuthService";
-import '../../styles/sidebar.css'
+import '../../styles/sidebar.css';
+import GetLoggedinIntern from '../../hooks/GetLoggedinIntern'; // Import the hook
 
 const InternHomeSidebar = () => {
-    const [name, setName] = useState('');
-
-    useEffect(() => {
-        const email = getEmailFromToken();
-        if (email) {
-            fetchInternByEmail(email).then(intern=> {
-                setName(intern.name);
-            });
-        }
-    }, []);
+    const intern = GetLoggedinIntern(); // Get the logged-in intern using the custom hook
 
     return (
         <div className="sidebar">
             <ul>
-                <li className="title">{name}</li>
+                <li className="title">{intern ? intern.name : ''}</li>
                 <li><Link to="/intern-home">Surveys</Link></li>
                 <li><Link to="/account">Account settings</Link></li>
                 <li><Link to="/assessments">Completed Assessments</Link></li>

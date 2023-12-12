@@ -31,7 +31,6 @@
   align-items: center;
   flex-grow: 1;
   padding: 20px;
-  width: calc(100% - 240px);
   max-width: 600px;
   background-color: #f8f8f8;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
