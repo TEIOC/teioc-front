@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
 import { fetchInterns } from '../../services/Api';
-import '../../styles/list.css'
+import '../../styles/list.css';
 
 function InternList() {
     const [interns, setInterns] = useState([]);
 
     useEffect(() => {
-        fetchInterns()
-            .then((data) => {
-                setInterns(data);
-            })
-            .catch((error) => console.error('Error fetching interns:', error));
+        const fetchData = async () => {
+            try {
+                const data = await fetchInterns();
+                const transformedData = data.map(intern => ({
+                    name: intern.name,
+                    email: intern.email,
+                }));
+                setInterns(transformedData);
+            } catch (error) {
+                console.error('Error fetching interns:', error);
+            }
+        };
+
+        fetchData();
     }, []);
 
-    const columnsToShow = ['id', 'name', 'email'];
+    const columnsToShow = ['name', 'email'];
     const columnTitles = {
-        id: 'ID',
         name: 'Name',
-        email: 'Email'
+        email: 'Email',
     };
 
     return (
@@ -34,4 +42,5 @@ function InternList() {
 }
 
 export default InternList;
+
 
