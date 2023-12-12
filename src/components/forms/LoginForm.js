@@ -17,10 +17,15 @@ function LoginForm({ onLoginSuccess }) {
 				password,
 			});
 
-			const data = response.data;
-			onLoginSuccess(data);
+			const { token } = response.data; // Assuming the token is returned in the "token" field
+			if (token) {
+				localStorage.setItem('jwt', token); // Store the token in localStorage
+				onLoginSuccess(); // Call the success handler
+			} else {
+				setError("Login failed, token was not received.");
+			}
 		} catch (err) {
-			setError(err.message);
+			setError(err.response?.data?.message || err.message);
 		}
 	};
 
@@ -69,5 +74,6 @@ function LoginForm({ onLoginSuccess }) {
 }
 
 export default LoginForm;
+
 
 

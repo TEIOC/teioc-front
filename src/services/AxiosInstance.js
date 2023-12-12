@@ -8,7 +8,8 @@ const axiosInstance = axios.create({
 		"Access-Control-Allow-Origin": "*",
 	},
 });
-axiosInstance.interceptors.request.use((config) => {
+
+axiosInstance.interceptors.request.use(config => {
 	const token = localStorage.getItem("jwt");
 	if (token) {
 		config.headers["Authorization"] = `Bearer ${token}`;
