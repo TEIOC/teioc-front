@@ -5,7 +5,6 @@ import '../../styles/list.css';
 
 function InternList() {
     const [interns, setInterns] = useState([]);
-
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -19,7 +18,6 @@ function InternList() {
                 console.error('Error fetching interns:', error);
             }
         };
-
         fetchData();
     }, []);
 

@@ -5,7 +5,6 @@ import '../../styles/list.css';
 
 function TopicList() {
     const [topics, setTopics] = useState([]);
-
     useEffect(() => {
         fetchTopics()
             .then((data) => {
@@ -14,7 +13,6 @@ function TopicList() {
             })
             .catch((error) => console.error('Error fetching topics:', error));
     }, []);
-
     const columnsToShow = ['name'];
     const columnTitles = {
         name: 'Topic'

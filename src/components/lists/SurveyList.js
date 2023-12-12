@@ -5,7 +5,6 @@ import '../../styles/list.css';
 
 function SurveyList() {
     const [surveys, setSurveys] = useState([]);
-
     useEffect(() => {
         fetchSurveys()
             .then((data) => {
@@ -14,7 +13,6 @@ function SurveyList() {
             })
             .catch((error) => console.error('Error fetching surveys:', error));
     }, []);
-
     const columnsToShow = ['name'];
     const columnTitles = {
         name: 'Survey'
