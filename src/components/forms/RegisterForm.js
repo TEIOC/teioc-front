@@ -43,7 +43,7 @@ const RegisterForm = () => {
 
             setTimeout(() => {
                 setIsSuccessVisible(false);
-            }, 1000);
+            }, 10000);
 
             if (response.status === 200) {
                 const responseMail = await axiosInstance.post('/email/activate', {
@@ -55,12 +55,12 @@ const RegisterForm = () => {
 
                 setTimeout(() => {
                     setIsSuccessVisible(false);
-                }, 1000);
+                }, 10000);
             }
 
             setTimeout(() => {
                 navigate('/login');
-            }, 1500);
+            }, 5000);
         } catch (error) {
             if (error.response) {
                 setError('Registration error', error.response.data);
