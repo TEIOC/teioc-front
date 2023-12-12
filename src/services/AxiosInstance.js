@@ -5,11 +5,9 @@ const axiosInstance = axios.create({
 	headers: {
 		"Content-Type": "application/json",
 		"Accept": "*/*",
-		"Access-Control-Allow-Origin": "*", // Cet en-tête est également généralement contrôlé par le serveur
+		"Access-Control-Allow-Origin": "*",
 	},
 });
-
-// Ajouter le JWT à chaque requête si disponible
 axiosInstance.interceptors.request.use((config) => {
 	const token = localStorage.getItem("jwt");
 	if (token) {

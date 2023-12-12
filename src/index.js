@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-
-// DataTables
 import 'datatables.net-dt/css/jquery.dataTables.css';
 import 'datatables.net';
 import 'datatables.net-dt/css/jquery.dataTables.css';

@@ -24,7 +24,6 @@ const ForgotPasswordForm = () => {
 
             console.log('Password reset request successful:', response.data);
 
-            // Show success popup and reset the form
             setSuccessMessage('Password reset request successful. Please check your email.');
             setIsSuccessVisible(true);
             setEmail('');
