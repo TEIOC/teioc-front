@@ -1,20 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
 import { fetchTopics } from '../../services/Api';
-import '../../styles/list.css'
+import '../../styles/list.css';
 
 function TopicList() {
     const [topics, setTopics] = useState([]);
 
     useEffect(() => {
         fetchTopics()
-            .then((data) => setTopics(data))
+            .then((data) => {
+                const transformedData = data.map(topic => ({ name: topic.name }));
+                setTopics(transformedData);
+            })
             .catch((error) => console.error('Error fetching topics:', error));
     }, []);
 
-    const columnsToShow = ['id', 'name'];
+    const columnsToShow = ['name'];
     const columnTitles = {
-        id: 'ID',
         name: 'Topic'
     };
 
@@ -31,5 +33,7 @@ function TopicList() {
 }
 
 export default TopicList;
+
+
 
 
