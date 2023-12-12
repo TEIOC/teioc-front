@@ -40,12 +40,12 @@ export const fetchPathwaysForIntern = async (intern_id) => {
 	}
 };
 
-export const fetchRemainingSurveys = async (intern_id) => {
+export const fetchAvailableSurveys = async (intern_id) => {
 	try {
-		const response = await axiosInstance.get(`/surveys/remaining-surveys/${intern_id}`);
+		const response = await axiosInstance.get(`/surveys/available-surveys/${intern_id}`);
 		return response.data;
 	} catch (error) {
-		console.error('Error fetching remaining surveys:', error);
+		console.error('Error fetching available surveys:', error);
 		throw error;
 	}
 };

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import NavBar from "../components/navigation/NavBar";
 import Separator from "../components/navigation/Separator";
-import SurveyWithTopicList from "../components/lists/SurveyWithTopicList";
+import AvailableSurveyList from "../components/lists/AvailableSurveyList";
 import InternHomeSidebar from "../components/navigation/InternHomeSidebar";
 import { logout } from "../services/AuthService";
 function InternHomePage({ internName }) {
@@ -21,7 +21,7 @@ function InternHomePage({ internName }) {
 			<div className="layout-container">
 				<InternHomeSidebar />
 				<div className="content-area">
-					<SurveyWithTopicList />
+					<AvailableSurveyList />
 				</div>
 			</div>
 		</div>

@@ -10,8 +10,8 @@ const InternHomeSidebar = () => {
         <div className="sidebar">
             <ul>
                 <li className="title">{intern ? intern.name : ''}</li>
-                <li><Link to="/intern-home">Surveys</Link></li>
                 <li><Link to="/account">Account settings</Link></li>
+                <li><Link to="/intern-home">Available Assessments</Link></li>
                 <li><Link to="/assessments">Completed Assessments</Link></li>
                 <li><Link to="/results">Results</Link></li>
             </ul>

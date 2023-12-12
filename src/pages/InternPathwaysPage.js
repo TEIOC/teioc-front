@@ -4,7 +4,7 @@ import NavBar from "../components/navigation/NavBar";
 import Separator from "../components/navigation/Separator";
 import InternHomeSidebar from "../components/navigation/InternHomeSidebar";
 import { logout } from "../services/AuthService";
-import InternPathwaysList from "../components/lists/InternPathwaysList";
+import CompletedSurveyList from "../components/lists/CompletedSurveyList";
 function InternPathwaysPage({ internName }) {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const navigate = useNavigate();
@@ -21,7 +21,7 @@ function InternPathwaysPage({ internName }) {
             <div className="layout-container">
                 <InternHomeSidebar />
                 <div className="content-area">
-                    <InternPathwaysList />
+                    <CompletedSurveyList />
                 </div>
             </div>
         </div>

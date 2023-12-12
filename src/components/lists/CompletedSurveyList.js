@@ -4,7 +4,7 @@ import { fetchPathwaysForIntern } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import '../../styles/list.css';
 
-function InternPathwaysList() {
+function CompletedSurveyList() {
     const [pathways, setPathways] = useState([]);
     const intern = GetLoggedinIntern();
 
@@ -37,5 +37,5 @@ function InternPathwaysList() {
     );
 }
 
-export default InternPathwaysList;
+export default CompletedSurveyList;
 

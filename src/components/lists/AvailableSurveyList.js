@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchRemainingSurveys, fetchTopics } from '../../services/Api';
+import { fetchAvailableSurveys, fetchTopics } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import '../../styles/list.css';
 
-function SurveyWithTopicList() {
+function AvailableSurveyList() {
     const [surveysWithTopics, setSurveysWithTopics] = useState([]);
     const intern = GetLoggedinIntern();
 
@@ -12,15 +12,15 @@ function SurveyWithTopicList() {
         const getSurveysAndTopics = async () => {
             try {
                 if (intern && intern.id) {
-                    const [remainingSurveys, topics] = await Promise.all([fetchRemainingSurveys(intern.id), fetchTopics()]);
-                    const combinedData = remainingSurveys.map(survey => {
+                    const [availableSurveys, topics] = await Promise.all([fetchAvailableSurveys(intern.id), fetchTopics()]);
+                    const combinedData = availableSurveys.map(survey => {
                         const topic = topics.find(t => t.id === survey.topicId);
                         return { ...survey, topicName: topic ? topic.name : 'Unknown' };
                     });
                     setSurveysWithTopics(combinedData);
                 }
             } catch (error) {
-                console.error('Error fetching remaining surveys or topics:', error);
+                console.error('Error fetching available surveys or topics:', error);
             }
         };
 
@@ -45,5 +45,5 @@ function SurveyWithTopicList() {
     );
 }
 
-export default SurveyWithTopicList;
+export default AvailableSurveyList;
 
