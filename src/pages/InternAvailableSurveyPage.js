@@ -5,7 +5,7 @@ import Separator from "../components/navigation/Separator";
 import AvailableSurveyList from "../components/lists/AvailableSurveyList";
 import InternHomeSidebar from "../components/navigation/InternHomeSidebar";
 import { logout } from "../services/AuthService";
-function InternHomePage({ internName }) {
+function InternAvailableSurveyPage({ internName }) {
 	const [isLoggedIn, setIsLoggedIn] = useState(true);
 	const navigate = useNavigate();
 	const handleLogout = () => {
@@ -28,4 +28,4 @@ function InternHomePage({ internName }) {
 	);
 }
 
-export default InternHomePage;
+export default InternAvailableSurveyPage;

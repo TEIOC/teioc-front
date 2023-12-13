@@ -5,7 +5,7 @@ import Separator from "../components/navigation/Separator";
 import InternHomeSidebar from "../components/navigation/InternHomeSidebar";
 import { logout } from "../services/AuthService";
 import CompletedSurveyList from "../components/lists/CompletedSurveyList";
-function InternPathwaysPage({ internName }) {
+function InternCompletedSurveyPage({ internName }) {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const navigate = useNavigate();
     const handleLogout = () => {
@@ -28,5 +28,5 @@ function InternPathwaysPage({ internName }) {
     );
 }
 
-export default InternPathwaysPage;
+export default InternCompletedSurveyPage;
 

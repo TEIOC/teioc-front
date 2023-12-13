@@ -50,6 +50,16 @@ export const fetchAvailableSurveys = async (intern_id) => {
 	}
 };
 
+export const fetchCompletedSurveyDetails = async (intern_id, survey_id) => {
+	try {
+		const response = await axiosInstance.get(`/pathwayanswers/completed/${intern_id}/${survey_id}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching completed survey details:', error);
+		throw error;
+	}
+};
+
 export const activateIntern = async (id) => {
 	try {
 		const response = await axiosInstance.put(`/interns/${id}/activate`);
