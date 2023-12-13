@@ -1,0 +1,77 @@
+/* Account settings form container */
+.list-form-container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #555;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.list-form-title {
+    font-size: 24px; /* Adjusted to match the size in the register form */
+    color: #00346bd1;
+    text-align: left; /* Align title to the left */
+    margin-bottom: 20px; /* Spacing after title */
+}
+
+/* Form input fields */
+.list-form-container .form input {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #555;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    width: calc(100% - 24px);
+}
+
+.list-form-container .form input:read-only {
+    background-color: #f8f8f8; /* Slightly different background for read-only */
+    color: #333;
+    cursor: default;
+}
+
+.list-form-container .button {
+    background-color: #00346bd1;
+    color: white;
+    border: none; /* Remove border for consistency with Register form */
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-radius: 4px;
+    margin-top: 10px; /* Space above the button */
+}
+
+.list-form-container .button:hover {
+    background-color: white;
+    color: #00346bd1;
+}
+
+.list-form .form-footer {
+    font-size: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.list-form .error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.list-form .success-popup {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+    margin: 10px auto;
+    width: fit-content;
+}

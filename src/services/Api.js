@@ -60,6 +60,18 @@ export const fetchCompletedSurveyDetails = async (intern_id, survey_id) => {
 	}
 };
 
+export const updateIntern = async (id, internData) => {
+	try {
+		const response = await axiosInstance.put(`/interns/${id}`, internData);
+		return response.data;
+	} catch (error) {
+		console.error('Error updating intern:', error);
+		throw error;
+	}
+};
+
+
+
 export const activateIntern = async (id) => {
 	try {
 		const response = await axiosInstance.put(`/interns/${id}/activate`);
