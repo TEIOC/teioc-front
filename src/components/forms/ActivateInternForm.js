@@ -6,14 +6,19 @@ import { activateIntern } from '../../services/Api';
 const ActivateInternPage = () => {
     const [error, setError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
+    const [isSuccessVisible, setIsSuccessVisible] = useState(false);
     const { id } = useParams();
 
     useEffect(() => {
         activateIntern(id)
             .then(() => {
                 setSuccessMessage('Your account has been successfully activated.');
+                setIsSuccessVisible(true);
+                setTimeout(() => {
+                    setIsSuccessVisible(false);
+                }, 10000);
             })
-            .catch((error) => {
+            .catch(error => {
                 if (error.response) {
                     setError('Activation error: ' + error.response.data);
                 } else if (error.request) {
@@ -30,11 +35,12 @@ const ActivateInternPage = () => {
                 <h2>Account Activation</h2>
             </div>
 
-            {successMessage && <div className="success-message">{successMessage}</div>}
             {error && <div className="error-message">{error}</div>}
+            {isSuccessVisible && <div className="success-popup">{successMessage}</div>}
         </div>
     );
 };
 
 export default ActivateInternPage;
+
 
