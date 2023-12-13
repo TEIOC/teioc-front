@@ -1,25 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import DataTable from './DataTable';
-import { fetchPathwaysForIntern, fetchSurveys, fetchTopics } from '../../services/Api'; // Import the necessary API functions
+import { fetchPathwaysForIntern, fetchSurveys, fetchTopics, fetchCompletedSurveyDetails } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import '../../styles/list.css';
 
 function CompletedSurveyList() {
     const [pathways, setPathways] = useState([]);
-    const [surveys, setSurveys] = useState([]); // State to store surveys
-    const [topics, setTopics] = useState([]); // State to store topics
+    const [surveys, setSurveys] = useState([]);
+    const [topics, setTopics] = useState([]);
+    const [expandedSurveyId, setExpandedSurveyId] = useState(null);
+    const [surveyDetails, setSurveyDetails] = useState([]);
+    const [loadingDetails, setLoadingDetails] = useState(false);
+
     const intern = GetLoggedinIntern();
 
     useEffect(() => {
         if (intern && intern.id) {
-            // Fetch completed surveys for the intern
             fetchPathwaysForIntern(intern.id)
-                .then(data => {
-                    setPathways(data);
-                })
+                .then(setPathways)
                 .catch(error => console.error('Error fetching pathways:', error));
 
-            // Fetch all surveys and topics
             Promise.all([fetchSurveys(), fetchTopics()])
                 .then(([surveyData, topicData]) => {
                     setSurveys(surveyData);
@@ -29,40 +28,64 @@ function CompletedSurveyList() {
         }
     }, [intern]);
 
-    // Function to map completed pathways to display topic name and survey name
-    const mapCompletedSurveys = () => {
-        return pathways.map(pathway => {
-            const survey = surveys.find(s => s.id === pathway.survey_id);
-            const topic = topics.find(t => t.id === survey.topicId);
-            return {
-                topicName: topic ? topic.name : 'Unknown',
-                name: survey ? survey.name : 'Unknown',
-                score: pathway.score,
-                duration: pathway.duration,
-            };
-        });
-    };
-
-    const columnsToShow = ['topicName', 'name', 'score', 'duration'];
-    const columnTitles = {
-        topicName: 'Topic',
-        name: 'Survey',
-        score: 'Score',
-        duration: 'Duration',
+    const toggleDetails = async (surveyId) => {
+        if (expandedSurveyId === surveyId) {
+            setExpandedSurveyId(null);
+        } else {
+            setExpandedSurveyId(surveyId);
+            setLoadingDetails(true);
+            try {
+                const details = await fetchCompletedSurveyDetails(intern.id, surveyId);
+                setSurveyDetails(details);
+            } catch (error) {
+                console.error('Error fetching survey details:', error);
+            } finally {
+                setLoadingDetails(false);
+            }
+        }
     };
 
     return (
-        <div>
-            <h2 className="list-title">Completed Assessments</h2>
-            <DataTable
-                data={mapCompletedSurveys()}
-                columnsToShow={columnsToShow}
-                columnTitles={columnTitles}
-            />
+        <div className="container">
+            <h2 className="title">Completed Assessments</h2>
+            <ul className="list">
+                {pathways.map((pathway, index) => {
+                    const survey = surveys.find(s => s.id === pathway.survey_id);
+                    return (
+                        <li key={index} className="item">
+                            <div className="item-header">
+                                <strong>{survey ? survey.name : 'Unknown Survey'}</strong>
+                                <div>
+                                    <p>Score: {pathway.score}</p>
+                                    <p>Duration: {pathway.duration}</p>
+                                    <button className="toggle-button" onClick={() => toggleDetails(pathway.survey_id)}>
+                                        {expandedSurveyId === pathway.survey_id ? 'Hide Details' : 'Show Details'}
+                                    </button>
+                                </div>
+                            </div>
+                            {expandedSurveyId === pathway.survey_id && (
+                                <div className="details">
+                                    {loadingDetails ? <p>Loading details...</p> : (
+                                        surveyDetails.map((detail, detailIndex) => (
+                                            <div key={detailIndex} className="detail-item">
+                                                <p className="detail-title">Question: {detail.questionText}</p>
+                                                <p className="detail-content">Your Answer: {detail.selectedAnswerText}</p>
+                                                <p className="detail-content">Correct Answer: {detail.correctAnswerText}</p>
+                                            </div>
+                                        ))
+                                    )}
+                                </div>
+                            )}
+                        </li>
+                    );
+                })}
+            </ul>
         </div>
     );
 }
 
 export default CompletedSurveyList;
+
+
 
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
 import { fetchAvailableSurveys, fetchTopics } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
-import '../../styles/list.css';
+import '../../styles/datatable.css';
 
 function AvailableSurveyList() {
     const [surveysWithTopics, setSurveysWithTopics] = useState([]);

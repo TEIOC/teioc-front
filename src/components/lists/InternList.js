@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
 import { fetchInterns } from '../../services/Api';
-import '../../styles/list.css';
+import '../../styles/datatable.css';
 
 function InternList() {
     const [interns, setInterns] = useState([]);
