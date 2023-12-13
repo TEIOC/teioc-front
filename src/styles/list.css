@@ -1,25 +1,12 @@
-.container {
+.list {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: #555;
-    background-color: #f8f8f8;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
+    list-style-type: none;
+    padding: 0;
 }
 
 .title {
-    font-size: 24px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #00346bd1;
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.list {
-    list-style-type: none;
-    padding: 0;
-    margin-top: 20px;
 }
 
 .item {
@@ -41,8 +28,8 @@
     font-size: 14px;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s ease, color 0.3s ease;
     margin-top: 10px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .toggle-button:hover {
@@ -69,5 +56,10 @@
 .detail-content {
     margin-left: 10px;
 }
+
+.list, .item, .item-header, .details, .detail-item {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
 
 
