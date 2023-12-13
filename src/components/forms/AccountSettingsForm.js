@@ -86,7 +86,7 @@ const AccountSettingsForm = () => {
     return (
         <div className="list-form-container">
             <h2 className="list-form-title">Account Settings</h2>
-            <form className="form" onSubmit={handleSubmit}>
+            <form className="list-form" onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
                 <input
                     type="text"
@@ -96,6 +96,7 @@ const AccountSettingsForm = () => {
                     onChange={(e) => setFirstName(e.target.value)}
                 />
 
+                {/* Last Name */}
                 <label htmlFor="lastName">Last Name</label>
                 <input
                     type="text"
@@ -105,6 +106,7 @@ const AccountSettingsForm = () => {
                     onChange={(e) => setLastName(e.target.value)}
                 />
 
+                {/* Email - Read-Only */}
                 <label htmlFor="email">Email</label>
                 <input
                     type="email"
@@ -114,6 +116,7 @@ const AccountSettingsForm = () => {
                     readOnly
                 />
 
+                {/* Password */}
                 <label htmlFor="password">Password (leave blank to keep the same)</label>
                 <input
                     type="password"
@@ -124,6 +127,7 @@ const AccountSettingsForm = () => {
                 />
                 {passwordError && <div className="error-message">{passwordError}</div>}
 
+                {/* Company */}
                 <label htmlFor="company">Company</label>
                 <input
                     type="text"
@@ -133,6 +137,7 @@ const AccountSettingsForm = () => {
                     onChange={(e) => setCompany(e.target.value)}
                 />
 
+                {/* Phone Number */}
                 <label htmlFor="phoneNumber">Phone Number</label>
                 <input
                     type="text"
@@ -143,9 +148,12 @@ const AccountSettingsForm = () => {
                 />
                 {phoneError && <div className="error-message">{phoneError}</div>}
 
+                {/* Form Footer with Button */}
                 <div className="form-footer">
-                    <button type="submit" className="button">Update Account</button>
+                    <button type="submit" className="list-form-button">Update account</button>
                 </div>
+
+                {/* Error and Success Messages */}
                 {error && <div className="error-message">{error}</div>}
                 {isSuccessVisible && <div className="success-popup">{successMessage}</div>}
             </form>
