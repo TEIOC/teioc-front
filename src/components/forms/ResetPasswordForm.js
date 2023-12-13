@@ -76,7 +76,7 @@ const ResetPasswordForm = () => {
 
     return (
         <div className="form-container">
-            <h2 className="form-title">Reset Password</h2>
+            <h2 className="form-title" style={{ fontSize: '24px'}}>Reset Password</h2>
             <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
                 <input type="text" value={email} disabled />
