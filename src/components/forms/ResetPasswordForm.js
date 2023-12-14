@@ -90,7 +90,7 @@ const ResetPasswordForm = () => {
                 />
                 <div className="form-footer">
                     <button type="submit" className="button">
-                        Reset password
+                        Reset Password
                     </button>
                     <Link to="/login" className="link">
                         Back to login page

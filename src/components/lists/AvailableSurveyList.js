@@ -35,7 +35,7 @@ function AvailableSurveyList() {
 
     return (
         <div>
-            <h2 className="list-title">Available Assessments</h2>
+            <h2 className="page-title">Available Assessments</h2>
             <DataTable
                 data={surveysWithTopics}
                 columnsToShow={columnsToShow}

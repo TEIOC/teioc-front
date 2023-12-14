@@ -125,7 +125,7 @@ const AccountSettingsForm = () => {
                 />
 
                 {/* Password */}
-                <label htmlFor="password">Password (leave blank to keep the same)</label>
+                <label htmlFor="password">Password (Leave blank to keep the same)</label>
                 <input
                     type="password"
                     id="password"
@@ -158,7 +158,7 @@ const AccountSettingsForm = () => {
 
                 {/* Form Footer with Button */}
                 <div className="form-footer">
-                    <button type="submit" className="list-form-button">Update account</button>
+                    <button type="submit" className="list-form-button">Update Account</button>
                 </div>
 
                 {/* Error and Success Messages */}

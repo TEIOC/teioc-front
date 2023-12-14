@@ -55,7 +55,7 @@ function CompletedSurveyList() {
 
     return (
         <div className="container">
-            <h2 className="title">Completed Assessments</h2>
+            <h2 className="page-title">Completed Assessments</h2>
             <ul className="list">
                 {pathways.map((pathway, index) => {
                     const survey = surveys.find(s => s.id === pathway.survey_id);

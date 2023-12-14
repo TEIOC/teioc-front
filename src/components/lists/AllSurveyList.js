@@ -29,7 +29,7 @@ function AllSurveyList() {
 
     return (
         <div>
-            <h2 className="list-title">All Assessments</h2>
+            <h2 className="page-title">All Assessments</h2>
             <DataTable
                 data={surveyTopics}
                 columnsToShow={columnsToShow}
