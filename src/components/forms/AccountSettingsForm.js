@@ -4,6 +4,10 @@ import '../../styles/list-form.css'; // Ensure this is the correct path to your 
 import { updateIntern } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 
+
+// TODO DISPLAYING STATUS AND GINIG POSSIBILITY TO ACTIVATE AND DEACTIVATE ACCOUNT + ALL SURVEYS PAGE + pdp +on completed surveys a green tick for right answers
+
+// TODO results
 const AccountSettingsForm = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -19,9 +23,7 @@ const AccountSettingsForm = () => {
     const navigate = useNavigate();
 
     const intern = GetLoggedinIntern();
-// TODO DISPLAYING STATUS AND GINIG POSSIBILITY TO ACTIVATE AND DEACTIVATE ACCOUNT + ALL SURVEYS PAGE + pdp +on completed surveys a green tick for right answers
 
-   // TODO results
     useEffect(() => {
         if (intern) {
             const [first, last] = intern.name.split(' ');
@@ -62,16 +64,19 @@ const AccountSettingsForm = () => {
             return;
         }
 
-        try {
-            const internData = {
-                id: intern.id, // Ensure you have the intern's ID
-                name: `${firstName} ${lastName}`,
-                // email, // Remove this line
-                password,
-                company,
-                contactDetails: phoneNumber
-            };
+        const internData = {
+            id: intern.id,
+            name: `${firstName} ${lastName}`,
+            company,
+            contactDetails: phoneNumber
+        };
 
+        // Only update password if a new one is provided
+        if (password) {
+            internData.password = password;
+        }
+
+        try {
             await updateIntern(intern.id, internData);
             setSuccessMessage('Account updated successfully.');
             setIsSuccessVisible(true);
