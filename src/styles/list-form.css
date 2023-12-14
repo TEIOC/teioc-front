@@ -15,14 +15,19 @@
     margin-bottom: 20px;
 }
 
+.list-form label {
+    display: block;
+    margin-bottom: 10px; /* Consistent spacing between label and input */
+}
+
 .list-form input {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 12px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Consistent spacing after input */
     font-size: 16px;
-    width: calc(100% - 24px);
+    width: calc(100% - 24px); /* Full width minus padding */
 }
 
 .list-form input:read-only {
@@ -40,7 +45,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 4px;
-    margin-top: 10px;
+    margin-top: 20px; /* Consistent button spacing */
 }
 
 .list-form-button:hover {
