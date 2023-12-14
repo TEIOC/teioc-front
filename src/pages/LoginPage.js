@@ -10,7 +10,7 @@ function LoginPage() {
 	const handleLoginSuccess = (userData) => {
 		localStorage.setItem("jwt", userData.token);
 
-		navigate("/intern-home", { state: { internName: userData.name } });
+		navigate("/available-assessments", { state: { internName: userData.name } });
 	};
 
 	return (
