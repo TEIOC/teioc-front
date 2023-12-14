@@ -61,5 +61,13 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+.correct-icon {
+    color: green;
+    margin-left: 5px;
+}
 
+.incorrect-icon {
+    color: red;
+    margin-left: 5px;
+}
 

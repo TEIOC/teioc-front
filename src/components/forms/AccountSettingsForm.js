@@ -19,7 +19,9 @@ const AccountSettingsForm = () => {
     const navigate = useNavigate();
 
     const intern = GetLoggedinIntern();
+// TODO DISPLAYING STATUS AND GINIG POSSIBILITY TO ACTIVATE AND DEACTIVATE ACCOUNT + ALL SURVEYS PAGE + pdp +on completed surveys a green tick for right answers
 
+   // TODO results
     useEffect(() => {
         if (intern) {
             const [first, last] = intern.name.split(' ');

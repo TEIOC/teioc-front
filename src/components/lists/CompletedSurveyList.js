@@ -28,6 +28,14 @@ function CompletedSurveyList() {
         }
     }, [intern]);
 
+    const renderAnswerIcon = (detail) => {
+        if (detail.selectedAnswerText === detail.correctAnswerText) {
+            return <span className="correct-icon">&#10004;</span>; // Unicode for check mark
+        } else {
+            return <span className="incorrect-icon">&#10008;</span>; // Unicode for cross mark
+        }
+    };
+
     const toggleDetails = async (surveyId) => {
         if (expandedSurveyId === surveyId) {
             setExpandedSurveyId(null);
@@ -69,7 +77,10 @@ function CompletedSurveyList() {
                                         surveyDetails.map((detail, detailIndex) => (
                                             <div key={detailIndex} className="detail-item">
                                                 <p className="detail-title">Question: {detail.questionText}</p>
-                                                <p className="detail-content">Your Answer: {detail.selectedAnswerText}</p>
+                                                <p className="detail-content">
+                                                    Your Answer: {detail.selectedAnswerText}
+                                                    {renderAnswerIcon(detail)}
+                                                </p>
                                                 <p className="detail-content">Correct Answer: {detail.correctAnswerText}</p>
                                             </div>
                                         ))
