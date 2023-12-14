@@ -13,6 +13,7 @@ import AccountSettingsForm from "./components/forms/AccountSettingsForm";
 import AccountSettingsPage from "./pages/AccountSettingsPage";
 import InternAvailableSurveyPage from "./pages/InternAvailableSurveyPage";
 import InternCompletedSurveyPage from "./pages/InternCompletedSurveyPage";
+import InternAllSurveyPage from "./pages/InternAllSurveyPage";
 
 function AppRoutes() {
     return (
@@ -25,7 +26,7 @@ function AppRoutes() {
             <Route path='/forgot-password' element={<ForgotPasswordPage />} />
             <Route path='/reset-password/:id' element={<ResetPasswordPage />} />
             <Route path="/account-settings" element={<AccountSettingsPage />} />
-            <Route path="/assessments" element={<InternHomePage />} />
+            <Route path="/assessments" element={<InternAllSurveyPage />} />
             <Route path="/available-assessments" element={<InternAvailableSurveyPage />} />
             <Route path="/completed-assessments" element={<InternCompletedSurveyPage />} />
         </Routes>
