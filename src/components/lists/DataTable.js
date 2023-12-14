@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import $ from "jquery";
 import "datatables.net-dt/css/jquery.dataTables.css";
+import { useNavigate } from "react-router-dom";
 
 const DataTable = ({ data, columnsToShow, columnTitles }) => {
+    const navigate = useNavigate();
     const tableRef = useRef(null);
 
     useEffect(() => {
@@ -10,7 +12,7 @@ const DataTable = ({ data, columnsToShow, columnTitles }) => {
             if ($.fn.DataTable.isDataTable(tableRef.current)) {
                 $(tableRef.current).DataTable().destroy();
             }
-            $(tableRef.current).DataTable({
+            const dataTable = $(tableRef.current).DataTable({
                 data: data,
                 columns: columnsToShow.map(column => ({
                     title: columnTitles[column],
@@ -23,8 +25,24 @@ const DataTable = ({ data, columnsToShow, columnTitles }) => {
                 autoWidth: false,
                 responsive: true,
             });
+
+            // Event listener for row clicks
+            $(dataTable.table().body()).on('click', 'tr', function () {
+                const rowData = dataTable.row(this).data();
+                if (rowData) {
+                    // Assuming `id` is the identifier of the survey
+                    navigate(`/take-assessment/${rowData.id}`);
+                }
+            });
         }
-    }, [data, columnsToShow, columnTitles]);
+
+        // Cleanup event listener on unmount
+        return () => {
+            if (tableRef.current) {
+                $(tableRef.current).off('click');
+            }
+        };
+    }, [data, columnsToShow, columnTitles, navigate]);
 
     return (
         <table ref={tableRef} className="display">
@@ -49,4 +67,5 @@ const DataTable = ({ data, columnsToShow, columnTitles }) => {
 };
 
 export default DataTable;
+
 

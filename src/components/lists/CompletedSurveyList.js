@@ -36,14 +36,14 @@ function CompletedSurveyList() {
         }
     };
 
-    const toggleDetails = async (surveyId) => {
-        if (expandedSurveyId === surveyId) {
+    const toggleDetails = async (survey_id) => {
+        if (expandedSurveyId === survey_id) {
             setExpandedSurveyId(null);
         } else {
-            setExpandedSurveyId(surveyId);
+            setExpandedSurveyId(survey_id);
             setLoadingDetails(true);
             try {
-                const details = await fetchCompletedSurveyDetails(intern.id, surveyId);
+                const details = await fetchCompletedSurveyDetails(intern.id, survey_id);
                 setSurveyDetails(details);
             } catch (error) {
                 console.error('Error fetching survey details:', error);
