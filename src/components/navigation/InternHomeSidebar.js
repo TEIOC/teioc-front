@@ -13,8 +13,9 @@ const InternHomeSidebar = () => {
             <ul>
                 <li className="title">{intern ? intern.name : ''}</li>
                 <li><Link to="/account-settings">Account Settings</Link></li>
-                <li><Link to="/intern-home">Available Assessments</Link></li>
-                <li><Link to="/assessments">Completed Assessments</Link></li>
+                <li><Link to="/assessments">All Assessments</Link></li>
+                <li><Link to="/available-assessments">Available Assessments</Link></li>
+                <li><Link to="/completed-assessments">Completed Assessments</Link></li>
                 <li><Link to="/results">Results</Link></li>
             </ul>
         </div>
