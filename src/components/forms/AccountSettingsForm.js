@@ -91,8 +91,10 @@ const AccountSettingsForm = () => {
     };
 
     return (
-        <div className="list-form-container">
-            <h2 className="list-form-title">Account Settings</h2>
+        <div>
+        <h2 className="page-title">Account Settings</h2>
+
+    <div className="list-form-container">
             <form className="list-form" onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
                 <input
@@ -164,6 +166,7 @@ const AccountSettingsForm = () => {
                 {error && <div className="error-message">{error}</div>}
                 {isSuccessVisible && <div className="success-popup">{successMessage}</div>}
             </form>
+        </div>
         </div>
     );
 };
