@@ -93,8 +93,7 @@ const AccountSettingsForm = () => {
     return (
         <div>
         <h2 className="page-title">Account Settings</h2>
-
-    <div className="list-form-container">
+        <div className="list-form-container">
             <form className="list-form" onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
                 <input
