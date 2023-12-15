@@ -6,6 +6,7 @@ import AvailableSurveyList from "../components/lists/AvailableSurveyList";
 import InternHomeSidebar from "../components/navigation/InternHomeSidebar";
 import { logout } from "../services/AuthService";
 import AllSurveyList from "../components/lists/AllSurveyList";
+import TakeSurveyForm from "../components/forms/TakeSurveyForm";
 function TakeSurveyPage({ internName }) {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const navigate = useNavigate();
@@ -17,14 +18,9 @@ function TakeSurveyPage({ internName }) {
 
     return (
         <div>
-            <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
-            <Separator />
-            <div className="layout-container">
-                <InternHomeSidebar />
-                <div className="content-area">
-                    <AllSurveyList />
-                </div>
-            </div>
+
+                    <TakeSurveyForm />
+
         </div>
     );
 }
