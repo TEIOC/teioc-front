@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import DataTable from './DataTable';
 import { fetchAvailableSurveys, fetchTopics } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
@@ -7,6 +8,12 @@ import '../../styles/datatable.css';
 function AvailableSurveyList() {
     const [surveysWithTopics, setSurveysWithTopics] = useState([]);
     const intern = GetLoggedinIntern();
+    const navigate = useNavigate(); // Hook for programmatic navigation
+
+    const handleTakeSurvey = (surveyId) => {
+        // Navigate to the ConfirmTakeSurveyPage with the survey ID
+        navigate(`/confirm-take-assessment/${surveyId}`);
+    };
 
     useEffect(() => {
         const getSurveysAndTopics = async () => {
@@ -14,11 +21,11 @@ function AvailableSurveyList() {
                 if (intern && intern.id) {
                     const [availableSurveys, topics] = await Promise.all([
                         fetchAvailableSurveys(intern.id),
-                        fetchTopics()
+                        fetchTopics(),
                     ]);
 
-                    const combinedData = availableSurveys.map(survey => {
-                        const topic = topics.find(t => t.id === survey.topicId);
+                    const combinedData = availableSurveys.map((survey) => {
+                        const topic = topics.find((t) => t.id === survey.topicId);
                         return { ...survey, topicName: topic ? topic.name : 'Unknown' };
                     });
 
@@ -39,11 +46,13 @@ function AvailableSurveyList() {
                 data={surveysWithTopics}
                 columnsToShow={['topicName', 'name']}
                 columnTitles={{ topicName: 'Topic', name: 'Survey' }}
+                redirectOnClick={true} // Enable row-click redirects
+                onRowClick={(surveyId) => {
+                    handleTakeSurvey(surveyId);
+                }}
             />
         </div>
     );
 }
 
 export default AvailableSurveyList;
-
-

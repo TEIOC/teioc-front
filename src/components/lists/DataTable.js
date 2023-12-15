@@ -1,18 +1,19 @@
+// DataTable.js
 import React, { useEffect, useRef } from "react";
 import $ from "jquery";
 import "datatables.net-dt/css/jquery.dataTables.css";
 import { useNavigate } from "react-router-dom";
 
-const DataTable = ({ data, columnsToShow, columnTitles, onRowClick }) => {
+const DataTable = ({ data, columnsToShow, columnTitles, onRowClick, redirectOnClick }) => {
     const tableRef = useRef(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         const dataTable = $(tableRef.current).DataTable({
             data: data,
-            columns: columnsToShow.map(column => ({
+            columns: columnsToShow.map((column) => ({
                 title: columnTitles[column],
-                data: column
+                data: column,
             })),
             paging: true,
             searching: true,
@@ -22,28 +23,32 @@ const DataTable = ({ data, columnsToShow, columnTitles, onRowClick }) => {
             responsive: true,
         });
 
-        // Event listener for row clicks
-        $(dataTable.table().body()).on('click', 'tr', function () {
-            const rowData = dataTable.row(this).data();
-            if (rowData) {
-                navigate(`/take-assessment/${rowData.id}`);
-            }
-        });
+        // Event listener for row clicks if redirectOnClick is true
+        if (redirectOnClick) {
+            $(dataTable.table().body()).on("click", "tr", function () {
+                const rowData = dataTable.row(this).data();
+                if (rowData) {
+                    onRowClick(rowData.id);
+                }
+            });
+        }
 
         // Cleanup event listener on unmount
         return () => {
             if ($.fn.DataTable.isDataTable(tableRef.current)) {
-                $(dataTable.table().body()).off('click');
+                if (redirectOnClick) {
+                    $(dataTable.table().body()).off("click");
+                }
                 $(tableRef.current).DataTable().destroy();
             }
         };
-    }, [data, columnsToShow, columnTitles, navigate]);
+    }, [data, columnsToShow, columnTitles, onRowClick, redirectOnClick]);
 
     return (
         <table ref={tableRef} className="display">
             <thead>
             <tr>
-                {columnsToShow.map(column => (
+                {columnsToShow.map((column) => (
                     <th key={column}>{columnTitles[column]}</th>
                 ))}
             </tr>
@@ -62,6 +67,7 @@ const DataTable = ({ data, columnsToShow, columnTitles, onRowClick }) => {
 };
 
 export default DataTable;
+
 
 
 
