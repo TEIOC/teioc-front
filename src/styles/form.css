@@ -110,3 +110,9 @@
     width: fit-content;
 }
 
+.form-centered-bold-black {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+}
+

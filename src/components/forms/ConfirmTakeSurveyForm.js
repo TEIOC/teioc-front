@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../../styles/form.css';
+import { fetchSurveyById } from '../../services/Api';
 
 const ConfirmTakeSurveyForm = ({ surveyId }) => {
     const navigate = useNavigate();
+    const [survey, setSurvey] = useState(null);
+
+    useEffect(() => {
+        // Fetch the survey by ID when the component mounts
+        fetchSurveyById(surveyId)
+            .then((surveyData) => {
+                setSurvey(surveyData);
+            })
+            .catch((error) => {
+                console.error('Error fetching survey by ID:', error);
+            });
+    }, [surveyId]);
 
     const handleAgree = () => {
         // Handle the "Agree" action here, e.g., navigate to take-assessments
@@ -15,15 +29,28 @@ const ConfirmTakeSurveyForm = ({ surveyId }) => {
     };
 
     return (
-        <div>
-            <h2 className="page-title">Confirm Take Survey</h2>
-            <p>Do you want to take the survey with ID: {surveyId}?</p>
-            <div className="confirmation-buttons">
-                <button onClick={handleAgree}>Agree</button>
-                <button onClick={handleRefuse}>Refuse</button>
-            </div>
+        <div className="form-container">
+            {survey && (
+                <div>
+                    <h2 className="form-title">
+                        Are you ready to take the following assessment :
+                    </h2>
+                    <h2 className="form-title">
+                        {survey.name}?
+                    </h2>
+                </div>
+            )}
+            <form className="form">
+                <div className="form-footer">
+                    <button className="button" onClick={handleAgree}>Yes</button>
+                    <span className="button-space"></span>
+                    <button className="button" onClick={handleRefuse}>No</button>
+                </div>
+            </form>
         </div>
     );
 };
 
 export default ConfirmTakeSurveyForm;
+
+

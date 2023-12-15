@@ -37,6 +37,13 @@
     cursor: default;
 }
 
+.list-form-header {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: bold; /* Make it bold */
+    color: black; /* Set the text color to black */
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
 .list-form-button {
     background-color: #00346bd1;
     color: white;
@@ -46,12 +53,16 @@
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 4px;
-    margin-top: 20px; /* Consistent button spacing */
+    margin-top: 20px;
 }
 
 .list-form-button:hover {
     background-color: white;
     color: #00346bd1;
+}
+
+.button-space {
+    margin-right: 10px;
 }
 
 .error-message, .success-popup {

@@ -153,4 +153,13 @@ export const calculateScoreAndUpdateDuration = async (intern_id, survey_id, dura
 	}
 };
 
+export const fetchSurveyById = async (surveyId) => {
+	try {
+		const response = await axiosInstance.get(`/surveys/${surveyId}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching survey by ID:', error);
+		throw error;
+	}
+};
 
