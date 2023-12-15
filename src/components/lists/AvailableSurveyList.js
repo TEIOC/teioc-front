@@ -12,11 +12,16 @@ function AvailableSurveyList() {
         const getSurveysAndTopics = async () => {
             try {
                 if (intern && intern.id) {
-                    const [availableSurveys, topics] = await Promise.all([fetchAvailableSurveys(intern.id), fetchTopics()]);
+                    const [availableSurveys, topics] = await Promise.all([
+                        fetchAvailableSurveys(intern.id),
+                        fetchTopics()
+                    ]);
+
                     const combinedData = availableSurveys.map(survey => {
                         const topic = topics.find(t => t.id === survey.topicId);
                         return { ...survey, topicName: topic ? topic.name : 'Unknown' };
                     });
+
                     setSurveysWithTopics(combinedData);
                 }
             } catch (error) {
@@ -27,23 +32,18 @@ function AvailableSurveyList() {
         getSurveysAndTopics();
     }, [intern]);
 
-    const columnsToShow = ['topicName', 'name'];
-    const columnTitles = {
-        topicName: 'Topic',
-        name: 'Survey'
-    };
-
     return (
         <div>
             <h2 className="page-title">Available Assessments</h2>
             <DataTable
                 data={surveysWithTopics}
-                columnsToShow={columnsToShow}
-                columnTitles={columnTitles}
+                columnsToShow={['topicName', 'name']}
+                columnTitles={{ topicName: 'Topic', name: 'Survey' }}
             />
         </div>
     );
 }
 
 export default AvailableSurveyList;
+
 

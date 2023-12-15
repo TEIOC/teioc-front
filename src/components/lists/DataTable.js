@@ -1,30 +1,43 @@
 import React, { useEffect, useRef } from "react";
 import $ from "jquery";
 import "datatables.net-dt/css/jquery.dataTables.css";
+import { useNavigate } from "react-router-dom";
 
-const DataTable = ({ data, columnsToShow, columnTitles }) => {
+const DataTable = ({ data, columnsToShow, columnTitles, onRowClick }) => {
     const tableRef = useRef(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (tableRef.current) {
+        const dataTable = $(tableRef.current).DataTable({
+            data: data,
+            columns: columnsToShow.map(column => ({
+                title: columnTitles[column],
+                data: column
+            })),
+            paging: true,
+            searching: true,
+            ordering: true,
+            info: true,
+            autoWidth: false,
+            responsive: true,
+        });
+
+        // Event listener for row clicks
+        $(dataTable.table().body()).on('click', 'tr', function () {
+            const rowData = dataTable.row(this).data();
+            if (rowData) {
+                navigate(`/take-assessment/${rowData.id}`);
+            }
+        });
+
+        // Cleanup event listener on unmount
+        return () => {
             if ($.fn.DataTable.isDataTable(tableRef.current)) {
+                $(dataTable.table().body()).off('click');
                 $(tableRef.current).DataTable().destroy();
             }
-            $(tableRef.current).DataTable({
-                data: data,
-                columns: columnsToShow.map(column => ({
-                    title: columnTitles[column],
-                    data: column
-                })),
-                paging: true,
-                searching: true,
-                ordering: true,
-                info: true,
-                autoWidth: false,
-                responsive: true,
-            });
-        }
-    }, [data, columnsToShow, columnTitles]);
+        };
+    }, [data, columnsToShow, columnTitles, navigate]);
 
     return (
         <table ref={tableRef} className="display">
@@ -49,4 +62,9 @@ const DataTable = ({ data, columnsToShow, columnTitles }) => {
 };
 
 export default DataTable;
+
+
+
+
+
 

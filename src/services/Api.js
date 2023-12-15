@@ -112,3 +112,45 @@ export const fetchSurveys = async () => {
 	}
 };
 
+export const fetchQuestionsAndAnswersForSurvey = async (survey_id) => {
+	try {
+		const response = await axiosInstance.get(`/questions/surveys/${survey_id}/with-answers`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching questions and answers:', error);
+		throw error;
+	}
+};
+
+export const createPathway = async (intern_id, survey_id) => {
+	try {
+		const response = await axiosInstance.post('/pathways', { intern_id, survey_id });
+		return response.data;
+	} catch (error) {
+		console.error('Error creating pathway:', error);
+		throw error;
+	}
+};
+
+export const saveInternAnswers = async (answers) => {
+	// answers should be an array of objects with intern_id, survey_id, and answer_id
+	try {
+		const response = await axiosInstance.post('/pathwayanswers/save-answers', answers);
+		return response.data;
+	} catch (error) {
+		console.error('Error saving answers:', error);
+		throw error;
+	}
+};
+
+export const calculateScoreAndUpdateDuration = async (intern_id, survey_id, duration) => {
+	try {
+		const response = await axiosInstance.put(`/pathways/${intern_id}/${survey_id}`, { duration });
+		return response.data;
+	} catch (error) {
+		console.error('Error updating pathway:', error);
+		throw error;
+	}
+};
+
+
