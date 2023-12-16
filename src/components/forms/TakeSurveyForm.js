@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import {
-    fetchQuestionsAndAnswersForSurvey,
-    saveInternAnswers,
-    createPathway,
-    updatePathwayScore
-} from '../../services/Api';
+import { fetchSurveyById, fetchQuestionsAndAnswersForSurvey, saveInternAnswers, createPathway, updatePathwayScore } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
-import '../../styles/take-survey-form.css';
+import '../../styles/take-survey-form.css'; // Import the new CSS file
 
 const TakeSurveyForm = () => {
     const { survey_id } = useParams();
     const navigate = useNavigate();
+    const [survey, setSurvey] = useState({});
     const [questions, setQuestions] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [startTime, setStartTime] = useState(null);
-    const intern = GetLoggedinIntern(); // Assuming this function returns the logged-in intern's data
+    const intern = GetLoggedinIntern();
 
     useEffect(() => {
+        fetchSurveyById(survey_id)
+            .then(setSurvey)
+            .catch(error => console.error('Error fetching survey:', error));
+
         fetchQuestionsAndAnswersForSurvey(survey_id)
             .then((questionsData) => {
                 setQuestions(questionsData);
-                setStartTime(Date.now()); // Set the start time when questions are loaded
+                setStartTime(Date.now());
             })
             .catch((error) => {
                 console.error('Error fetching questions and answers:', error);
@@ -35,6 +35,10 @@ const TakeSurveyForm = () => {
         });
     };
 
+    const areAllQuestionsAnswered = () => {
+        return questions.every(question => selectedAnswers.hasOwnProperty(question.id));
+    };
+
     const calculateDuration = (start) => {
         const endTime = Date.now();
         const durationInMilliseconds = endTime - start;
@@ -44,7 +48,14 @@ const TakeSurveyForm = () => {
         return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     };
 
-    const handleSubmitSurvey = async () => {
+    const handleSubmitSurvey = async (event) => {
+        event.preventDefault();
+
+        if (!areAllQuestionsAnswered()) {
+            alert("Please answer all questions before submitting.");
+            return;
+        }
+
         try {
             const duration = calculateDuration(startTime);
             await createPathway(intern.id, survey_id, duration);
@@ -64,9 +75,9 @@ const TakeSurveyForm = () => {
     };
 
     const renderQuestions = () => {
-        return questions.map((question) => (
+        return questions.map((question, index) => (
             <div key={question.id} className="survey-question">
-                <label>{question.label}</label>
+                <label>Question {index + 1}: {question.label}</label>
                 <ul className="answer-list">
                     {question.answers.map((answer) => (
                         <li key={answer.id} className="answer-item">
@@ -74,7 +85,6 @@ const TakeSurveyForm = () => {
                                 type="radio"
                                 name={`question-${question.id}`}
                                 value={answer.id}
-                                id={`answer-${answer.id}`}
                                 checked={selectedAnswers[question.id] === answer.id}
                                 onChange={() => handleSelectAnswer(question.id, answer.id)}
                             />
@@ -87,20 +97,23 @@ const TakeSurveyForm = () => {
     };
 
     return (
-        <div className="take-survey-container">
-            <h2 className="take-survey-title">Take Survey: {survey_id}</h2>
-            <form onSubmit={handleSubmitSurvey}>
-                {renderQuestions()}
-                <div className="survey-footer">
-                    <button type="submit" className="survey-button">Submit</button>
-                    <button type="button" onClick={() => navigate('/available-assessments')} className="survey-button">Cancel</button>
-                </div>
-            </form>
+        <div>
+            <h2 className="page-title">Take Survey: {survey.name || 'Loading...'}</h2>
+            <div className="take-survey-container">
+                <form onSubmit={handleSubmitSurvey}>
+                    {renderQuestions()}
+                    <div className="survey-footer">
+                        <button type="submit" className="survey-button">Submit</button>
+                        <button type="button" onClick={() => navigate('/available-assessments')} className="survey-button">Cancel</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };
 
 export default TakeSurveyForm;
+
 
 
 

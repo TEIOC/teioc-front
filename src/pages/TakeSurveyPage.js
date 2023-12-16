@@ -18,9 +18,14 @@ function TakeSurveyPage({ internName }) {
 
     return (
         <div>
-
+            <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+            <Separator />
+            <div className="layout-container">
+                <InternHomeSidebar />
+                <div className="content-area">
                     <TakeSurveyForm />
-
+                </div>
+            </div>
         </div>
     );
 }
