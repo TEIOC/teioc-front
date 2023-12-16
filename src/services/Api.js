@@ -124,15 +124,17 @@ export const fetchQuestionsAndAnswersForSurvey = async (survey_id) => {
 	}
 };
 
-export const createPathway = async (intern_id, survey_id) => {
+export const createPathway = async (intern_id, survey_id, duration) => {
 	try {
-		const response = await axiosInstance.post('/pathways', { intern_id, survey_id });
+		console.log('Sending Duration to Backend:', duration); // Add this line
+		const response = await axiosInstance.post('/pathways', { intern_id, survey_id, duration });
 		return response.data;
 	} catch (error) {
 		console.error('Error creating pathway:', error);
 		throw error;
 	}
 };
+
 
 export const saveInternAnswers = async (answers) => {
 	// answers should be an array of objects with intern_id, survey_id, and answer_id
