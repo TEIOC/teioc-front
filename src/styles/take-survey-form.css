@@ -1,0 +1,57 @@
+.take-survey-container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #555;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    margin: auto;
+    padding: 20px;
+}
+
+.take-survey-title {
+    font-size: 24px;
+    color: #00346bd1;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.survey-question {
+    margin-bottom: 20px;
+}
+
+.answer-list {
+    list-style-type: none; /* Removes the bullet points */
+    padding-left: 0; /* Removes default padding */
+}
+
+.answer-item {
+    display: flex;
+    align-items: center; /* Align items in the center vertically */
+    margin-bottom: 5px; /* Space between answer items */
+}
+
+.answer-item input[type="radio"] {
+    margin-right: 10px; /* Space between the radio button and label */
+}
+
+.survey-footer {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    gap: 10px; /* Space between buttons */
+}
+
+
+.survey-button {
+    background-color: #00346bd1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.survey-button:hover {
+    background-color: white;
+    color: #00346bd1;
+}

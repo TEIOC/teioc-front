@@ -7,6 +7,7 @@ import {
     updatePathwayScore
 } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
+import '../../styles/take-survey-form.css';
 
 const TakeSurveyForm = () => {
     const { survey_id } = useParams();
@@ -64,21 +65,20 @@ const TakeSurveyForm = () => {
 
     const renderQuestions = () => {
         return questions.map((question) => (
-            <div key={question.id}>
-                <p>{question.label}</p>
-                <ul>
+            <div key={question.id} className="survey-question">
+                <label>{question.label}</label>
+                <ul className="answer-list">
                     {question.answers.map((answer) => (
-                        <li key={answer.id}>
-                            <label>
-                                <input
-                                    type="radio"
-                                    name={`question-${question.id}`}
-                                    value={answer.id}
-                                    checked={selectedAnswers[question.id] === answer.id}
-                                    onChange={() => handleSelectAnswer(question.id, answer.id)}
-                                />
-                                {answer.label}
-                            </label>
+                        <li key={answer.id} className="answer-item">
+                            <input
+                                type="radio"
+                                name={`question-${question.id}`}
+                                value={answer.id}
+                                id={`answer-${answer.id}`}
+                                checked={selectedAnswers[question.id] === answer.id}
+                                onChange={() => handleSelectAnswer(question.id, answer.id)}
+                            />
+                            <label htmlFor={`answer-${answer.id}`}>{answer.label}</label>
                         </li>
                     ))}
                 </ul>
@@ -87,12 +87,15 @@ const TakeSurveyForm = () => {
     };
 
     return (
-        <div>
-            <h2>Take Survey: {survey_id}</h2>
-            <h3>Questions</h3>
-            {renderQuestions()}
-            <button onClick={handleSubmitSurvey}>Submit</button>
-            <button onClick={() => navigate('/available-assessments')}>Cancel</button>
+        <div className="take-survey-container">
+            <h2 className="take-survey-title">Take Survey: {survey_id}</h2>
+            <form onSubmit={handleSubmitSurvey}>
+                {renderQuestions()}
+                <div className="survey-footer">
+                    <button type="submit" className="survey-button">Submit</button>
+                    <button type="button" onClick={() => navigate('/available-assessments')} className="survey-button">Cancel</button>
+                </div>
+            </form>
         </div>
     );
 };
