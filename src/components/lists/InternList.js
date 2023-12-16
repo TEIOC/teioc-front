@@ -5,6 +5,7 @@ import '../../styles/datatable.css';
 
 function InternList() {
     const [interns, setInterns] = useState([]);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -40,5 +41,6 @@ function InternList() {
 }
 
 export default InternList;
+
 
 

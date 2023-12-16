@@ -1,0 +1,71 @@
+.take-survey-container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    margin: auto;
+    padding: 10px;
+    color: black;
+}
+
+.take-survey-title {
+    font-size: 24px;
+    color: #00346bd1;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.survey-question {
+    margin-bottom: 20px; /* Space between each question block */
+}
+
+.survey-question > label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: bold; /* Make question text bold */
+    margin-bottom: 5px; /* Space between question and answers */
+}
+
+.answer-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.answer-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* Space between answer items */
+    font-weight: normal; /* Ensure answer text is not bold */
+}
+
+.answer-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+.answer-item:last-child {
+    border-bottom: 1px solid #ddd; /* Line separation after the last answer of each question */
+    padding-bottom: 10px; /* Padding above the line */
+}
+
+.survey-footer {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.survey-button {
+    background-color: #00346bd1;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.survey-button:hover {
+    background-color: white;
+    color: #00346bd1;
+}
+

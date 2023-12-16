@@ -14,6 +14,8 @@ import AccountSettingsPage from "./pages/AccountSettingsPage";
 import InternAvailableSurveyPage from "./pages/InternAvailableSurveyPage";
 import InternCompletedSurveyPage from "./pages/InternCompletedSurveyPage";
 import InternAllSurveyPage from "./pages/InternAllSurveyPage";
+import TakeSurveyPage from "./pages/TakeSurveyPage";
+import ConfirmTakeSurveyPage from "./pages/ConfirmTakeSurveyPage";
 
 function AppRoutes() {
     return (
@@ -29,6 +31,8 @@ function AppRoutes() {
             <Route path="/assessments" element={<InternAllSurveyPage />} />
             <Route path="/available-assessments" element={<InternAvailableSurveyPage />} />
             <Route path="/completed-assessments" element={<InternCompletedSurveyPage />} />
+            <Route path="/confirm-take-assessment/:survey_id" element={<ConfirmTakeSurveyPage />} />
+            <Route path="/take-assessment/:survey_id" element={<TakeSurveyPage />} />
         </Routes>
     );
 }
