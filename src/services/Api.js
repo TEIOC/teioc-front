@@ -218,3 +218,23 @@ export const fetchTopicWisePerformanceForIntern = async (intern_id) => {
 	}
 };
 
+export const updateLastConnection = async (id) => {
+	if (typeof id !== 'number') {
+		console.error('Invalid ID type:', id);
+		return;
+	}
+
+	try {
+		const token = localStorage.getItem('jwt');
+		await axiosInstance.put(`/interns/${id}/update-last-connection`, {}, {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		});
+	} catch (error) {
+		console.error('Error updating last connection:', error);
+		throw error;
+	}
+};
+
+
