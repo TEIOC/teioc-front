@@ -1,6 +1,6 @@
 import React from 'react';
 import { InternPageLayout } from './InternPageLayout';
-import AccountSettingsForm from '../components/forms/AccountSettingsForm';
+import AccountSettingsForm from '../../components/forms/AccountSettingsForm';
 
 function AccountSettingsPage() {
     return (

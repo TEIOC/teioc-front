@@ -1,6 +1,6 @@
 import { React } from 'react';
-import Separator from "../components/navigation/Separator";
-import ResetPasswordForm from "../components/forms/ResetPasswordForm";
+import Separator from "../../components/navigation/Separator";
+import ResetPasswordForm from "../../components/forms/ResetPasswordForm";
 
 function ResetPasswordPage() {
     return (

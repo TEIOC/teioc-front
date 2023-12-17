@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import NavBar from '../components/navigation/NavBar';
-import Separator from '../components/navigation/Separator';
-import InternHomeSidebar from '../components/navigation/InternHomeSidebar';
-import AllSurveyList from '../components/lists/AllSurveyList';
-import ConfirmTakeSurveyForm from "../components/forms/ConfirmTakeSurveyForm";
-import {logout} from "../services/AuthService"; // Import your ConfirmationForm component
+import NavBar from '../../components/navigation/NavBar';
+import Separator from '../../components/navigation/Separator';
+import InternHomeSidebar from '../../components/navigation/InternHomeSidebar';
+import AllSurveyList from '../../components/lists/AllSurveyList';
+import ConfirmTakeSurveyForm from "../../components/forms/ConfirmTakeSurveyForm";
+import {logout} from "../../services/AuthService"; // Import your ConfirmationForm component
 
 function ConfirmTakeSurveyPage() {
     const { survey_id } = useParams();

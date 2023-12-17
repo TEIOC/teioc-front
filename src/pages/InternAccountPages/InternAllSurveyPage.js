@@ -1,6 +1,6 @@
 import React from 'react';
 import { InternPageLayout } from './InternPageLayout';
-import AllSurveyList from '../components/lists/AllSurveyList';
+import AllSurveyList from '../../components/lists/AllSurveyList';
 
 function InternAllSurveyPage() {
     return (

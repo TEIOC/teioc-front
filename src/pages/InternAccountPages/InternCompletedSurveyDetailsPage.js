@@ -1,6 +1,6 @@
 import React from 'react';
 import { InternPageLayout } from './InternPageLayout';
-import InternCompletedSurveyDetailsList from '../components/lists/InternCompletedSurveyDetailsList';
+import InternCompletedSurveyDetailsList from '../../components/lists/InternCompletedSurveyDetailsList';
 
 function InternCompletedSurveyDetailsPage() {
     return (
