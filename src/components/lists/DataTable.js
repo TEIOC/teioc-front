@@ -1,8 +1,7 @@
-// DataTable.js
-import React, { useEffect, useRef } from "react";
-import $ from "jquery";
-import "datatables.net-dt/css/jquery.dataTables.css";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useRef } from 'react';
+import $ from 'jquery';
+import 'datatables.net-dt/css/jquery.dataTables.css';
+import { useNavigate } from 'react-router-dom';
 
 const DataTable = ({ data, columnsToShow, columnTitles, onRowClick, redirectOnClick }) => {
     const tableRef = useRef(null);
@@ -23,21 +22,19 @@ const DataTable = ({ data, columnsToShow, columnTitles, onRowClick, redirectOnCl
             responsive: true,
         });
 
-        // Event listener for row clicks if redirectOnClick is true
         if (redirectOnClick) {
-            $(dataTable.table().body()).on("click", "tr", function () {
+            $(dataTable.table().body()).on('click', 'tr', function () {
                 const rowData = dataTable.row(this).data();
                 if (rowData) {
-                    onRowClick(rowData.id);
+                    onRowClick(rowData);
                 }
             });
         }
 
-        // Cleanup event listener on unmount
         return () => {
             if ($.fn.DataTable.isDataTable(tableRef.current)) {
                 if (redirectOnClick) {
-                    $(dataTable.table().body()).off("click");
+                    $(dataTable.table().body()).off('click');
                 }
                 $(tableRef.current).DataTable().destroy();
             }
@@ -67,6 +64,7 @@ const DataTable = ({ data, columnsToShow, columnTitles, onRowClick, redirectOnCl
 };
 
 export default DataTable;
+
 
 
 

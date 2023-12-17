@@ -10,8 +10,12 @@ function AvailableSurveyList() {
     const intern = GetLoggedinIntern();
     const navigate = useNavigate();
 
-    const handleTakeSurvey = (survey_id) => {
-        navigate(`/confirm-take-assessment/${survey_id}`);
+    const handleTakeSurvey = (rowData) => {
+        if (rowData && rowData.id) {
+            navigate(`/confirm-take-assessment/${rowData.id}`);
+        } else {
+            console.error('Invalid rowData:', rowData);
+        }
     };
 
     useEffect(() => {
@@ -46,9 +50,7 @@ function AvailableSurveyList() {
                 columnsToShow={['topicName', 'name']}
                 columnTitles={{ topicName: 'Topic', name: 'Survey' }}
                 redirectOnClick={true}
-                onRowClick={(survey_id) => {
-                    handleTakeSurvey(survey_id);
-                }}
+                onRowClick={handleTakeSurvey}
             />
         </div>
     );

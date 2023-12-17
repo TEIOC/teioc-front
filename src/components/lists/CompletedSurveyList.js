@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { fetchPathwaysForIntern, fetchSurveyById } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import { useNavigate } from 'react-router-dom';
-import DataTable_2 from "./DataTable_2";
+import DataTable from "./DataTable";
 import '../../styles/list.css';
 
 function CompletedSurveyList() {
@@ -49,7 +49,7 @@ function CompletedSurveyList() {
     return (
         <div>
             <h2 className="page-title">Completed Assessments</h2>
-            <DataTable_2
+            <DataTable
                 data={completedSurveys}
                 columnsToShow={['surveyName', 'score', 'duration']}
                 columnTitles={{ surveyName: 'Survey', score: 'Score', duration: 'Duration' }}
