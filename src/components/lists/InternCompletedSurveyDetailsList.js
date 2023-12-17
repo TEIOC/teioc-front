@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchCompletedSurveyDetails, fetchSurveyById } from '../../services/Api';
-import '../../styles/list.css'; // Import your old CSS file with the styles
+import '../../styles/list.css';
 
 function InternCompletedSurveyDetailsList() {
     const [surveyDetails, setSurveyDetails] = useState([]);

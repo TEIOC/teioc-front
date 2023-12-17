@@ -1,25 +1,25 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import InternHomePage from "./pages/InternAvailableSurveyPage";
-import RegisterPage from "./pages/RegisterPage";
-import ActivateInternPage from "./pages/ActivateInternPage";
-import ForgotPasswordPage from "./pages/ForgotPasswordPage";
-import ResetPasswordPage from "./pages/ResetPasswordPage";
-import InternPathwaysPage from "./pages/InternCompletedSurveyPage"
-import DeactivateInternPage from "./pages/DeactivateInternPage";
+import HomePage from './pages/GuestPages/HomePage';
+import LoginPage from './pages/LoginPages/LoginPage';
+import InternHomePage from "./pages/InternAccountPages/InternAvailableSurveyPage";
+import RegisterPage from "./pages/LoginPages/RegisterPage";
+import ActivateInternPage from "./pages/InternAccountPages/ActivateInternPage";
+import ForgotPasswordPage from "./pages/LoginPages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/LoginPages/ResetPasswordPage";
+import InternPathwaysPage from "./pages/InternAccountPages/InternCompletedSurveyPage"
+import DeactivateInternPage from "./pages/InternAccountPages/DeactivateInternPage";
 import AccountSettingsForm from "./components/forms/AccountSettingsForm";
-import AccountSettingsPage from "./pages/AccountSettingsPage";
-import InternAvailableSurveyPage from "./pages/InternAvailableSurveyPage";
-import InternCompletedSurveyPage from "./pages/InternCompletedSurveyPage";
-import InternAllSurveyPage from "./pages/InternAllSurveyPage";
-import TakeSurveyPage from "./pages/TakeSurveyPage";
-import ConfirmTakeSurveyPage from "./pages/ConfirmTakeSurveyPage";
+import AccountSettingsPage from "./pages/InternAccountPages/AccountSettingsPage";
+import InternAvailableSurveyPage from "./pages/InternAccountPages/InternAvailableSurveyPage";
+import InternCompletedSurveyPage from "./pages/InternAccountPages/InternCompletedSurveyPage";
+import InternAllSurveyPage from "./pages/InternAccountPages/InternAllSurveyPage";
+import TakeSurveyPage from "./pages/InternAccountPages/TakeSurveyPage";
+import ConfirmTakeSurveyPage from "./pages/InternAccountPages/ConfirmTakeSurveyPage";
 import InternStatisticsChart from "./components/charts/InternStatisticsChart";
-import InternStatisticsPage from "./pages/InternStatisticsPage";
+import InternStatisticsPage from "./pages/InternAccountPages/InternStatisticsPage";
 import InternCompletedSurveyDetailsList from "./components/lists/InternCompletedSurveyDetailsList";
-import InternCompletedSurveyDetailsPage from "./pages/InternCompletedSurveyDetailsPage";
+import InternCompletedSurveyDetailsPage from "./pages/InternAccountPages/InternCompletedSurveyDetailsPage";
 
 function AppRoutes() {
     return (

@@ -25,13 +25,12 @@ function LoginForm({ onLoginSuccess }) {
 	};
 
 	return (
-		<div className="form-container">
-			<div className="form-title">
-				<h2>Login</h2>
-			</div>
+		<div className="general-form-container">
+			<h2 className="general-form-title">Login</h2>
 			<form className="form" onSubmit={handleLoginClick}>
 				<label htmlFor="email">Email</label>
 				<input
+					className="form-input"
 					type="text"
 					id="email"
 					name="email"
@@ -41,6 +40,7 @@ function LoginForm({ onLoginSuccess }) {
 
 				<label htmlFor="password">Password</label>
 				<input
+					className="form-input"
 					type="password"
 					id="password"
 					name="password"
@@ -49,18 +49,18 @@ function LoginForm({ onLoginSuccess }) {
 				/>
 
 				<div className="form-footer">
-					<button type="submit" className="button">
+					<button type="submit" className="form-button">
 						Login
 					</button>
-					<Link to="/forgot-password" className="link">
+					<Link to="/forgot-password" className="form-link">
 						Forgot password?
 					</Link>
 				</div>
 			</form>
-			{error && <div className="error-message">{error}</div>}
-			<div className="additional-section">
+			{error && <div className="form-error-message">{error}</div>}
+			<div className="form-additional-section">
 				Don't have an account?{" "}
-				<Link to="/register" className="link">
+				<Link to="/register" className="form-link">
 					Register
 				</Link>
 			</div>
@@ -69,5 +69,6 @@ function LoginForm({ onLoginSuccess }) {
 }
 
 export default LoginForm;
+
 
 

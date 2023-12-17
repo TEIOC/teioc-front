@@ -40,28 +40,30 @@ const ForgotPasswordForm = () => {
     };
 
     return (
-        <div className="form-container">
-            <div className="form-title">
-                <h2>Forgot Password</h2>
-            </div>
+        <div className="general-form-container">
+            <h2 className="general-form-title">Forgot Password</h2>
             <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
                 <input
+                    className="form-input"
                     type="text"
+                    id="email"
+                    name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
+
                 <div className="form-footer">
-                    <button type="submit" className="button">
+                    <button type="submit" className="form-button">
                         Reset Password
                     </button>
-                    <Link to="/login" className="link">
+                    <Link to="/login" className="form-link">
                         Back to login page
                     </Link>
                 </div>
             </form>
-            {error && <div className="error-message">{error}</div>}
-            {isSuccessVisible && <div className="success-popup show">{successMessage}</div>}
+            {error && <div className="form-error-message">{error}</div>}
+            {isSuccessVisible && <div className="form-success-popup">{successMessage}</div>}
         </div>
     );
 };
