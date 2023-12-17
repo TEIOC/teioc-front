@@ -119,7 +119,7 @@ const AccountSettingsForm = () => {
                     readOnly
                 />
 
-                <label htmlFor="password">Password (Leave blank to keep the same)</label>
+                <label htmlFor="password">Password</label>
                 <input
                     className="form-input"
                     type="password"
