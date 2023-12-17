@@ -1,4 +1,3 @@
-/* standardizedStyles.css */
 .base-style {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #555;
@@ -45,7 +44,6 @@
     margin-bottom: 20px;
 }
 
-/* Common list styles */
 .list {
     list-style-type: none;
     padding: 0;

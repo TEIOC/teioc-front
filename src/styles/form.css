@@ -105,40 +105,34 @@
     color: black;
 }
 
-/* Section des questions du formulaire */
 .form-question {
-    margin-bottom: 20px; /* Espace entre chaque bloc de question */
+    margin-bottom: 20px;
 }
 
-/* Label pour chaque question du formulaire */
 .form-question > label {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    font-weight: bold; /* Rend le texte de la question en gras */
-    margin-bottom: 5px; /* Espace entre la question et les réponses */
+    font-weight: bold;
+    margin-bottom: 5px;
 }
 
-/* Liste des réponses */
 .answer-list {
     list-style-type: none;
     padding-left: 0;
 }
 
-/* Élément de réponse */
 .answer-item {
     display: flex;
     align-items: center;
-    margin-bottom: 5px; /* Espace entre les éléments de réponse */
-    font-weight: normal; /* Assure que le texte de la réponse n'est pas en gras */
+    margin-bottom: 5px;
+    font-weight: normal;
 }
 
-/* Case à cocher pour les réponses de type radio */
 .answer-item input[type="radio"] {
     margin-right: 10px;
 }
 
-/* Ligne de séparation après la dernière réponse de chaque question */
 .answer-item:last-child {
     border-bottom: 1px solid #ddd;
     padding-bottom: 10px; /* Espacement au-dessus de la ligne */
