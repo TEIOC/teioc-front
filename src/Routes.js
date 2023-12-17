@@ -18,6 +18,7 @@ import TakeSurveyPage from "./pages/TakeSurveyPage";
 import ConfirmTakeSurveyPage from "./pages/ConfirmTakeSurveyPage";
 import InternStatisticsChart from "./components/charts/InternStatisticsChart";
 import InternStatisticsPage from "./pages/InternStatisticsPage";
+import InternCompletedSurveyDetailsPage from "./pages/InternCompletedSurveyDetailsPage";
 
 function AppRoutes() {
     return (
@@ -33,6 +34,8 @@ function AppRoutes() {
             <Route path="/assessments" element={<InternAllSurveyPage />} />
             <Route path="/available-assessments" element={<InternAvailableSurveyPage />} />
             <Route path="/completed-assessments" element={<InternCompletedSurveyPage />} />
+            <Route path="/completed-assessments-details/:intern_id/:survey_id" element={<InternCompletedSurveyDetailsPage />} />
+
             <Route path="/confirm-take-assessment/:survey_id" element={<ConfirmTakeSurveyPage />} />
             <Route path="/take-assessment/:survey_id" element={<TakeSurveyPage />} />
                 <Route path="/statistics" element={<InternStatisticsPage />} />
