@@ -18,6 +18,7 @@ import TakeSurveyPage from "./pages/TakeSurveyPage";
 import ConfirmTakeSurveyPage from "./pages/ConfirmTakeSurveyPage";
 import InternStatisticsChart from "./components/charts/InternStatisticsChart";
 import InternStatisticsPage from "./pages/InternStatisticsPage";
+import InternCompletedSurveyDetailsList from "./components/lists/InternCompletedSurveyDetailsList";
 import InternCompletedSurveyDetailsPage from "./pages/InternCompletedSurveyDetailsPage";
 
 function AppRoutes() {
