@@ -6,7 +6,7 @@ import DefaultProfilePic from '../../styles/DefaultProfilePic.png';
 
 const InternHomeSidebar = () => {
     const intern = GetLoggedinIntern();
-    const isActivated = intern ? intern.status : '';
+   /*  const isActivated = intern ? intern.status : ''; */
     const id = intern ? intern.id : '';
 
     return (
@@ -19,11 +19,11 @@ const InternHomeSidebar = () => {
                 <li><Link to="/available-assessments">Available Assessments</Link></li>
                 <li><Link to="/completed-assessments">Completed Assessments</Link></li>
                 <li><Link to="/statistics">Results and statistics</Link></li>
-                {isActivated ? (
+                {/* {isActivated ? (
                     <li><Link to={`/deactivate/${id}`}>Deactivate my account</Link></li>
                 ) : (
                     <li><Link to={`/activate/${id}`}>Activate my account</Link></li>
-                )}
+                )} */}
             </ul>
         </div>
     );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { updateIntern } from '../../services/Api';
+import { updateIntern, deactivateIntern, activateIntern } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import '../../styles/form.css';
 
@@ -19,6 +19,7 @@ const AccountSettingsForm = () => {
     const navigate = useNavigate();
 
     const intern = GetLoggedinIntern();
+    const [isActivated, setIsActivated] = useState(false); // Track the activation status
 
     useEffect(() => {
         if (intern) {
@@ -28,8 +29,10 @@ const AccountSettingsForm = () => {
             setEmail(intern.email);
             setCompany(intern.company);
             setPhoneNumber(intern.contactDetails);
+            setIsActivated(intern.status); // Set the activation status
         }
     }, [intern]);
+
 
     const validateInput = () => {
         let isValid = true;
@@ -85,8 +88,28 @@ const AccountSettingsForm = () => {
         }
     };
 
+    const handleDeactivate = async () => {
+        try {
+            await deactivateIntern(intern.id);
+            setIsActivated(false); // Update the activation status in the local state after successful deactivation
+        } catch (error) {
+            console.error('Error deactivating account:', error);
+            setError('Failed to deactivate account.');
+        }
+    };
+
+    const handleActivate = async () => {
+        try {
+            await activateIntern(intern.id);
+            setIsActivated(true); // Update the activation status in the local state after successful activation
+        } catch (error) {
+            console.error('Error activating account:', error);
+            setError('Failed to activate account.');
+        }
+    };
+
     return (
-        <div className="specific-form-container ">
+        <div className="specific-form-container">
             <h2 className="specific-form-title">Account Settings</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
@@ -153,6 +176,23 @@ const AccountSettingsForm = () => {
 
                 <div className="form-footer">
                     <button type="submit" className="form-button">Update Account</button>
+                    {isActivated ? (
+                        <button
+                            type="button"
+                            className="form-button toggle-status-button deactivate"
+                            onClick={handleDeactivate}
+                        >
+                            Deactivate Account
+                        </button>
+                    ) : (
+                        <button
+                            type="button"
+                            className="form-button toggle-status-button activate"
+                            onClick={handleActivate}
+                        >
+                            Activate Account
+                        </button>
+                    )}
                 </div>
 
                 {error && <div className="form-error-message">{error}</div>}
@@ -163,6 +203,7 @@ const AccountSettingsForm = () => {
 };
 
 export default AccountSettingsForm;
+
 
 
 

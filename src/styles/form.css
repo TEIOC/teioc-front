@@ -135,7 +135,17 @@
 
 .answer-item:last-child {
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px; /* Espacement au-dessus de la ligne */
+    padding-bottom: 10px;
+}
+
+.toggle-status-button.deactivate {
+    background-color: #ff6347;
+    color: white;
+}
+
+.toggle-status-button.activate {
+    background-color: #32cd32;
+    color: white;
 }
 
 
