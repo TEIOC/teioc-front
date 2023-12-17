@@ -47,7 +47,7 @@ function CompletedSurveyList() {
     };
 
     return (
-        <div>
+        <div className="data-table-container">
             <h2 className="page-title">Completed Assessments</h2>
             <DataTable
                 data={completedSurveys}

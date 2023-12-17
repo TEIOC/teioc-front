@@ -43,7 +43,7 @@ function AvailableSurveyList() {
     }, [intern]);
 
     return (
-        <div>
+        <div className="data-table-container">
             <h2 className="page-title">Available Assessments</h2>
             <DataTable
                 data={surveysWithTopics}
