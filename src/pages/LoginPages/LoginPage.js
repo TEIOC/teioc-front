@@ -12,7 +12,7 @@ function LoginPage() {
 	};
 
 	return (
-		<LoginPageLayout> {/* Use LoginPageLayout for LoginPage */}
+		<LoginPageLayout>
 			<LoginForm onLoginSuccess={handleLoginSuccess} />
 		</LoginPageLayout>
 	);

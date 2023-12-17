@@ -19,7 +19,7 @@ const AccountSettingsForm = () => {
     const navigate = useNavigate();
 
     const intern = GetLoggedinIntern();
-    const [isActivated, setIsActivated] = useState(false); // Track the activation status
+    const [isActivated, setIsActivated] = useState(false);
 
     useEffect(() => {
         if (intern) {
@@ -29,7 +29,7 @@ const AccountSettingsForm = () => {
             setEmail(intern.email);
             setCompany(intern.company);
             setPhoneNumber(intern.contactDetails);
-            setIsActivated(intern.status); // Set the activation status
+            setIsActivated(intern.status);
         }
     }, [intern]);
 
@@ -91,8 +91,8 @@ const AccountSettingsForm = () => {
     const handleDeactivate = async () => {
         try {
             await deactivateIntern(intern.id);
-            setIsActivated(false); // Update the activation status in the local state after successful deactivation
-            window.location.reload(); // Refresh the page
+            setIsActivated(false);
+            window.location.reload();
         } catch (error) {
             console.error('Error deactivating account:', error);
             setError('Failed to deactivate account.');
@@ -102,8 +102,8 @@ const AccountSettingsForm = () => {
     const handleActivate = async () => {
         try {
             await activateIntern(intern.id);
-            setIsActivated(true); // Update the activation status in the local state after successful activation
-            window.location.reload(); // Refresh the page
+            setIsActivated(true);
+            window.location.reload();
         } catch (error) {
             console.error('Error activating account:', error);
             setError('Failed to activate account.');
