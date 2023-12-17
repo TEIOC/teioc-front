@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { updateIntern, deactivateIntern, activateIntern } from '../../services/Api';
+import { updateIntern, deactivateIntern, activateIntern, updateLastConnection } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import '../../styles/form.css';
 
@@ -88,11 +88,20 @@ const AccountSettingsForm = () => {
         }
     };
 
+    const updateConnectionAndReload = async () => {
+        try {
+            await updateLastConnection(intern.id);
+            window.location.reload();
+        } catch (error) {
+            console.error('Error updating last connection:', error);
+        }
+    };
+
     const handleDeactivate = async () => {
         try {
             await deactivateIntern(intern.id);
             setIsActivated(false);
-            window.location.reload();
+            await updateConnectionAndReload();
         } catch (error) {
             console.error('Error deactivating account:', error);
             setError('Failed to deactivate account.');
@@ -103,13 +112,12 @@ const AccountSettingsForm = () => {
         try {
             await activateIntern(intern.id);
             setIsActivated(true);
-            window.location.reload();
+            await updateConnectionAndReload();
         } catch (error) {
             console.error('Error activating account:', error);
             setError('Failed to activate account.');
         }
     };
-
 
     return (
         <div className="specific-form-container">
