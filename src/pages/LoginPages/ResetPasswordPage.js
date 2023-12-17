@@ -1,13 +1,12 @@
-import { React } from 'react';
-import Separator from "../../components/navigation/Separator";
+import React from 'react';
+import { LoginPageLayout } from "./LoginPageLayout";
 import ResetPasswordForm from "../../components/forms/ResetPasswordForm";
 
 function ResetPasswordPage() {
     return (
-        <div>
-            <Separator />
+        <LoginPageLayout>
             <ResetPasswordForm />
-        </div>
+        </LoginPageLayout>
     );
 }
 

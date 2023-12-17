@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import '../../styles/form.css';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import '../../styles/form.css'; // Use the same CSS file as LoginForm and ForgotPasswordForm
 import axiosInstance from '../../services/AxiosInstance';
 
-const RegisterForm = () => {
+function RegisterForm() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,59 +17,6 @@ const RegisterForm = () => {
     const [successMessage, setSuccessMessage] = useState('');
     const [isSuccessVisible, setIsSuccessVisible] = useState(false);
     const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-    const navigate = useNavigate();
-
-    // Centralized Axios call for user registration
-    const registerUser = async () => {
-        try {
-            const name = `${firstName} ${lastName}`;
-
-            const response = await axiosInstance.post('/interns', {
-                name,
-                email,
-                password,
-                company,
-                contactDetails: phoneNumber,
-                creationDate: new Date(),
-                status: 0,
-            });
-
-            console.log('Registration successful:', response.data);
-            setSuccessMessage('Account created successfully.');
-            setIsSuccessVisible(true);
-            setError('');
-            setIsFormSubmitted(true);
-
-            setTimeout(() => {
-                setIsSuccessVisible(false);
-            }, 10000);
-
-            if (response.status === 200) {
-                const responseMail = await axiosInstance.post('/email/activate', {
-                    email,
-                });
-
-                console.log('Account activation email sent:', responseMail.data);
-                setSuccessMessage('Account activation email sent.');
-
-                setTimeout(() => {
-                    setIsSuccessVisible(false);
-                }, 10000);
-            }
-
-            setTimeout(() => {
-                navigate('/login');
-            }, 5000);
-        } catch (error) {
-            if (error.response) {
-                setError('Registration error', error.response.data);
-            } else if (error.request) {
-                setError('No response from server');
-            } else {
-                setError('Error during request setup:', error.message);
-            }
-        }
-    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -113,18 +60,60 @@ const RegisterForm = () => {
         }
 
         // Centralized Axios call for user registration
-        await registerUser();
+        try {
+            const name = `${firstName} ${lastName}`;
+
+            const response = await axiosInstance.post('/interns', {
+                name,
+                email,
+                password,
+                company,
+                contactDetails: phoneNumber,
+                creationDate: new Date(),
+                status: 0,
+            });
+
+            console.log('Registration successful:', response.data);
+            setSuccessMessage('Account created successfully.');
+            setIsSuccessVisible(true);
+            setError('');
+            setIsFormSubmitted(true);
+
+            setTimeout(() => {
+                setIsSuccessVisible(false);
+            }, 10000);
+
+            if (response.status === 200) {
+                const responseMail = await axiosInstance.post('/email/activate', {
+                    email,
+                });
+
+                console.log('Account activation email sent:', responseMail.data);
+                setSuccessMessage('Account activation email sent.');
+
+                setTimeout(() => {
+                    setIsSuccessVisible(false);
+                }, 10000);
+            }
+        } catch (error) {
+            if (error.response) {
+                setError('Registration error', error.response.data);
+            } else if (error.request) {
+                setError('No response from server');
+            } else {
+                setError('Error during request setup:', error.message);
+            }
+        }
     };
 
     return (
-        <div className="form-container">
-            <div className="form-title">
-                <h2>Register</h2>
-            </div>
+        <div className="general-form-container">
+            <h2 className="form-title">Register</h2>
             <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
                 <input
                     type="text"
+                    className="form-input"
                     id="firstName"
                     name="firstName"
                     value={firstName}
@@ -134,6 +123,7 @@ const RegisterForm = () => {
                 <label htmlFor="lastName">Last Name</label>
                 <input
                     type="text"
+                    className="form-input"
                     id="lastName"
                     name="lastName"
                     value={lastName}
@@ -143,6 +133,7 @@ const RegisterForm = () => {
                 <label htmlFor="email">Email</label>
                 <input
                     type="text"
+                    className="form-input"
                     id="email"
                     name="email"
                     value={email}
@@ -153,6 +144,7 @@ const RegisterForm = () => {
                 <label htmlFor="password">Password</label>
                 <input
                     type="password"
+                    className="form-input"
                     id="password"
                     name="password"
                     value={password}
@@ -162,6 +154,7 @@ const RegisterForm = () => {
                 <label htmlFor="confirmPassword">Confirm Password</label>
                 <input
                     type="password"
+                    className="form-input"
                     id="confirmPassword"
                     name="confirmPassword"
                     value={confirmPassword}
@@ -171,6 +164,7 @@ const RegisterForm = () => {
                 <label htmlFor="company">Company</label>
                 <input
                     type="text"
+                    className="form-input"
                     id="company"
                     name="company"
                     value={company}
@@ -180,6 +174,7 @@ const RegisterForm = () => {
                 <label htmlFor="phoneNumber">Phone Number</label>
                 <input
                     type="text"
+                    className="form-input"
                     id="phoneNumber"
                     name="phoneNumber"
                     value={phoneNumber}
@@ -190,22 +185,23 @@ const RegisterForm = () => {
                 <div className="form-footer">
                     <button
                         type="submit"
-                        className="button"
+                        className="form-button"
                         disabled={isFormSubmitted}
                     >
                         Register
                     </button>
-                    <Link to="/login" className="link">
+                    <Link to="/login" className="form-link">
                         Already have an account? Login
                     </Link>
                 </div>
             </form>
-            {error && <div className="error-message">{error}</div>}
-            {isSuccessVisible && <div className="success-popup">{successMessage}</div>}
+            {error && <div className="form-error-message">{error}</div>}
+            {isSuccessVisible && <div className="form-success-popup">{successMessage}</div>}
         </div>
     );
-};
+}
 
 export default RegisterForm;
+
 
 

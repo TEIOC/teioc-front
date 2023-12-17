@@ -1,13 +1,12 @@
 import React from 'react';
-import Separator from "../../components/navigation/Separator";
+import { LoginPageLayout } from "./LoginPageLayout";
 import RegisterForm from "../../components/forms/RegisterForm";
 
 function RegisterPage() {
     return (
-        <div>
-            <Separator />
+        <LoginPageLayout>
             <RegisterForm />
-        </div>
+        </LoginPageLayout>
     );
 }
 

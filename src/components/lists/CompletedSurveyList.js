@@ -48,7 +48,7 @@ function CompletedSurveyList() {
 
     return (
         <div>
-            <h2>Completed Surveys</h2>
+            <h2 className="page-title">Completed Assessments</h2>
             <DataTable_2
                 data={completedSurveys}
                 columnsToShow={['surveyName', 'score', 'duration']}

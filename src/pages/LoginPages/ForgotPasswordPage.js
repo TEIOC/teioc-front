@@ -1,14 +1,14 @@
-import { React } from 'react';
+import React from 'react';
+import { LoginPageLayout } from "./LoginPageLayout";
 import ForgotPasswordForm from '../../components/forms/ForgotPasswordForm';
-import Separator from "../../components/navigation/Separator";
 
 function ForgotPasswordPage() {
     return (
-        <div>
-            <Separator />
+        <LoginPageLayout>
             <ForgotPasswordForm />
-        </div>
+        </LoginPageLayout>
     );
 }
 
 export default ForgotPasswordPage;
+

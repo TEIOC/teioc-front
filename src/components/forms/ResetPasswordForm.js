@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import '../../styles/form.css';
+import '../../styles/form.css'; // Use the same CSS file as LoginForm, ForgotPasswordForm, and RegisterForm
 import { fetchInternById } from '../../services/Api';
 import axiosInstance from '../../services/AxiosInstance';
 
@@ -75,35 +75,50 @@ const ResetPasswordForm = () => {
     };
 
     return (
-        <div className="form-container">
-            <h2 className="form-title" style={{ fontSize: '24px'}}>Reset Password</h2>
+        <div className="general-form-container">
+            <h2 className="form-title">Reset Password</h2>
             <form className="form" onSubmit={handleSubmit}>
                 <label htmlFor="email">Email</label>
-                <input type="text" value={email} disabled />
+                <input
+                    type="text"
+                    className="form-input"
+                    value={email}
+                    disabled
+                />
                 <label htmlFor="password">Password</label>
-                <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input
+                    type="password"
+                    className="form-input"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
                 <label htmlFor="confirmPassword">Confirm Password</label>
                 <input
                     type="password"
+                    className="form-input"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                 />
                 <div className="form-footer">
-                    <button type="submit" className="button">
+                    <button
+                        type="submit"
+                        className="form-button"
+                    >
                         Reset Password
                     </button>
-                    <Link to="/login" className="link">
+                    <Link to="/login" className="form-link">
                         Back to login page
                     </Link>
                 </div>
             </form>
-            {error && <div className="error-message">{error}</div>}
-            {isSuccessVisible && <div className="success-popup show">{successMessage}</div>}
+            {error && <div className="form-error-message">{error}</div>}
+            {isSuccessVisible && <div className="form-success-popup show">{successMessage}</div>}
         </div>
     );
 };
 
 export default ResetPasswordForm;
+
 
 
 

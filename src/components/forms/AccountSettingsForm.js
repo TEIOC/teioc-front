@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/list-form.css'; // Ensure this is the correct path to your CSS file
 import { updateIntern } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
+import '../../styles/form.css';
 
-
-// TODO DISPLAYING STATUS AND GINIG POSSIBILITY TO ACTIVATE AND DEACTIVATE ACCOUNT + ALL SURVEYS PAGE + pdp +on completed surveys a green tick for right answers
-
-// TODO results
 const AccountSettingsForm = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -71,7 +67,6 @@ const AccountSettingsForm = () => {
             contactDetails: phoneNumber
         };
 
-        // Only update password if a new one is provided
         if (password) {
             internData.password = password;
         }
@@ -91,12 +86,12 @@ const AccountSettingsForm = () => {
     };
 
     return (
-        <div>
-        <h2 className="page-title">Account Settings</h2>
-        <div className="list-form-container">
-            <form className="list-form" onSubmit={handleSubmit}>
+        <div className="specific-form-container ">
+            <h2 className="form-title">Account Settings</h2>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
                 <input
+                    className="form-input"
                     type="text"
                     id="firstName"
                     name="firstName"
@@ -104,9 +99,9 @@ const AccountSettingsForm = () => {
                     onChange={(e) => setFirstName(e.target.value)}
                 />
 
-                {/* Last Name */}
                 <label htmlFor="lastName">Last Name</label>
                 <input
+                    className="form-input"
                     type="text"
                     id="lastName"
                     name="lastName"
@@ -114,9 +109,9 @@ const AccountSettingsForm = () => {
                     onChange={(e) => setLastName(e.target.value)}
                 />
 
-                {/* Email - Read-Only */}
                 <label htmlFor="email">Email</label>
                 <input
+                    className="form-input form-input-readonly"
                     type="email"
                     id="email"
                     name="email"
@@ -124,20 +119,20 @@ const AccountSettingsForm = () => {
                     readOnly
                 />
 
-                {/* Password */}
                 <label htmlFor="password">Password (Leave blank to keep the same)</label>
                 <input
+                    className="form-input"
                     type="password"
                     id="password"
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                {passwordError && <div className="error-message">{passwordError}</div>}
+                {passwordError && <div className="form-error-message">{passwordError}</div>}
 
-                {/* Company */}
                 <label htmlFor="company">Company</label>
                 <input
+                    className="form-input"
                     type="text"
                     id="company"
                     name="company"
@@ -145,32 +140,30 @@ const AccountSettingsForm = () => {
                     onChange={(e) => setCompany(e.target.value)}
                 />
 
-                {/* Phone Number */}
                 <label htmlFor="phoneNumber">Phone Number</label>
                 <input
+                    className="form-input"
                     type="text"
                     id="phoneNumber"
                     name="phoneNumber"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
-                {phoneError && <div className="error-message">{phoneError}</div>}
+                {phoneError && <div className="form-error-message">{phoneError}</div>}
 
-                {/* Form Footer with Button */}
                 <div className="form-footer">
-                    <button type="submit" className="list-form-button">Update Account</button>
+                    <button type="submit" className="form-button">Update Account</button>
                 </div>
 
-                {/* Error and Success Messages */}
-                {error && <div className="error-message">{error}</div>}
-                {isSuccessVisible && <div className="success-popup">{successMessage}</div>}
+                {error && <div className="form-error-message">{error}</div>}
+                {isSuccessVisible && <div className="form-success-popup">{successMessage}</div>}
             </form>
-        </div>
         </div>
     );
 };
 
 export default AccountSettingsForm;
+
 
 
 

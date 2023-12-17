@@ -1,4 +1,4 @@
-.form-container {
+.general-form-container {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #555;
     background-color: #f8f8f8;
@@ -9,110 +9,128 @@
     padding: 20px;
 }
 
-.form-container .form input {
+.specific-form-container {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #555;
-    background-color: #fff; /* Background color for input fields */
-    border: 1px solid #ddd; /* Border for input fields */
-    border-radius: 4px; /* Border radius for input fields */
-    padding: 12px; /* Padding for input fields */
-    margin-bottom: 20px; /* Margin bottom for input fields */
-    font-size: 16px; /* Font size for input fields */
-    width: calc(100% - 24px); /* Full width minus padding */
-}
-
-.form-container .form input:read-only {
-    background-color: #fff; /* Same background as other inputs */
-    color: #333; /* Same text color as other inputs */
-    cursor: default; /* Default cursor for read-only fields */
+    background-color: #f8f8f8;
+    border-radius: 4px;
+    margin: auto;
+    padding: 20px;
 }
 
 .form-title {
-    font-size: 16px;
+    font-size: 24px;
     color: #00346bd1;
-}
-
-.form-container h2 {
     text-align: center;
-}
-
-.form-container .form {
-    padding: 20px;
-    margin: 0 auto;
-}
-
-.form-container .form label {
-    display: block;
-    margin-bottom: 10px;
-}
-
-.form-container .form input[type="text"],
-.form-container .form input[type="password"] {
-    width: calc(100% - 20px);
-    padding: 12px;
     margin-bottom: 20px;
+}
+
+.form-input {
+    background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 4px;
+    padding: 12px;
+    margin-bottom: 20px;
     font-size: 16px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.form-container .button {
+.form-input-readonly {
+    background-color: #f8f8f8;
+    color: #333;
+    cursor: default;
+}
+
+.form-button {
     background-color: #00346bd1;
     color: white;
-    border: 2px solid #fff;
+    border: none;
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
     border-radius: 4px;
+    text-align: center;
+    display: inline-block;
 }
 
-.form-container .button:hover {
+.form-button:hover {
     background-color: white;
     color: #00346bd1;
-    border-color: #00346bd1;
+    border: 1px solid #00346bd1;
 }
 
-.form-container .form-footer {
-    font-size: 16px;
+.form-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: 20px;
 }
 
-.form-container .link {
-    color: #00346bd1;
-    text-decoration: none;
-}
-
-.form-container .link:hover {
-    text-decoration: underline;
-}
-
-.form-container .error-message {
+.form-error-message {
     color: red;
     text-align: center;
 }
 
-.form-container .additional-section {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.success-popup {
+.form-success-popup {
     background-color: #4caf50;
     color: white;
     padding: 10px 20px;
     border-radius: 4px;
     text-align: center;
-    font-size: 16px;
     margin: 10px auto;
     width: fit-content;
 }
 
-.form-centered-bold-black {
+.form-additional-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.form-centered-bold {
     text-align: center;
     font-weight: bold;
     color: black;
 }
+
+/* Section des questions du formulaire */
+.form-question {
+    margin-bottom: 20px; /* Espace entre chaque bloc de question */
+}
+
+/* Label pour chaque question du formulaire */
+.form-question > label {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-weight: bold; /* Rend le texte de la question en gras */
+    margin-bottom: 5px; /* Espace entre la question et les réponses */
+}
+
+/* Liste des réponses */
+.answer-list {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+/* Élément de réponse */
+.answer-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px; /* Espace entre les éléments de réponse */
+    font-weight: normal; /* Assure que le texte de la réponse n'est pas en gras */
+}
+
+/* Case à cocher pour les réponses de type radio */
+.answer-item input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Ligne de séparation après la dernière réponse de chaque question */
+.answer-item:last-child {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 10px; /* Espacement au-dessus de la ligne */
+}
+
 
