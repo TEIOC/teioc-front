@@ -98,7 +98,7 @@ const TakeSurveyForm = () => {
 
     return (
         <div>
-            <h2 className="general-form-title">Take Survey: {survey.name || 'Loading...'}</h2>
+            <h2 className="specific-form-title">Take Survey: {survey.name || 'Loading...'}</h2>
             <div className="specific-form-container">
                 <form onSubmit={handleSubmitSurvey}>
                     {renderQuestions()}
