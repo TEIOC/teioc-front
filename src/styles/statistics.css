@@ -1,4 +1,3 @@
-/* Add or update your statistics.css with the following styles */
 .container {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -11,6 +10,8 @@
 }
 
 .content-area {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
     background-color: #f8f8f8;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
@@ -18,6 +19,7 @@
 }
 
 .statistics-card {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 10px;
@@ -26,6 +28,8 @@
 }
 
 .chart-container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
     margin-bottom: 20px;
 }
 

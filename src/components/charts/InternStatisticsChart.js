@@ -70,9 +70,10 @@ const InternStatisticsChart = () => {
     };
 
     return (
-        <div className="container max-width-600">
-            <h2 className="page-title">Intern Statistics</h2>
-            <div className="content-area">
+        <div>
+        <h2 className="page-title">Results and Statistics</h2>
+
+            <div>
                 <div className="statistics-card">
                     <h3>Overall Performance</h3>
                     <p>{overallPerformance}</p>
@@ -82,15 +83,15 @@ const InternStatisticsChart = () => {
                     <p>{individualPerformance}</p>
                 </div>
                 <div className="chart-container">
-                    <h3>Topic-wise Performance</h3>
-                    <Bar data={formatChartData(topicWisePerformanceData)} />
-                </div>
-                <div className="chart-container">
-                    <h3>Topic-wise Performance for Intern</h3>
+                    <h3>Personal Topic-wise Performance</h3>
                     <Bar data={formatChartData(topicWisePerformanceForInternData)} />
                 </div>
                 <div className="chart-container">
-                    <h3>Survey-wise Performance</h3>
+                    <h3>Overall Topic-wise Performance</h3>
+                    <Bar data={formatChartData(topicWisePerformanceData)} />
+                </div>
+                <div className="chart-container">
+                    <h3>Overall Survey-wise Performance</h3>
                     <Bar data={formatChartData(surveyWisePerformanceData)} />
                 </div>
             </div>
