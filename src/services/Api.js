@@ -116,9 +116,9 @@ export const fetchSurveys = async () => {
 
 export const fetchQuestionsAndAnswersForSurvey = async (survey_id) => {
 	try {
-		console.log('Fetching questions and answers for survey:', survey_id); // Log the survey_id being fetched
+		console.log('Fetching questions and answers for survey:', survey_id);
 		const response = await axiosInstance.get(`/questions/surveys/${survey_id}/with-answers`);
-		console.log('Received response for questions and answers:', response.data); // Log the response data
+		console.log('Received response for questions and answers:', response.data);
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching questions and answers:', error);
@@ -128,7 +128,7 @@ export const fetchQuestionsAndAnswersForSurvey = async (survey_id) => {
 
 export const createPathway = async (intern_id, survey_id, duration) => {
 	try {
-		console.log('Sending Duration to Backend:', duration); // Add this line
+		console.log('Sending Duration to Backend:', duration);
 		const response = await axiosInstance.post('/pathways', { intern_id, survey_id, duration });
 		return response.data;
 	} catch (error) {
@@ -139,7 +139,6 @@ export const createPathway = async (intern_id, survey_id, duration) => {
 
 
 export const saveInternAnswers = async (answers) => {
-	// answers should be an array of objects with intern_id, survey_id, and answer_id
 	try {
 		const response = await axiosInstance.post('/pathwayanswers/save-answers', answers);
 		return response.data;

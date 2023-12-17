@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/form.css'; // Use the same CSS file as LoginForm and ForgotPasswordForm
+import '../../styles/form.css';
 import axiosInstance from '../../services/AxiosInstance';
 
 function RegisterForm() {
@@ -59,7 +59,6 @@ function RegisterForm() {
             return;
         }
 
-        // Centralized Axios call for user registration
         try {
             const name = `${firstName} ${lastName}`;
 

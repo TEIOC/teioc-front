@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import '../../styles/form.css'; // Use the same CSS file as LoginForm, ForgotPasswordForm, and RegisterForm
+import '../../styles/form.css';
 import { fetchInternById } from '../../services/Api';
 import axiosInstance from '../../services/AxiosInstance';
 

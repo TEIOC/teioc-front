@@ -9,7 +9,7 @@ import {
     fetchSurveyWisePerformance
 } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
-import '../../styles/chart.css'; // Keep your existing styles for the chart
+import '../../styles/chart.css';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
