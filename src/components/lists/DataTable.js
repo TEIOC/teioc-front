@@ -2,12 +2,9 @@
 import React, { useEffect, useRef } from "react";
 import $ from "jquery";
 import "datatables.net-dt/css/jquery.dataTables.css";
-import { useNavigate } from "react-router-dom";
 
 const DataTable = ({ data, columnsToShow, columnTitles, onRowClick, redirectOnClick }) => {
     const tableRef = useRef(null);
-    const navigate = useNavigate();
-
     useEffect(() => {
         const dataTable = $(tableRef.current).DataTable({
             data: data,

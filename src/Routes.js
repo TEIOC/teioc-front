@@ -2,21 +2,17 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
-import InternHomePage from "./pages/InternAvailableSurveyPage";
 import RegisterPage from "./pages/RegisterPage";
 import ActivateInternPage from "./pages/ActivateInternPage";
 import ForgotPasswordPage from "./pages/ForgotPasswordPage";
 import ResetPasswordPage from "./pages/ResetPasswordPage";
-import InternPathwaysPage from "./pages/InternCompletedSurveyPage"
 import DeactivateInternPage from "./pages/DeactivateInternPage";
-import AccountSettingsForm from "./components/forms/AccountSettingsForm";
 import AccountSettingsPage from "./pages/AccountSettingsPage";
 import InternAvailableSurveyPage from "./pages/InternAvailableSurveyPage";
 import InternCompletedSurveyPage from "./pages/InternCompletedSurveyPage";
 import InternAllSurveyPage from "./pages/InternAllSurveyPage";
 import TakeSurveyPage from "./pages/TakeSurveyPage";
 import ConfirmTakeSurveyPage from "./pages/ConfirmTakeSurveyPage";
-import InternStatisticsChart from "./components/charts/InternStatisticsChart";
 import InternStatisticsPage from "./pages/InternStatisticsPage";
 
 function AppRoutes() {

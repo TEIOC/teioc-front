@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import '../../styles/list-form.css'; // Ensure this is the correct path to your CSS file
 import { updateIntern } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
@@ -20,7 +19,6 @@ const AccountSettingsForm = () => {
     const [passwordError, setPasswordError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [isSuccessVisible, setIsSuccessVisible] = useState(false);
-    const navigate = useNavigate();
 
     const intern = GetLoggedinIntern();
 

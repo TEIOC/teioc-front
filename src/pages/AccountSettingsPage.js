@@ -4,8 +4,8 @@ import NavBar from "../components/navigation/NavBar";
 import Separator from "../components/navigation/Separator";
 import InternHomeSidebar from "../components/navigation/InternHomeSidebar";
 import { logout } from "../services/AuthService";
-import CompletedSurveyList from "../components/lists/CompletedSurveyList";
 import AccountSettingsForm from "../components/forms/AccountSettingsForm";
+
 function AccountSettingsPage({ internName }) {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const navigate = useNavigate();
