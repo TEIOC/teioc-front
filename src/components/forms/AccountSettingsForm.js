@@ -92,6 +92,7 @@ const AccountSettingsForm = () => {
         try {
             await deactivateIntern(intern.id);
             setIsActivated(false); // Update the activation status in the local state after successful deactivation
+            window.location.reload(); // Refresh the page
         } catch (error) {
             console.error('Error deactivating account:', error);
             setError('Failed to deactivate account.');
@@ -102,11 +103,13 @@ const AccountSettingsForm = () => {
         try {
             await activateIntern(intern.id);
             setIsActivated(true); // Update the activation status in the local state after successful activation
+            window.location.reload(); // Refresh the page
         } catch (error) {
             console.error('Error activating account:', error);
             setError('Failed to activate account.');
         }
     };
+
 
     return (
         <div className="specific-form-container">
