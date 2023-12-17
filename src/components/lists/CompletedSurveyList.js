@@ -3,6 +3,7 @@ import { fetchPathwaysForIntern, fetchSurveyById } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import { useNavigate } from 'react-router-dom';
 import DataTable_2 from "./DataTable_2";
+import '../../styles/list.css';
 
 function CompletedSurveyList() {
     const [completedSurveys, setCompletedSurveys] = useState([]);
@@ -30,9 +31,7 @@ function CompletedSurveyList() {
         if (intern && intern.id) {
             fetchPathwaysForIntern(intern.id)
                 .then(async pathways => {
-                    console.log('Pathways:', pathways); // Log pathways data
                     const surveysWithData = await fetchSurveys(pathways);
-                    console.log('Surveys with data:', surveysWithData); // Log surveysWithData
                     setCompletedSurveys(surveysWithData);
                 })
                 .catch(error => console.error('Error fetching pathways:', error));
@@ -40,7 +39,6 @@ function CompletedSurveyList() {
     }, [intern]);
 
     const handleRowClick = (rowData) => {
-        console.log('rowData:', rowData);
         if (rowData && rowData.survey_id) {
             navigate(`/completed-assessments-details/${intern.id}/${rowData.survey_id}`);
         } else {
@@ -51,7 +49,6 @@ function CompletedSurveyList() {
     return (
         <div>
             <h2>Completed Surveys</h2>
-            {/* Replace the table code with DataTable */}
             <DataTable_2
                 data={completedSurveys}
                 columnsToShow={['surveyName', 'score', 'duration']}
@@ -64,6 +61,7 @@ function CompletedSurveyList() {
 }
 
 export default CompletedSurveyList;
+
 
 
 

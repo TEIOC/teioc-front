@@ -1,17 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import {useNavigate} from "react-router-dom";
 import DataTable from './DataTable';
 import { fetchAvailableSurveys, fetchTopics } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
-import '../../styles/datatable.css';
+import '../../styles/list.css';
 
 function AvailableSurveyList() {
     const [surveysWithTopics, setSurveysWithTopics] = useState([]);
     const intern = GetLoggedinIntern();
-    const navigate = useNavigate(); // Hook for programmatic navigation
+    const navigate = useNavigate();
 
     const handleTakeSurvey = (survey_id) => {
-        // Navigate to the ConfirmTakeSurveyPage with the survey ID
         navigate(`/confirm-take-assessment/${survey_id}`);
     };
 
@@ -46,7 +45,7 @@ function AvailableSurveyList() {
                 data={surveysWithTopics}
                 columnsToShow={['topicName', 'name']}
                 columnTitles={{ topicName: 'Topic', name: 'Survey' }}
-                redirectOnClick={true} // Enable row-click redirects
+                redirectOnClick={true}
                 onRowClick={(survey_id) => {
                     handleTakeSurvey(survey_id);
                 }}
@@ -56,3 +55,4 @@ function AvailableSurveyList() {
 }
 
 export default AvailableSurveyList;
+
