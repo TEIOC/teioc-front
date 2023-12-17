@@ -36,10 +36,9 @@ function AppRoutes() {
             <Route path="/available-assessments" element={<InternAvailableSurveyPage />} />
             <Route path="/completed-assessments" element={<InternCompletedSurveyPage />} />
             <Route path="/completed-assessments-details/:intern_id/:survey_id" element={<InternCompletedSurveyDetailsPage />} />
-
             <Route path="/confirm-take-assessment/:survey_id" element={<ConfirmTakeSurveyPage />} />
             <Route path="/take-assessment/:survey_id" element={<TakeSurveyPage />} />
-                <Route path="/statistics" element={<InternStatisticsPage />} />
+            <Route path="/statistics" element={<InternStatisticsPage />} />
         </Routes>
     );
 }

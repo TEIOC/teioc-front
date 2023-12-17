@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/sidebar.css';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
-import DefaultProfilePic from '../../../public/DefaultProfilePic.png';
+import DefaultProfilePic from '../../styles/DefaultProfilePic.png';
 
 const InternHomeSidebar = () => {
     const intern = GetLoggedinIntern();
