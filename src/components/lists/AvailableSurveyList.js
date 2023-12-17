@@ -10,9 +10,9 @@ function AvailableSurveyList() {
     const intern = GetLoggedinIntern();
     const navigate = useNavigate(); // Hook for programmatic navigation
 
-    const handleTakeSurvey = (surveyId) => {
+    const handleTakeSurvey = (survey_id) => {
         // Navigate to the ConfirmTakeSurveyPage with the survey ID
-        navigate(`/confirm-take-assessment/${surveyId}`);
+        navigate(`/confirm-take-assessment/${survey_id}`);
     };
 
     useEffect(() => {
@@ -47,8 +47,8 @@ function AvailableSurveyList() {
                 columnsToShow={['topicName', 'name']}
                 columnTitles={{ topicName: 'Topic', name: 'Survey' }}
                 redirectOnClick={true} // Enable row-click redirects
-                onRowClick={(surveyId) => {
-                    handleTakeSurvey(surveyId);
+                onRowClick={(survey_id) => {
+                    handleTakeSurvey(survey_id);
                 }}
             />
         </div>
