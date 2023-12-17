@@ -167,3 +167,53 @@ export const fetchSurveyById = async (surveyId) => {
 	}
 };
 
+export const fetchOverallPerformance = async () => {
+	try {
+		const response = await axiosInstance.get('/pathways/statistics/overall-performance');
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching overall performance:', error);
+		throw error;
+	}
+};
+
+export const fetchSurveyWisePerformance = async () => {
+	try {
+		const response = await axiosInstance.get('/surveys/statistics/survey-performance');
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching survey-wise performance:', error);
+		throw error;
+	}
+};
+
+export const fetchIndividualPerformance = async (internId) => {
+	try {
+		const response = await axiosInstance.get(`/pathways/statistics/individual-performance/${internId}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching individual performance:', error);
+		throw error;
+	}
+};
+
+export const fetchTopicWisePerformance = async () => {
+	try {
+		const response = await axiosInstance.get('/surveys/statistics/topic-performance');
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching topic-wise performance:', error);
+		throw error;
+	}
+};
+
+export const fetchTopicWisePerformanceForIntern = async (internId) => {
+	try {
+		const response = await axiosInstance.get(`/surveys/statistics/topic-performance/${internId}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching topic-wise performance for intern:', error);
+		throw error;
+	}
+};
+

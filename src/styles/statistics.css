@@ -1,0 +1,31 @@
+/* Add or update your statistics.css with the following styles */
+.container {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.page-title {
+    font-size: 24px;
+    color: #00346bd1;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.content-area {
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 20px;
+}
+
+.statistics-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.chart-container {
+    margin-bottom: 20px;
+}
+

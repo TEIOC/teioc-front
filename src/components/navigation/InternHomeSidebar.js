@@ -18,7 +18,7 @@ const InternHomeSidebar = () => {
                 <li><Link to="/assessments">All Assessments</Link></li>
                 <li><Link to="/available-assessments">Available Assessments</Link></li>
                 <li><Link to="/completed-assessments">Completed Assessments</Link></li>
-                <li><Link to="/results">Results</Link></li>
+                <li><Link to="/statistics">Results and statistics</Link></li>
                 {isActivated ? (
                     <li><Link to={`/deactivate/${id}`}>Deactivate my account</Link></li>
                 ) : (
