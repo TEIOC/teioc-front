@@ -3,24 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import '../../styles/form.css';
 import { fetchSurveyById } from '../../services/Api';
 
-const ConfirmTakeSurveyForm = ({ surveyId }) => {
+const ConfirmTakeSurveyForm = ({ survey_id }) => {
     const navigate = useNavigate();
     const [survey, setSurvey] = useState(null);
 
     useEffect(() => {
         // Fetch the survey by ID when the component mounts
-        fetchSurveyById(surveyId)
+        fetchSurveyById(survey_id)
             .then((surveyData) => {
                 setSurvey(surveyData);
             })
             .catch((error) => {
                 console.error('Error fetching survey by ID:', error);
             });
-    }, [surveyId]);
+    }, [survey_id]);
 
     const handleAgree = () => {
         // Handle the "Agree" action here, e.g., navigate to take-assessments
-        navigate(`/take-assessment/${surveyId}`);
+        navigate(`/take-assessment/${survey_id}`);
     };
 
     const handleRefuse = () => {

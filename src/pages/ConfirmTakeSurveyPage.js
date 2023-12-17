@@ -24,7 +24,7 @@ function ConfirmTakeSurveyPage() {
             <div className="layout-container">
                 <InternHomeSidebar />
                 <div className="content-area">
-                    <ConfirmTakeSurveyForm surveyId={survey_id} />
+                    <ConfirmTakeSurveyForm survey_id={survey_id} />
                 </div>
             </div>
         </div>
