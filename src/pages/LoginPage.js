@@ -9,6 +9,7 @@ function LoginPage() {
 
 	const handleLoginSuccess = (userData) => {
 		localStorage.setItem("jwt", userData.token);
+		localStorage.setItem("refreshToken", userData.refreshToken);
 
 		navigate("/available-assessments", { state: { internName: userData.name } });
 	};
