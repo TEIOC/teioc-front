@@ -1,33 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import {
-    Chart as ChartJS,
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-} from 'chart.js';
+import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import {
     fetchOverallPerformance,
     fetchIndividualPerformance,
     fetchTopicWisePerformance,
-    fetchTopicWisePerformanceForIntern, // Make sure this is imported
+    fetchTopicWisePerformanceForIntern,
     fetchSurveyWisePerformance
 } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
-import '../../styles/statistics.css';
+import '../../styles/chart.css'; // Keep your existing styles for the chart
 
-// Register ChartJS components
-ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend
-);
+ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const InternStatisticsChart = () => {
     const intern = GetLoggedinIntern();
@@ -70,8 +54,8 @@ const InternStatisticsChart = () => {
     };
 
     return (
-        <div>
-        <h2 className="page-title">Results and Statistics</h2>
+        <div className="statistics-container">
+            <h2 className="statistics-title">Results and Statistics</h2>
 
             <div>
                 <div className="statistics-card">
@@ -83,7 +67,7 @@ const InternStatisticsChart = () => {
                     <p>{individualPerformance}</p>
                 </div>
                 <div className="chart-container">
-                    <h3>Personal Topic-wise Performance</h3>
+                    <h3>Individual Topic-wise Performance</h3>
                     <Bar data={formatChartData(topicWisePerformanceForInternData)} />
                 </div>
                 <div className="chart-container">
@@ -100,6 +84,7 @@ const InternStatisticsChart = () => {
 };
 
 export default InternStatisticsChart;
+
 
 
 

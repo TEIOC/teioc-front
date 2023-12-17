@@ -15,13 +15,23 @@
     background-color: #f8f8f8;
     border-radius: 4px;
     margin: auto;
-    padding: 20px;
+    padding: 0px;
 }
 
-.form-title {
+
+.general-form-title {
     font-size: 24px;
     color: #00346bd1;
     text-align: center;
+    margin-bottom: 20px;
+}
+
+.specific-form-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 24px;
+    color: #00346bd1;
+    text-align: left;
+    padding: 0;
     margin-bottom: 20px;
 }
 

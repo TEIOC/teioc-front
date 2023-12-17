@@ -32,10 +32,10 @@ const ConfirmTakeSurveyForm = ({ survey_id }) => {
         <div className="specific-form-container">
             {survey && (
                 <div>
-                    <h2 className="form-title">
+                    <h2 className="general-form-title">
                         Are you ready to take the following assessment:
                     </h2>
-                    <h2 className="form-title">{survey.name}?</h2>
+                    <h2 className="general-form-title">{survey.name}?</h2>
                 </div>
             )}
             <form className="specific-form-container">

@@ -87,7 +87,7 @@ const AccountSettingsForm = () => {
 
     return (
         <div className="specific-form-container ">
-            <h2 className="form-title">Account Settings</h2>
+            <h2 className="specific-form-title">Account Settings</h2>
             <form onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
                 <input

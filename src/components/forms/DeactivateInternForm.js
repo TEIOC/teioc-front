@@ -31,7 +31,7 @@ const DeactivateInternPage = () => {
 
     return (
         <div className="general-form-container">
-            <div className="form-title">
+            <div className="general-form-title">
                 <h2>Account Deactivation</h2>
             </div>
             {error && <div className="form-error-message">{error}</div>}

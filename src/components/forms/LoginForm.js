@@ -26,7 +26,7 @@ function LoginForm({ onLoginSuccess }) {
 
 	return (
 		<div className="general-form-container">
-			<h2 className="form-title">Login</h2>
+			<h2 className="general-form-title">Login</h2>
 			<form className="form" onSubmit={handleLoginClick}>
 				<label htmlFor="email">Email</label>
 				<input
