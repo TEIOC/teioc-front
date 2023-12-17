@@ -22,7 +22,7 @@ function InternCompletedSurveyDetailsList() {
 
     return (
         <div>
-            <h2>Survey Details: {surveyName}</h2>
+            <h2 className="page-title">Completed Assessment Details: {surveyName}</h2>
             {surveyDetails.map((detail, index) => (
                 <div key={index}>
                     <p className="detail-title">Question: {detail.questionText}</p>

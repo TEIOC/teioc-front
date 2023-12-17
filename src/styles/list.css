@@ -81,10 +81,12 @@
 }
 
 .details, .detail-item {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin-top: 10px;
 }
 
 .detail-item {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 10px;
@@ -93,10 +95,12 @@
 }
 
 .detail-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: bold;
 }
 
 .detail-content {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin-left: 10px;
 }
 
