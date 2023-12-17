@@ -1,29 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { fetchCompletedSurveyDetails } from '../services/Api';
-
-function InternCompletedSurveyDetailsPage() {
-    const [surveyDetails, setSurveyDetails] = useState([]);
-    const { intern_id, survey_id } = useParams();
-
-    useEffect(() => {
-        if (intern_id && survey_id) {
-            fetchCompletedSurveyDetails(intern_id, survey_id)
-                .then(setSurveyDetails)
-                .catch(error => console.error('Error fetching survey details:', error));
-        }
-    }, [intern_id, survey_id]);
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import NavBar from "../components/navigation/NavBar";
+import Separator from "../components/navigation/Separator";
+import InternHomeSidebar from "../components/navigation/InternHomeSidebar";
+import { logout } from "../services/AuthService";
+import CompletedSurveyList from "../components/lists/CompletedSurveyList";
+import InternCompletedSurveyDetailsList from "../components/lists/InternCompletedSurveyDetailsList";
+function InternCompletedSurveyDetailsPage({ internName }) {
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
+    const navigate = useNavigate();
+    const handleLogout = () => {
+        setIsLoggedIn(false);
+        logout();
+        navigate("/login");
+    };
 
     return (
         <div>
-            <h2>Survey Details</h2>
-            {surveyDetails.map((detail, index) => (
-                <div key={index}>
-                    <p>Question: {detail.questionText}</p>
-                    <p>Your Answer: {detail.selectedAnswerText}</p>
-                    <p>Correct Answer: {detail.correctAnswerText}</p>
+            <NavBar isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+            <Separator />
+            <div className="layout-container">
+                <InternHomeSidebar />
+                <div className="content-area">
+                    <InternCompletedSurveyDetailsList />
                 </div>
-            ))}
+            </div>
         </div>
     );
 }
