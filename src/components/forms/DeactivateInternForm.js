@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { deactivateIntern } from '../../services/Api';
+import { deactivateIntern, updateLastConnection } from '../../services/Api';
 import '../../styles/form.css';
 
 const DeactivateInternPage = () => {
@@ -10,7 +10,7 @@ const DeactivateInternPage = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        deactivateIntern(id)
+        handleDeactivate(id)
             .then(() => {
                 setSuccessMessage('Your account has been successfully deactivated.');
                 setIsSuccessVisible(true);
@@ -28,6 +28,16 @@ const DeactivateInternPage = () => {
                 }
             });
     }, [id]);
+
+    const handleDeactivate = async (id) => {
+        try {
+            await deactivateIntern(id);
+            await updateLastConnection(parseInt(id));
+        } catch (error) {
+            console.error('Error deactivating account:', error);
+            setError('Failed to deactivate account.');
+        }
+    };
 
     return (
         <div className="general-form-container">

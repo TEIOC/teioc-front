@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { activateIntern } from '../../services/Api';
+import { activateIntern, updateLastConnection } from '../../services/Api';
 import '../../styles/form.css';
 
 const ActivateInternPage = () => {
@@ -10,7 +10,7 @@ const ActivateInternPage = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        activateIntern(id)
+        handleActivate(id)
             .then(() => {
                 setSuccessMessage('Your account has been successfully activated.');
                 setIsSuccessVisible(true);
@@ -28,6 +28,16 @@ const ActivateInternPage = () => {
                 }
             });
     }, [id]);
+
+    const handleActivate = async (id) => {
+        try {
+            await activateIntern(id);
+            await updateLastConnection(parseInt(id));
+        } catch (error) {
+            console.error('Error activating account:', error);
+            setError('Failed to activate account.');
+        }
+    };
 
     return (
         <div className="general-form-container">
