@@ -15,7 +15,6 @@ import '../../styles/chart.css';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const InternStatisticsChart = () => {
-
     const intern = GetLoggedinIntern();
 
     const [overallPerformance, setOverallPerformance] = useState(null);
@@ -25,9 +24,8 @@ const InternStatisticsChart = () => {
     const [surveyWisePerformanceData, setSurveyWisePerformanceData] = useState({});
     const [surveyPerformanceForIntern, setSurveyPerformanceForIntern] = useState({});
 
-
     useEffect(() => {
-        const loadStatistics = async () => {
+        const fetchData = async () => {
             const overallPerf = await fetchOverallPerformance();
             const individualPerf = await fetchIndividualPerformance(intern.id);
             const topicPerf = await fetchTopicWisePerformance();
@@ -44,20 +42,42 @@ const InternStatisticsChart = () => {
         };
 
         if (intern && intern.id) {
-            loadStatistics();
+            fetchData();
         }
     }, [intern]);
 
-    const formatScoreChartData = (data) => {
-        return {
-            labels: Object.keys(data),
-            datasets: [{
-                label: 'Average Score',
-                data: Object.values(data),
-                backgroundColor: 'rgba(53, 162, 235, 0.5)',
-            }],
-        };
-    };
+    const createChartOptions = (xAxisLabel) => ({
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: xAxisLabel,
+                },
+                beginAtZero: true,
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'Values',
+                },
+                beginAtZero: true,
+                ticks: {
+                    stepSize: 1,
+                    max: 10,
+                    min: 0,
+                },
+            },
+        },
+    });
+
+    const formatScoreChartData = (data) => ({
+        labels: Object.keys(data),
+        datasets: [{
+            label: 'Average Score',
+            data: Object.values(data),
+            backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        }],
+    });
 
     const formatScoreDurationChartData = (data) => {
         const labels = Object.keys(data);
@@ -81,8 +101,6 @@ const InternStatisticsChart = () => {
         };
     };
 
-
-
     return (
         <div className="statistics-container">
             <h2 className="statistics-title">Results and Statistics</h2>
@@ -96,21 +114,27 @@ const InternStatisticsChart = () => {
                     <h3>Individual Performance</h3>
                     <p>{individualPerformance}</p>
                 </div>
+            </div>
+
+            <div className="chart-row">
                 <div className="chart-container">
-                    <h3>Survey Performance for Intern</h3>
-                    <Bar data={formatScoreDurationChartData(surveyPerformanceForIntern)} />
+                    <h3>Individual Topic-wise Performance</h3>
+                    <Bar data={formatScoreDurationChartData(topicWisePerformanceForIntern)} options={createChartOptions('Topics')} />
                 </div>
                 <div className="chart-container">
-                    <h3>Topic Performance for Intern</h3>
-                    <Bar data={formatScoreDurationChartData(topicWisePerformanceForIntern)} />
+                    <h3>Individual Survey-wise Performance</h3>
+                    <Bar data={formatScoreDurationChartData(surveyPerformanceForIntern)} options={createChartOptions('Surveys')} />
                 </div>
+            </div>
+
+            <div className="chart-row">
                 <div className="chart-container">
                     <h3>Overall Topic-wise Performance</h3>
-                    <Bar data={formatScoreChartData(topicWisePerformanceData)} />
+                    <Bar data={formatScoreChartData(topicWisePerformanceData)} options={createChartOptions('Topics')} />
                 </div>
                 <div className="chart-container">
                     <h3>Overall Survey-wise Performance</h3>
-                    <Bar data={formatScoreChartData(surveyWisePerformanceData)} />
+                    <Bar data={formatScoreChartData(surveyWisePerformanceData)} options={createChartOptions('Surveys')} />
                 </div>
             </div>
         </div>
@@ -118,7 +142,3 @@ const InternStatisticsChart = () => {
 };
 
 export default InternStatisticsChart;
-
-
-
-

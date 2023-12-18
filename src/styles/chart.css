@@ -32,6 +32,13 @@
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    max-width: calc(50% - 10px);
 }
 
+.chart-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
 
