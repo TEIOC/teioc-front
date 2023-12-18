@@ -218,6 +218,27 @@ export const fetchTopicWisePerformanceForIntern = async (intern_id) => {
 	}
 };
 
+export const fetchSurveyPerformanceForIntern = async (internId) => {
+	try {
+		const response = await axiosInstance.get(`/statistics/survey-performance/intern/${internId}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching survey performance for intern:', error);
+		throw error;
+	}
+};
+
+export const fetchTopicPerformanceForIntern = async (internId) => {
+	try {
+		const response = await axiosInstance.get(`/statistics/topic-performance/intern/${internId}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching topic performance for intern:', error);
+		throw error;
+	}
+};
+
+
 export const updateLastConnection = async (id) => {
 	if (typeof id !== 'number') {
 		console.error('Invalid ID type:', id);
