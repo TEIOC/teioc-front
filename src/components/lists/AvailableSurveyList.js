@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 import DataTable from './DataTable';
 import { fetchAvailableSurveys, fetchTopics } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
@@ -8,6 +8,7 @@ import '../../styles/list.css';
 function AvailableSurveyList() {
     const [surveysWithTopics, setSurveysWithTopics] = useState([]);
     const intern = GetLoggedinIntern();
+    const isActivated = intern ? intern.status : '';
     const navigate = useNavigate();
 
     const handleTakeSurvey = (rowData) => {
@@ -50,7 +51,7 @@ function AvailableSurveyList() {
                 columnsToShow={['topicName', 'name']}
                 columnTitles={{ topicName: 'Topic', name: 'Survey' }}
                 redirectOnClick={true}
-                onRowClick={handleTakeSurvey}
+                onRowClick={isActivated ? handleTakeSurvey : () => { }}
             />
         </div>
     );
