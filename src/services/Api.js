@@ -170,7 +170,7 @@ export const fetchSurveyById = async (survey_id) => {
 
 export const fetchOverallPerformance = async () => {
 	try {
-		const response = await axiosInstance.get('/pathways/statistics/overall-performance');
+		const response = await axiosInstance.get('/statistics/overall-performance');
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching overall performance:', error);
@@ -180,7 +180,7 @@ export const fetchOverallPerformance = async () => {
 
 export const fetchSurveyWisePerformance = async () => {
 	try {
-		const response = await axiosInstance.get('/surveys/statistics/survey-performance');
+		const response = await axiosInstance.get('/statistics/survey-performance');
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching survey-wise performance:', error);
@@ -190,7 +190,7 @@ export const fetchSurveyWisePerformance = async () => {
 
 export const fetchIndividualPerformance = async (intern_id) => {
 	try {
-		const response = await axiosInstance.get(`/pathways/statistics/individual-performance/${intern_id}`);
+		const response = await axiosInstance.get(`/statistics/individual-performance/${intern_id}`);
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching individual performance:', error);
@@ -200,7 +200,7 @@ export const fetchIndividualPerformance = async (intern_id) => {
 
 export const fetchTopicWisePerformance = async () => {
 	try {
-		const response = await axiosInstance.get('/surveys/statistics/topic-performance');
+		const response = await axiosInstance.get('/statistics/topic-performance');
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching topic-wise performance:', error);
@@ -210,7 +210,7 @@ export const fetchTopicWisePerformance = async () => {
 
 export const fetchTopicWisePerformanceForIntern = async (intern_id) => {
 	try {
-		const response = await axiosInstance.get(`/surveys/statistics/topic-performance/${intern_id}`);
+		const response = await axiosInstance.get(`/statistics/topic-performance/${intern_id}`);
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching topic-wise performance for intern:', error);
