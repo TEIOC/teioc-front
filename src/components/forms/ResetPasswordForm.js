@@ -44,7 +44,7 @@ const ResetPasswordForm = () => {
         }
 
         try {
-            const response = await axiosInstance.post('/email/reset-password', {
+            const response = await axiosInstance.post('/interns/reset-password', {
                 email,
                 password,
             });
