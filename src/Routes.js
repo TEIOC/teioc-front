@@ -20,12 +20,14 @@ import InternStatisticsChart from "./components/charts/InternStatisticsChart";
 import InternStatisticsPage from "./pages/InternAccountPages/InternStatisticsPage";
 import InternCompletedSurveyDetailsList from "./components/lists/InternCompletedSurveyDetailsList";
 import InternCompletedSurveyDetailsPage from "./pages/InternAccountPages/InternCompletedSurveyDetailsPage";
+import GuestStatisticsPage from "./pages/GuestPages/GuestStatisticsPage";
 
 function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/login" element={<LoginPage />} />
+                <Route path="/guest-statistics" element={<GuestStatisticsPage />} />
+                <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
             <Route path='/activate/:id' element={<ActivateInternPage />} />
             <Route path='/deactivate/:id' element={<DeactivateInternPage/>} />

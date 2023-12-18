@@ -6,7 +6,7 @@ import DefaultProfilePic from '../../styles/DefaultProfilePic.png';
 
 const InternHomeSidebar = () => {
     const intern = GetLoggedinIntern();
-   const isActivated = intern ? intern.status : '';
+    const isActivated = intern ? intern.status : '';
     const id = intern ? intern.id : '';
 
     return (
