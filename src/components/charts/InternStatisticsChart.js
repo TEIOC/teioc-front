@@ -5,7 +5,6 @@ import {
     fetchOverallPerformance,
     fetchIndividualPerformance,
     fetchTopicWisePerformance,
-    fetchTopicWisePerformanceForIntern,
     fetchSurveyWisePerformance,
     fetchSurveyPerformanceForIntern,
     fetchTopicPerformanceForIntern
@@ -22,7 +21,6 @@ const InternStatisticsChart = () => {
     const [overallPerformance, setOverallPerformance] = useState(null);
     const [individualPerformance, setIndividualPerformance] = useState(null);
     const [topicWisePerformanceData, setTopicWisePerformanceData] = useState({});
-    const [topicWisePerformanceForInternData, setTopicWisePerformanceForInternData] = useState({});
     const [topicWisePerformanceForIntern, setTopicWisePerformanceForIntern] = useState({});
     const [surveyWisePerformanceData, setSurveyWisePerformanceData] = useState({});
     const [surveyPerformanceForIntern, setSurveyPerformanceForIntern] = useState({});
@@ -33,7 +31,6 @@ const InternStatisticsChart = () => {
             const overallPerf = await fetchOverallPerformance();
             const individualPerf = await fetchIndividualPerformance(intern.id);
             const topicPerf = await fetchTopicWisePerformance();
-            const topicPerfForIntern = await fetchTopicWisePerformanceForIntern(intern.id);
             const surveyPerf = await fetchSurveyWisePerformance();
             const surveyPerfForIntern = await fetchSurveyPerformanceForIntern(intern.id);
             const topicWisePerformanceForIntern = await fetchTopicPerformanceForIntern(intern.id);
@@ -41,7 +38,6 @@ const InternStatisticsChart = () => {
             setOverallPerformance(overallPerf);
             setIndividualPerformance(individualPerf);
             setTopicWisePerformanceData(topicPerf);
-            setTopicWisePerformanceForInternData(topicPerfForIntern);
             setSurveyWisePerformanceData(surveyPerf);
             setSurveyPerformanceForIntern(surveyPerfForIntern);
             setTopicWisePerformanceForIntern(topicWisePerformanceForIntern);
@@ -107,10 +103,6 @@ const InternStatisticsChart = () => {
                 <div className="chart-container">
                     <h3>Topic Performance for Intern</h3>
                     <Bar data={formatScoreDurationChartData(topicWisePerformanceForIntern)} />
-                </div>
-                <div className="chart-container">
-                    <h3>Individual Topic-wise Performance</h3>
-                    <Bar data={formatScoreChartData(topicWisePerformanceForInternData)} />
                 </div>
                 <div className="chart-container">
                     <h3>Overall Topic-wise Performance</h3>
