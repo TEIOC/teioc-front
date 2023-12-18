@@ -40,12 +40,12 @@ const ConfirmTakeSurveyForm = ({ survey_id }) => {
             )}
             <form className="specific-form-container">
                 <div className="form-footer">
-                    <button className="form-button" onClick={handleAgree}>
-                        Yes
-                    </button>
-                    <span className="button-space"></span>
                     <button className="form-button" onClick={handleRefuse}>
                         No
+                    </button>
+                    <span className="button-space"></span>
+                    <button className="form-button" onClick={handleAgree}>
+                        Yes
                     </button>
                 </div>
             </form>
