@@ -28,7 +28,6 @@ const InternStatisticsChart = () => {
     const [surveyPerformanceForIntern, setSurveyPerformanceForIntern] = useState({});
 
 
-// À l'intérieur de la fonction useEffect
     useEffect(() => {
         const loadStatistics = async () => {
             const overallPerf = await fetchOverallPerformance();
@@ -38,14 +37,6 @@ const InternStatisticsChart = () => {
             const surveyPerf = await fetchSurveyWisePerformance();
             const surveyPerfForIntern = await fetchSurveyPerformanceForIntern(intern.id);
             const topicWisePerformanceForIntern = await fetchTopicPerformanceForIntern(intern.id);
-
-            console.log("Overall Performance:", overallPerf);
-            console.log("Individual Performance:", individualPerf);
-            console.log("Topic Performance:", topicPerf);
-            console.log("Topic Performance for Intern:", topicPerfForIntern);
-            console.log("Survey Performance:", surveyPerf);
-            console.log("Survey Performance for Intern:", surveyPerfForIntern);
-            console.log("Topic Performance for Intern:", topicWisePerformanceForIntern);
 
             setOverallPerformance(overallPerf);
             setIndividualPerformance(individualPerf);
@@ -61,9 +52,7 @@ const InternStatisticsChart = () => {
         }
     }, [intern]);
 
-// Dans la fonction formatScoreChartData
     const formatScoreChartData = (data) => {
-        console.log("Data for formatScoreChartData:", data);
         return {
             labels: Object.keys(data),
             datasets: [{
@@ -74,9 +63,7 @@ const InternStatisticsChart = () => {
         };
     };
 
-// Dans la fonction formatScoreDurationChartData
     const formatScoreDurationChartData = (data) => {
-        console.log("Data for formatScoreDurationChartData:", data);
         const labels = Object.keys(data);
         const scores = labels.map(label => data[label]["Average Score"]);
         const durations = labels.map(label => data[label]["Average Duration"]);
