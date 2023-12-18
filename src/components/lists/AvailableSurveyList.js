@@ -44,16 +44,17 @@ function AvailableSurveyList() {
     }, [intern]);
 
     return (
-        <div className="data-table-container">
+        <div className={`data-table-container ${!isActivated ? 'not-activated' : ''}`}>
             <h2 className="page-title">Available Assessments</h2>
             <DataTable
                 data={surveysWithTopics}
                 columnsToShow={['topicName', 'name']}
                 columnTitles={{ topicName: 'Topic', name: 'Survey' }}
                 redirectOnClick={true}
-                onRowClick={isActivated ? handleTakeSurvey : () => { }}
+                onRowClick={isActivated ? handleTakeSurvey : () => {}}
             />
         </div>
+
     );
 }
 

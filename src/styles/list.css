@@ -116,4 +116,10 @@
     cursor: pointer;
 }
 
+.data-table-container.not-activated table.display tbody tr {
+    cursor: not-allowed;
+}
+
+
+
 
