@@ -24,4 +24,5 @@ export const getEmailFromToken = () => {
 
 export const logout = () => {
     localStorage.removeItem('jwt');
+    localStorage.removeItem('refreshToken');
 };

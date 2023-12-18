@@ -8,7 +8,8 @@ function LoginPage() {
 
 	const handleLoginSuccess = (userData) => {
 		localStorage.setItem("jwt", userData.token);
-		navigate("/assessments", { state: { internName: userData.name } });
+localStorage.setItem("refreshToken", userData.refreshToken);
+navigate("/assessments", { state: { internName: userData.name } });
 	};
 
 	return (
