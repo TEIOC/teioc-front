@@ -20,7 +20,7 @@ const InternHomeSidebar = () => {
                     <>
                         <li><Link to="/available-assessments">Available Assessments</Link></li>
                         <li><Link to="/completed-assessments">Completed Assessments</Link></li>
-                        <li><Link to="/statistics">Results and statistics</Link></li>
+                        <li><Link to="/statistics">Results and Statistics</Link></li>
                     </>
                 ) : null}
                 {/* {isActivated ? (
