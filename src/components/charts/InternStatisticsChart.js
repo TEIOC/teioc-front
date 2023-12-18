@@ -107,22 +107,22 @@ const InternStatisticsChart = () => {
 
             <div>
                 <div className="statistics-card">
-                    <h3>Overall Performance</h3>
+                    <h3>Overall Score Average</h3>
                     <p>{overallPerformance}</p>
                 </div>
                 <div className="statistics-card">
-                    <h3>Individual Performance</h3>
+                    <h3>Individual Score Average</h3>
                     <p>{individualPerformance}</p>
                 </div>
             </div>
 
             <div className="chart-row">
                 <div className="chart-container">
-                    <h3>Individual Topic-wise Performance</h3>
+                    <h3>Individual Topic-wise Performance (Score and Duration Averages)</h3>
                     <Bar data={formatScoreDurationChartData(topicWisePerformanceForIntern)} options={createChartOptions('Topics')} />
                 </div>
                 <div className="chart-container">
-                    <h3>Individual Survey-wise Performance</h3>
+                    <h3>Individual Survey-wise Performance (Score and Duration Averages)</h3>
                     <Bar data={formatScoreDurationChartData(surveyPerformanceForIntern)} options={createChartOptions('Surveys')} />
                 </div>
             </div>
