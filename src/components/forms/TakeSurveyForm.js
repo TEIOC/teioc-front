@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { fetchSurveyById, fetchQuestionsAndAnswersForSurvey, saveInternAnswers, createPathway, updatePathwayScore } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
-import '../../styles/take-survey-form.css'; // Import the new CSS file
+import '../../styles/form.css';
 
 const TakeSurveyForm = () => {
     const { survey_id } = useParams();
@@ -76,7 +76,7 @@ const TakeSurveyForm = () => {
 
     const renderQuestions = () => {
         return questions.map((question, index) => (
-            <div key={question.id} className="survey-question">
+            <div key={question.id} className="form-question">
                 <label>Question {index + 1}: {question.label}</label>
                 <ul className="answer-list">
                     {question.answers.map((answer) => (
@@ -98,13 +98,13 @@ const TakeSurveyForm = () => {
 
     return (
         <div>
-            <h2 className="page-title">Take Survey: {survey.name || 'Loading...'}</h2>
-            <div className="take-survey-container">
+            <h2 className="specific-form-title">Take Survey: {survey.name || 'Loading...'}</h2>
+            <div className="specific-form-container">
                 <form onSubmit={handleSubmitSurvey}>
                     {renderQuestions()}
-                    <div className="survey-footer">
-                        <button type="submit" className="survey-button">Submit</button>
-                        <button type="button" onClick={() => navigate('/available-assessments')} className="survey-button">Cancel</button>
+                    <div className="form-footer">
+                        <button type="submit" className="form-button">Submit</button>
+                        <button type="button" onClick={() => navigate('/available-assessments')} className="form-button">Cancel</button>
                     </div>
                 </form>
             </div>

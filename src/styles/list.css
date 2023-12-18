@@ -1,10 +1,36 @@
-.list {
+.base-style {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    list-style-type: none;
-    padding: 0;
+    color: #555;
+    background-color: #f8f8f8;
 }
 
-.title {
+.max-width-600 {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.layout-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.content-area {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f8f8f8;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    margin-left: 20px;
+}
+
+.page-title {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 24px;
     color: #00346bd1;
@@ -13,12 +39,23 @@
     margin-bottom: 20px;
 }
 
-.item {
+.data-table-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list-item {
     border-bottom: 1px solid #ddd;
     padding: 10px;
 }
 
-.item-header {
+.list-item-header {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -42,10 +79,12 @@
 }
 
 .details, .detail-item {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     margin-top: 10px;
 }
 
 .detail-item {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     background-color: #fff;
     border: 1px solid #ddd;
     padding: 10px;
@@ -54,15 +93,13 @@
 }
 
 .detail-title {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: bold;
 }
 
 .detail-content {
-    margin-left: 10px;
-}
-
-.list, .item, .item-header, .details, .detail-item {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-left: 10px;
 }
 
 .correct-icon {
@@ -74,4 +111,9 @@
     color: red;
     margin-left: 5px;
 }
+
+.data-table-container table.display tbody tr {
+    cursor: pointer;
+}
+
 

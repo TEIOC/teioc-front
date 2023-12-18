@@ -1,50 +1,52 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/form.css';
 import { fetchSurveyById } from '../../services/Api';
+import '../../styles/form.css';
 
-const ConfirmTakeSurveyForm = ({ surveyId }) => {
+const ConfirmTakeSurveyForm = ({ survey_id }) => {
     const navigate = useNavigate();
     const [survey, setSurvey] = useState(null);
 
     useEffect(() => {
-        // Fetch the survey by ID when the component mounts
-        fetchSurveyById(surveyId)
-            .then((surveyData) => {
+        const fetchData = async () => {
+            try {
+                const surveyData = await fetchSurveyById(survey_id);
                 setSurvey(surveyData);
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error('Error fetching survey by ID:', error);
-            });
-    }, [surveyId]);
+            }
+        };
+
+        fetchData();
+    }, [survey_id]);
 
     const handleAgree = () => {
-        // Handle the "Agree" action here, e.g., navigate to take-assessments
-        navigate(`/take-assessment/${surveyId}`);
+        navigate(`/take-assessment/${survey_id}`);
     };
 
     const handleRefuse = () => {
-        // Handle the "Refuse" action here, e.g., navigate to all assessments
         navigate('/assessments');
     };
 
     return (
-        <div className="form-container">
+        <div className="specific-form-container">
             {survey && (
                 <div>
-                    <h2 className="form-title">
-                        Are you ready to take the following assessment :
+                    <h2 className="general-form-title">
+                        Are you ready to take the following assessment:
                     </h2>
-                    <h2 className="form-title">
-                        {survey.name}?
-                    </h2>
+                    <h2 className="general-form-title">{survey.name}?</h2>
                 </div>
             )}
-            <form className="form">
+            <form className="specific-form-container">
                 <div className="form-footer">
-                    <button className="button" onClick={handleAgree}>Yes</button>
+                    <button className="form-button" onClick={handleAgree}>
+                        Yes
+                    </button>
                     <span className="button-space"></span>
-                    <button className="button" onClick={handleRefuse}>No</button>
+                    <button className="form-button" onClick={handleRefuse}>
+                        No
+                    </button>
                 </div>
             </form>
         </div>
@@ -52,5 +54,6 @@ const ConfirmTakeSurveyForm = ({ surveyId }) => {
 };
 
 export default ConfirmTakeSurveyForm;
+
 
 

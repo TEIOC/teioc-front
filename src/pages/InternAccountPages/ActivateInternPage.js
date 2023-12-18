@@ -1,9 +1,9 @@
 import { React, useState } from 'react';
-import NavBar from "../components/navigation/NavBar";
-import Separator from "../components/navigation/Separator";
-import ActivateInternForm from "../components/forms/ActivateInternForm";
+import NavBar from "../../components/navigation/NavBar";
+import Separator from "../../components/navigation/Separator";
+import ActivateInternForm from "../../components/forms/ActivateInternForm";
 import { useNavigate } from 'react-router-dom';
-import { logout } from '../services/AuthService';
+import { logout } from '../../services/AuthService';
 
 function ActivateInternPage() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);

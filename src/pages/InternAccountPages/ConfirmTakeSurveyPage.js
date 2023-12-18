@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import {useNavigate, useParams} from 'react-router-dom';
-import NavBar from '../components/navigation/NavBar';
-import Separator from '../components/navigation/Separator';
-import InternHomeSidebar from '../components/navigation/InternHomeSidebar';
-import ConfirmTakeSurveyForm from "../components/forms/ConfirmTakeSurveyForm";
-import {logout} from "../services/AuthService"; // Import your ConfirmationForm component
+import NavBar from '../../components/navigation/NavBar';
+import Separator from '../../components/navigation/Separator';
+import InternHomeSidebar from '../../components/navigation/InternHomeSidebar';
+import ConfirmTakeSurveyForm from "../../components/forms/ConfirmTakeSurveyForm";
+import {logout} from "../../services/AuthService";
 
 function ConfirmTakeSurveyPage() {
     const { survey_id } = useParams();
@@ -23,7 +23,7 @@ function ConfirmTakeSurveyPage() {
             <div className="layout-container">
                 <InternHomeSidebar />
                 <div className="content-area">
-                    <ConfirmTakeSurveyForm surveyId={survey_id} />
+                    <ConfirmTakeSurveyForm survey_id={survey_id} />
                 </div>
             </div>
         </div>

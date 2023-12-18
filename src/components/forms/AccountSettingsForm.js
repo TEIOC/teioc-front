@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import '../../styles/list-form.css'; // Ensure this is the correct path to your CSS file
-import { updateIntern } from '../../services/Api';
+import { useNavigate } from 'react-router-dom';
+import { updateIntern, deactivateIntern, activateIntern, updateLastConnection } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
+import '../../styles/form.css';
 
-
-// TODO DISPLAYING STATUS AND GINIG POSSIBILITY TO ACTIVATE AND DEACTIVATE ACCOUNT + ALL SURVEYS PAGE + pdp +on completed surveys a green tick for right answers
-
-// TODO results
 const AccountSettingsForm = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -19,8 +16,10 @@ const AccountSettingsForm = () => {
     const [passwordError, setPasswordError] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
     const [isSuccessVisible, setIsSuccessVisible] = useState(false);
+    const navigate = useNavigate();
 
     const intern = GetLoggedinIntern();
+    const [isActivated, setIsActivated] = useState(false);
 
     useEffect(() => {
         if (intern) {
@@ -30,8 +29,10 @@ const AccountSettingsForm = () => {
             setEmail(intern.email);
             setCompany(intern.company);
             setPhoneNumber(intern.contactDetails);
+            setIsActivated(intern.status);
         }
     }, [intern]);
+
 
     const validateInput = () => {
         let isValid = true;
@@ -69,7 +70,6 @@ const AccountSettingsForm = () => {
             contactDetails: phoneNumber
         };
 
-        // Only update password if a new one is provided
         if (password) {
             internData.password = password;
         }
@@ -88,13 +88,44 @@ const AccountSettingsForm = () => {
         }
     };
 
+    const updateConnectionAndReload = async () => {
+        try {
+            await updateLastConnection(intern.id);
+            window.location.reload();
+        } catch (error) {
+            console.error('Error updating last connection:', error);
+        }
+    };
+
+    const handleDeactivate = async () => {
+        try {
+            await deactivateIntern(intern.id);
+            setIsActivated(false);
+            await updateConnectionAndReload();
+        } catch (error) {
+            console.error('Error deactivating account:', error);
+            setError('Failed to deactivate account.');
+        }
+    };
+
+    const handleActivate = async () => {
+        try {
+            await activateIntern(intern.id);
+            setIsActivated(true);
+            await updateConnectionAndReload();
+        } catch (error) {
+            console.error('Error activating account:', error);
+            setError('Failed to activate account.');
+        }
+    };
+
     return (
-        <div>
-        <h2 className="page-title">Account Settings</h2>
-        <div className="list-form-container">
-            <form className="list-form" onSubmit={handleSubmit}>
+        <div className="specific-form-container">
+            <h2 className="specific-form-title">Account Settings</h2>
+            <form onSubmit={handleSubmit}>
                 <label htmlFor="firstName">First Name</label>
                 <input
+                    className="form-input"
                     type="text"
                     id="firstName"
                     name="firstName"
@@ -102,9 +133,9 @@ const AccountSettingsForm = () => {
                     onChange={(e) => setFirstName(e.target.value)}
                 />
 
-                {/* Last Name */}
                 <label htmlFor="lastName">Last Name</label>
                 <input
+                    className="form-input"
                     type="text"
                     id="lastName"
                     name="lastName"
@@ -112,9 +143,9 @@ const AccountSettingsForm = () => {
                     onChange={(e) => setLastName(e.target.value)}
                 />
 
-                {/* Email - Read-Only */}
                 <label htmlFor="email">Email</label>
                 <input
+                    className="form-input form-input-readonly"
                     type="email"
                     id="email"
                     name="email"
@@ -122,20 +153,20 @@ const AccountSettingsForm = () => {
                     readOnly
                 />
 
-                {/* Password */}
-                <label htmlFor="password">Password (Leave blank to keep the same)</label>
+                <label htmlFor="password">Password</label>
                 <input
+                    className="form-input"
                     type="password"
                     id="password"
                     name="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                {passwordError && <div className="error-message">{passwordError}</div>}
+                {passwordError && <div className="form-error-message">{passwordError}</div>}
 
-                {/* Company */}
                 <label htmlFor="company">Company</label>
                 <input
+                    className="form-input"
                     type="text"
                     id="company"
                     name="company"
@@ -143,32 +174,48 @@ const AccountSettingsForm = () => {
                     onChange={(e) => setCompany(e.target.value)}
                 />
 
-                {/* Phone Number */}
                 <label htmlFor="phoneNumber">Phone Number</label>
                 <input
+                    className="form-input"
                     type="text"
                     id="phoneNumber"
                     name="phoneNumber"
                     value={phoneNumber}
                     onChange={(e) => setPhoneNumber(e.target.value)}
                 />
-                {phoneError && <div className="error-message">{phoneError}</div>}
+                {phoneError && <div className="form-error-message">{phoneError}</div>}
 
-                {/* Form Footer with Button */}
                 <div className="form-footer">
-                    <button type="submit" className="list-form-button">Update Account</button>
+                    <button type="submit" className="form-button">Update Account</button>
+                    {isActivated ? (
+                        <button
+                            type="button"
+                            className="form-button toggle-status-button deactivate"
+                            onClick={handleDeactivate}
+                        >
+                            Deactivate Account
+                        </button>
+                    ) : (
+                        <button
+                            type="button"
+                            className="form-button toggle-status-button activate"
+                            onClick={handleActivate}
+                        >
+                            Activate Account
+                        </button>
+                    )}
                 </div>
 
-                {/* Error and Success Messages */}
-                {error && <div className="error-message">{error}</div>}
-                {isSuccessVisible && <div className="success-popup">{successMessage}</div>}
+                {error && <div className="form-error-message">{error}</div>}
+                {isSuccessVisible && <div className="form-success-popup">{successMessage}</div>}
             </form>
-        </div>
         </div>
     );
 };
 
 export default AccountSettingsForm;
+
+
 
 
 

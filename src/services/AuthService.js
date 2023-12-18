@@ -4,7 +4,6 @@ export const getToken = () => {
 
 export const isAuthenticated = () => {
     const token = getToken();
-    // You can add logic to check if the token is still valid here
     return !!token;
 };
 

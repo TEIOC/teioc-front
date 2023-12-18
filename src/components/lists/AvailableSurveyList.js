@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from "react-router-dom";
 import DataTable from './DataTable';
 import { fetchAvailableSurveys, fetchTopics } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
-import '../../styles/datatable.css';
+import '../../styles/list.css';
 
 function AvailableSurveyList() {
     const [surveysWithTopics, setSurveysWithTopics] = useState([]);
     const intern = GetLoggedinIntern();
-    const navigate = useNavigate(); // Hook for programmatic navigation
+    const navigate = useNavigate();
 
-    const handleTakeSurvey = (surveyId) => {
-        // Navigate to the ConfirmTakeSurveyPage with the survey ID
-        navigate(`/confirm-take-assessment/${surveyId}`);
+    const handleTakeSurvey = (rowData) => {
+        if (rowData && rowData.id) {
+            navigate(`/confirm-take-assessment/${rowData.id}`);
+        } else {
+            console.error('Invalid rowData:', rowData);
+        }
     };
 
     useEffect(() => {
@@ -40,19 +43,18 @@ function AvailableSurveyList() {
     }, [intern]);
 
     return (
-        <div>
+        <div className="data-table-container">
             <h2 className="page-title">Available Assessments</h2>
             <DataTable
                 data={surveysWithTopics}
                 columnsToShow={['topicName', 'name']}
                 columnTitles={{ topicName: 'Topic', name: 'Survey' }}
-                redirectOnClick={true} // Enable row-click redirects
-                onRowClick={(surveyId) => {
-                    handleTakeSurvey(surveyId);
-                }}
+                redirectOnClick={true}
+                onRowClick={handleTakeSurvey}
             />
         </div>
     );
 }
 
 export default AvailableSurveyList;
+

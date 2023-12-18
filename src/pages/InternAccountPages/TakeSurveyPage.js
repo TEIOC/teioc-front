@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import NavBar from "../components/navigation/NavBar";
-import Separator from "../components/navigation/Separator";
-import InternHomeSidebar from "../components/navigation/InternHomeSidebar";
-import { logout } from "../services/AuthService";
-import InternStatisticsChart from "../components/charts/InternStatisticsChart";
-
-function InternStatisticsPage({ internName }) {
+import NavBar from "../../components/navigation/NavBar";
+import Separator from "../../components/navigation/Separator";
+import AvailableSurveyList from "../../components/lists/AvailableSurveyList";
+import InternHomeSidebar from "../../components/navigation/InternHomeSidebar";
+import { logout } from "../../services/AuthService";
+import AllSurveyList from "../../components/lists/AllSurveyList";
+import TakeSurveyForm from "../../components/forms/TakeSurveyForm";
+function TakeSurveyPage({ internName }) {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
     const navigate = useNavigate();
     const handleLogout = () => {
@@ -22,11 +23,11 @@ function InternStatisticsPage({ internName }) {
             <div className="layout-container">
                 <InternHomeSidebar />
                 <div className="content-area">
-                    <InternStatisticsChart />
+                    <TakeSurveyForm />
                 </div>
             </div>
         </div>
     );
 }
 
-export default InternStatisticsPage;
+export default TakeSurveyPage;

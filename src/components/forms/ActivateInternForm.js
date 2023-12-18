@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import '../../styles/form.css';
 import { activateIntern } from '../../services/Api';
+import '../../styles/form.css';
 
 const ActivateInternPage = () => {
     const [error, setError] = useState('');
@@ -30,17 +30,18 @@ const ActivateInternPage = () => {
     }, [id]);
 
     return (
-        <div className="form-container">
-            <div className="form-title">
+        <div className="general-form-container">
+            <div className="general-form-title">
                 <h2>Account Activation</h2>
             </div>
 
-            {error && <div className="error-message">{error}</div>}
-            {isSuccessVisible && <div className="success-popup">{successMessage}</div>}
+            {error && <div className="form-error-message">{error}</div>}
+            {isSuccessVisible && <div className="form-success-popup">{successMessage}</div>}
         </div>
     );
 };
 
 export default ActivateInternPage;
+
 
 

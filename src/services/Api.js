@@ -35,10 +35,11 @@ export const fetchPathwaysForIntern = async (intern_id) => {
 		const response = await axiosInstance.get(`/pathways/intern/${intern_id}`);
 		return response.data;
 	} catch (error) {
-		console.error('Error fetching pathways:', error);
+		console.error('Error fetching pathways for intern:', error);
 		throw error;
 	}
 };
+
 
 export const fetchAvailableSurveys = async (intern_id) => {
 	try {
@@ -59,6 +60,7 @@ export const fetchCompletedSurveyDetails = async (intern_id, survey_id) => {
 		throw error;
 	}
 };
+
 
 export const updateIntern = async (id, internData) => {
 	try {
@@ -114,9 +116,9 @@ export const fetchSurveys = async () => {
 
 export const fetchQuestionsAndAnswersForSurvey = async (survey_id) => {
 	try {
-		console.log('Fetching questions and answers for survey:', survey_id); // Log the survey_id being fetched
+		console.log('Fetching questions and answers for survey:', survey_id);
 		const response = await axiosInstance.get(`/questions/surveys/${survey_id}/with-answers`);
-		console.log('Received response for questions and answers:', response.data); // Log the response data
+		console.log('Received response for questions and answers:', response.data);
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching questions and answers:', error);
@@ -126,7 +128,7 @@ export const fetchQuestionsAndAnswersForSurvey = async (survey_id) => {
 
 export const createPathway = async (intern_id, survey_id, duration) => {
 	try {
-		console.log('Sending Duration to Backend:', duration); // Add this line
+		console.log('Sending Duration to Backend:', duration);
 		const response = await axiosInstance.post('/pathways', { intern_id, survey_id, duration });
 		return response.data;
 	} catch (error) {
@@ -137,7 +139,6 @@ export const createPathway = async (intern_id, survey_id, duration) => {
 
 
 export const saveInternAnswers = async (answers) => {
-	// answers should be an array of objects with intern_id, survey_id, and answer_id
 	try {
 		const response = await axiosInstance.post('/pathwayanswers/save-answers', answers);
 		return response.data;
@@ -147,9 +148,9 @@ export const saveInternAnswers = async (answers) => {
 	}
 };
 
-export const updatePathwayScore = async (internId, surveyId) => {
+export const updatePathwayScore = async (intern_id, survey_id) => {
 	try {
-		const response = await axiosInstance.put(`/pathways/${internId}/${surveyId}/update-score`);
+		const response = await axiosInstance.put(`/pathways/${intern_id}/${survey_id}/update-score`);
 		return response.data;
 	} catch (error) {
 		throw error;
@@ -157,9 +158,9 @@ export const updatePathwayScore = async (internId, surveyId) => {
 };
 
 
-export const fetchSurveyById = async (surveyId) => {
+export const fetchSurveyById = async (survey_id) => {
 	try {
-		const response = await axiosInstance.get(`/surveys/${surveyId}`);
+		const response = await axiosInstance.get(`/surveys/${survey_id}`);
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching survey by ID:', error);
@@ -187,9 +188,9 @@ export const fetchSurveyWisePerformance = async () => {
 	}
 };
 
-export const fetchIndividualPerformance = async (internId) => {
+export const fetchIndividualPerformance = async (intern_id) => {
 	try {
-		const response = await axiosInstance.get(`/pathways/statistics/individual-performance/${internId}`);
+		const response = await axiosInstance.get(`/pathways/statistics/individual-performance/${intern_id}`);
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching individual performance:', error);
@@ -207,13 +208,33 @@ export const fetchTopicWisePerformance = async () => {
 	}
 };
 
-export const fetchTopicWisePerformanceForIntern = async (internId) => {
+export const fetchTopicWisePerformanceForIntern = async (intern_id) => {
 	try {
-		const response = await axiosInstance.get(`/surveys/statistics/topic-performance/${internId}`);
+		const response = await axiosInstance.get(`/surveys/statistics/topic-performance/${intern_id}`);
 		return response.data;
 	} catch (error) {
 		console.error('Error fetching topic-wise performance for intern:', error);
 		throw error;
 	}
 };
+
+export const updateLastConnection = async (id) => {
+	if (typeof id !== 'number') {
+		console.error('Invalid ID type:', id);
+		return;
+	}
+
+	try {
+		const token = localStorage.getItem('jwt');
+		await axiosInstance.put(`/interns/${id}/update-last-connection`, {}, {
+			headers: {
+				Authorization: `Bearer ${token}`
+			}
+		});
+	} catch (error) {
+		console.error('Error updating last connection:', error);
+		throw error;
+	}
+};
+
 

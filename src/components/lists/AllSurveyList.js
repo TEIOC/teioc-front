@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
 import { fetchSurveys, fetchTopics } from '../../services/Api';
-import '../../styles/datatable.css';
+import '../../styles/list.css';
 
 function AllSurveyList() {
     const [surveyTopics, setSurveyTopics] = useState([]);
@@ -40,3 +40,4 @@ function AllSurveyList() {
 }
 
 export default AllSurveyList;
+

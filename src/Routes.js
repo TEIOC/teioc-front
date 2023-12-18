@@ -1,19 +1,25 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from "./pages/RegisterPage";
-import ActivateInternPage from "./pages/ActivateInternPage";
-import ForgotPasswordPage from "./pages/ForgotPasswordPage";
-import ResetPasswordPage from "./pages/ResetPasswordPage";
-import DeactivateInternPage from "./pages/DeactivateInternPage";
-import AccountSettingsPage from "./pages/AccountSettingsPage";
-import InternAvailableSurveyPage from "./pages/InternAvailableSurveyPage";
-import InternCompletedSurveyPage from "./pages/InternCompletedSurveyPage";
-import InternAllSurveyPage from "./pages/InternAllSurveyPage";
-import TakeSurveyPage from "./pages/TakeSurveyPage";
-import ConfirmTakeSurveyPage from "./pages/ConfirmTakeSurveyPage";
-import InternStatisticsPage from "./pages/InternStatisticsPage";
+import HomePage from './pages/GuestPages/HomePage';
+import LoginPage from './pages/LoginPages/LoginPage';
+import InternHomePage from "./pages/InternAccountPages/InternAvailableSurveyPage";
+import RegisterPage from "./pages/LoginPages/RegisterPage";
+import ActivateInternPage from "./pages/InternAccountPages/ActivateInternPage";
+import ForgotPasswordPage from "./pages/LoginPages/ForgotPasswordPage";
+import ResetPasswordPage from "./pages/LoginPages/ResetPasswordPage";
+import InternPathwaysPage from "./pages/InternAccountPages/InternCompletedSurveyPage"
+import DeactivateInternPage from "./pages/InternAccountPages/DeactivateInternPage";
+import AccountSettingsForm from "./components/forms/AccountSettingsForm";
+import AccountSettingsPage from "./pages/InternAccountPages/AccountSettingsPage";
+import InternAvailableSurveyPage from "./pages/InternAccountPages/InternAvailableSurveyPage";
+import InternCompletedSurveyPage from "./pages/InternAccountPages/InternCompletedSurveyPage";
+import InternAllSurveyPage from "./pages/InternAccountPages/InternAllSurveyPage";
+import TakeSurveyPage from "./pages/InternAccountPages/TakeSurveyPage";
+import ConfirmTakeSurveyPage from "./pages/InternAccountPages/ConfirmTakeSurveyPage";
+import InternStatisticsChart from "./components/charts/InternStatisticsChart";
+import InternStatisticsPage from "./pages/InternAccountPages/InternStatisticsPage";
+import InternCompletedSurveyDetailsList from "./components/lists/InternCompletedSurveyDetailsList";
+import InternCompletedSurveyDetailsPage from "./pages/InternAccountPages/InternCompletedSurveyDetailsPage";
 
 function AppRoutes() {
     return (
@@ -29,9 +35,10 @@ function AppRoutes() {
             <Route path="/assessments" element={<InternAllSurveyPage />} />
             <Route path="/available-assessments" element={<InternAvailableSurveyPage />} />
             <Route path="/completed-assessments" element={<InternCompletedSurveyPage />} />
+            <Route path="/completed-assessments-details/:intern_id/:survey_id" element={<InternCompletedSurveyDetailsPage />} />
             <Route path="/confirm-take-assessment/:survey_id" element={<ConfirmTakeSurveyPage />} />
             <Route path="/take-assessment/:survey_id" element={<TakeSurveyPage />} />
-                <Route path="/statistics" element={<InternStatisticsPage />} />
+            <Route path="/statistics" element={<InternStatisticsPage />} />
         </Routes>
     );
 }
