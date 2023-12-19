@@ -42,39 +42,47 @@ const InternStatisticsChart = () => {
     const [surveyPerformanceForIntern, setSurveyPerformanceForIntern] = useState({});
     const [surveyRankings, setSurveyRankings] = useState({});
     const [topicRankings, setTopicRankings] = useState({});
+    const [loading, setLoading] = useState(true); // Set loading to true initially
 
     useEffect(() => {
         const fetchData = async () => {
-            const overallPerf = await fetchOverallPerformance();
-            const individualPerf = await fetchIndividualPerformance(intern.id);
-            const surveyPerfForIntern = await fetchSurveyPerformanceForIntern(intern.id);
-            const topicPerfForIntern = await fetchTopicPerformanceForIntern(intern.id);
+            try {
+                const overallPerf = await fetchOverallPerformance();
+                const individualPerf = await fetchIndividualPerformance(intern.id);
+                const surveyPerfForIntern = await fetchSurveyPerformanceForIntern(intern.id);
+                const topicPerfForIntern = await fetchTopicPerformanceForIntern(intern.id);
 
-            setOverallPerformance(overallPerf);
-            setIndividualPerformance(individualPerf);
-            setSurveyPerformanceForIntern(surveyPerfForIntern);
-            setTopicPerformanceForIntern(topicPerfForIntern);
+                setOverallPerformance(overallPerf);
+                setIndividualPerformance(individualPerf);
+                setSurveyPerformanceForIntern(surveyPerfForIntern);
+                setTopicPerformanceForIntern(topicPerfForIntern);
 
-            const fetchAndProcessRankings = async (fetchRankingFunction, perfData, setRankings) => {
-                const tempRankings = {};
+                const fetchAndProcessRankings = async (fetchRankingFunction, perfData, setRankings) => {
+                    const tempRankings = {};
 
-                for (const key in perfData) {
-                    const id = perfData[key]["Survey ID"] || perfData[key]["Topic ID"];
-                    const rankingsData = await fetchRankingFunction(id);
+                    for (const key in perfData) {
+                        const id = perfData[key]["Survey ID"] || perfData[key]["Topic ID"];
+                        const rankingsData = await fetchRankingFunction(id);
 
-                    const sortedRankings = Object.entries(rankingsData)
-                        .sort(([, a], [, b]) => b - a)
-                        .map(([internId,]) => parseInt(internId));
-                    const rank = sortedRankings.indexOf(intern.id) + 1;
-                    const total = sortedRankings.length;
-                    tempRankings[id] = rank ? `${rank} out of ${total}` : 'N/A';
-                }
+                        const sortedRankings = Object.entries(rankingsData)
+                            .sort(([, a], [, b]) => b - a)
+                            .map(([internId,]) => parseInt(internId));
+                        const rank = sortedRankings.indexOf(intern.id) + 1;
+                        const total = sortedRankings.length;
+                        tempRankings[id] = rank ? `${rank} out of ${total}` : 'N/A';
+                    }
 
-                setRankings(tempRankings);
-            };
+                    setRankings(tempRankings);
+                };
 
-            await fetchAndProcessRankings(fetchInternRankingBySurvey, surveyPerfForIntern, setSurveyRankings);
-            await fetchAndProcessRankings(fetchInternRankingByTopic, topicPerfForIntern, setTopicRankings);
+                await fetchAndProcessRankings(fetchInternRankingBySurvey, surveyPerfForIntern, setSurveyRankings);
+                await fetchAndProcessRankings(fetchInternRankingByTopic, topicPerfForIntern, setTopicRankings);
+
+                setLoading(false); // Update loading to false when data fetching is complete
+            } catch (error) {
+                console.error('Error fetching data:', error);
+                setLoading(false); // Make sure to update loading in case of an error
+            }
         };
 
         if (intern && intern.id) {
@@ -124,55 +132,61 @@ const InternStatisticsChart = () => {
         <div className="statistics-container">
             <h2 className="statistics-title">Results and Statistics</h2>
 
-            <div>
-                <div className="statistics-card">
-                    <h3>Overall Score Average</h3>
-                    <p>{overallPerformance}</p>
-                </div>
-                <div className="statistics-card">
-                    <h3>Individual Score Average</h3>
-                    <p>{individualPerformance}</p>
-                </div>
-            </div>
-            <div className="statistics-card">
-                <h3>Individual Survey Performance Summary</h3>
-                <DataTable
-                    data={formatDataForDataTable(surveyPerformanceForIntern, surveyRankings)}
-                    columnsToShow={columnsToShow}
-                    columnTitles={columnTitles}
-                />
-            </div>
+            {loading ? (
+                <p className="loading-indicator">Loading...</p>
+            ) : (
+                <>
+                    <div>
+                        <div className="statistics-card">
+                            <h3>Overall Score Average</h3>
+                            <p>{overallPerformance}</p>
+                        </div>
+                        <div className="statistics-card">
+                            <h3>Individual Score Average</h3>
+                            <p>{individualPerformance}</p>
+                        </div>
+                    </div>
+                    <div className="statistics-card">
+                        <h3>Individual Survey Performance Summary</h3>
+                        <DataTable
+                            data={formatDataForDataTable(surveyPerformanceForIntern, surveyRankings)}
+                            columnsToShow={columnsToShow}
+                            columnTitles={columnTitles}
+                        />
+                    </div>
 
-            <div className="statistics-card">
-                <h3>Individual Topic Performance Summary</h3>
-                <DataTable
-                    data={formatTopicDataForDataTable(topicPerformanceForIntern, topicRankings)}
-                    columnsToShow={topicColumnsToShow}
-                    columnTitles={topicColumnTitles}
-                />
-            </div>
+                    <div className="statistics-card">
+                        <h3>Individual Topic Performance Summary</h3>
+                        <DataTable
+                            data={formatTopicDataForDataTable(topicPerformanceForIntern, topicRankings)}
+                            columnsToShow={topicColumnsToShow}
+                            columnTitles={topicColumnTitles}
+                        />
+                    </div>
 
-            <div className="chart-row">
-                <div className="chart-container">
-                    <h3>Individual Survey-wise Average Score</h3>
-                    <Bar data={createChartData(surveyPerformanceForIntern, "avgScore", "Average Score", 'rgba(53, 162, 235, 0.5)')} options={createChartOptions('Surveys', 'Average Score')} />
-                </div>
-                <div className="chart-container">
-                    <h3>Individual Survey-wise Average Duration</h3>
-                    <Bar data={createChartData(surveyPerformanceForIntern, "avgDuration", "Average Duration", 'rgba(255, 99, 132, 0.5)')} options={createChartOptions('Surveys', 'Average Duration')} />
-                </div>
-            </div>
+                    <div className="chart-row">
+                        <div className="chart-container">
+                            <h3>Individual Survey-wise Average Score</h3>
+                            <Bar data={createChartData(surveyPerformanceForIntern, "avgScore", "Average Score", 'rgba(53, 162, 235, 0.5)')} options={createChartOptions('Surveys', 'Average Score')} />
+                        </div>
+                        <div className="chart-container">
+                            <h3>Individual Survey-wise Average Duration</h3>
+                            <Bar data={createChartData(surveyPerformanceForIntern, "avgDuration", "Average Duration", 'rgba(255, 99, 132, 0.5)')} options={createChartOptions('Surveys', 'Average Duration')} />
+                        </div>
+                    </div>
 
-            <div className="chart-row">
-                <div className="chart-container">
-                    <h3>Individual Topic-wise Average Score</h3>
-                    <Bar data={createChartData(topicPerformanceForIntern, "avgScore", "Average Score", 'rgba(53, 162, 235, 0.5)')} options={createChartOptions('Topics', 'Average Score')} />
-                </div>
-                <div className="chart-container">
-                    <h3>Individual Topic-wise Average Duration</h3>
-                    <Bar data={createChartData(topicPerformanceForIntern, "avgDuration", "Average Duration", 'rgba(255, 99, 132, 0.5)')} options={createChartOptions('Topics', 'Average Duration')} />
-                </div>
-            </div>
+                    <div className="chart-row">
+                        <div className="chart-container">
+                            <h3>Individual Topic-wise Average Score</h3>
+                            <Bar data={createChartData(topicPerformanceForIntern, "avgScore", "Average Score", 'rgba(53, 162, 235, 0.5)')} options={createChartOptions('Topics', 'Average Score')} />
+                        </div>
+                        <div className="chart-container">
+                            <h3>Individual Topic-wise Average Duration</h3>
+                            <Bar data={createChartData(topicPerformanceForIntern, "avgDuration", "Average Duration", 'rgba(255, 99, 132, 0.5)')} options={createChartOptions('Topics', 'Average Duration')} />
+                        </div>
+                    </div>
+                </>
+            )}
         </div>
     );
 };
@@ -202,6 +216,7 @@ const formatDataForDataTable = (performanceData, rankings) => {
 };
 
 export default InternStatisticsChart;
+
 
 
 
