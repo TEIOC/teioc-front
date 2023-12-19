@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from './DataTable';
-import { fetchSurveyPerformance } from '../../services/Api';
+import { fetchSurveyPerformance, fetchInterns, fetchInternById } from '../../services/Api'; // Assurez-vous d'importer fetchInterns depuis le bon chemin
 import '../../styles/list.css';
 
 const SurveyPerformanceList = () => {
     const [surveyPerformance, setSurveyPerformance] = useState({});
+    const [interns, setInterns] = useState({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -14,7 +15,7 @@ const SurveyPerformanceList = () => {
                 setSurveyPerformance(surveyData);
                 setLoading(false);
             } catch (error) {
-                console.error('Error fetching data:', error);
+                console.error('Error fetching survey data:', error);
                 setLoading(false);
             }
         };
@@ -22,31 +23,71 @@ const SurveyPerformanceList = () => {
         fetchData();
     }, []);
 
-    const surveyPerformanceArray = Object.keys(surveyPerformance).map((internId) => {
-        const surveyData = surveyPerformance[internId];
-        return Object.keys(surveyData).map((surveyName) => ({
-            internId: internId,
-            surveyName: surveyName,
-            averageDuration: surveyData[surveyName]['Average Duration'],
-            averageScore: surveyData[surveyName]['Average Score'],
-        }));
-    }).flat();
+    useEffect(() => {
+        const fetchInternsData = async () => {
+            try {
+                // Fetch all interns and store them in a dictionary by ID
+                const internsData = await fetchInterns();
+                const internsById = {};
+                internsData.forEach(intern => {
+                    internsById[intern.id] = intern;
+                });
+                setInterns(internsById);
+            } catch (error) {
+                console.error('Error fetching interns data:', error);
+            }
+        };
+
+        fetchInternsData();
+    }, []);
+
+    const surveyPerformanceArray = [];
+
+    for (const internId in surveyPerformance) {
+        if (surveyPerformance.hasOwnProperty(internId)) {
+            const surveyData = surveyPerformance[internId];
+
+            for (const surveyName in surveyData) {
+                if (surveyData.hasOwnProperty(surveyName)) {
+                    const survey = surveyData[surveyName];
+                    const intern = interns[internId];
+
+                    surveyPerformanceArray.push({
+                        internName: intern ? intern.name : 'N/A', // Use intern's name or 'N/A' if not available
+                        surveyName,
+                        averageDuration: survey['Average Duration'],
+                        averageScore: survey['Average Score'],
+                    });
+                }
+            }
+        }
+    }
 
     return (
         <div className="base-style max-width-600">
             <h2 className="list-title">Survey Performance</h2>
+            {loading ? (
+                <p>Loading...</p>
+            ) : (
                 <DataTable
                     data={surveyPerformanceArray}
-                    columnsToShow={['internId', 'surveyName', 'averageScore', 'averageDuration']}
+                    columnsToShow={['internName', 'surveyName', 'averageScore', 'averageDuration']}
                     columnTitles={{
-                        internId: 'Intern ID',
-                        surveyName: 'Survey Name',
+                        internName: 'Intern',
+                        surveyName: 'Survey',
                         averageScore: 'Average Score',
                         averageDuration: 'Average Duration',
                     }}
                 />
+            )}
         </div>
     );
 };
 
 export default SurveyPerformanceList;
+
+
+
+
+
+
