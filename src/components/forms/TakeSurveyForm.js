@@ -10,6 +10,7 @@ const TakeSurveyForm = () => {
     const [survey, setSurvey] = useState({});
     const [questions, setQuestions] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState({});
+    const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [startTime, setStartTime] = useState(null);
     const [loading, setLoading] = useState(true); // Set loading to true initially
     const intern = GetLoggedinIntern();
@@ -52,6 +53,18 @@ const TakeSurveyForm = () => {
         return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
     };
 
+    const handleNextQuestion = () => {
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex(currentQuestionIndex + 1);
+        }
+    };
+
+    const handlePreviousQuestion = () => {
+        if (currentQuestionIndex > 0) {
+            setCurrentQuestionIndex(currentQuestionIndex - 1);
+        }
+    };
+
     const handleSubmitSurvey = async (event) => {
         event.preventDefault();
 
@@ -78,10 +91,11 @@ const TakeSurveyForm = () => {
         }
     };
 
-    const renderQuestions = () => {
-        return questions.map((question, index) => (
-            <div key={question.id} className="form-question">
-                <label>Question {index + 1}: {question.label}</label>
+    const renderQuestion = () => {
+        const question = questions[currentQuestionIndex];
+        return (
+            <div className="form-question">
+                <label>Question {currentQuestionIndex + 1}: {question.label}</label>
                 <ul className="answer-list">
                     {question.answers.map((answer) => (
                         <li key={answer.id} className="answer-item">
@@ -96,8 +110,20 @@ const TakeSurveyForm = () => {
                         </li>
                     ))}
                 </ul>
+                <div className="form-footer">
+                    {currentQuestionIndex > 0 && (
+                        <button type="button" onClick={handlePreviousQuestion} className="form-button">Previous</button>
+                    )}
+                    {currentQuestionIndex < questions.length - 1 && (
+                        <button type="button" onClick={handleNextQuestion} className="form-button">Next</button>
+                    )}
+                    {currentQuestionIndex === questions.length - 1 && (
+                        <button type="submit" className="form-button">Submit</button>
+                    )}
+                    <button type="button" onClick={() => navigate('/available-assessments')} className="form-button">Cancel</button>
+                </div>
             </div>
-        ));
+        );
     };
 
     return (
@@ -109,11 +135,7 @@ const TakeSurveyForm = () => {
                     <h2 className="specific-form-title">Take Survey: {survey.name || 'Loading...'}</h2>
                     <div className="specific-form-container">
                         <form onSubmit={handleSubmitSurvey}>
-                            {renderQuestions()}
-                            <div className="form-footer">
-                                <button type="submit" className="form-button">Submit</button>
-                                <button type="button" onClick={() => navigate('/available-assessments')} className="form-button">Cancel</button>
-                            </div>
+                            {renderQuestion()}
                         </form>
                     </div>
                 </div>
@@ -123,6 +145,7 @@ const TakeSurveyForm = () => {
 };
 
 export default TakeSurveyForm;
+
 
 
 
