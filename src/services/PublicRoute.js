@@ -1,8 +1,8 @@
 import React from 'react';
-import { Navigate, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { logout, isTokenValid } from './AuthService.js'; // import the utility function
 
-const ProtectedRoute = ({ children }) => {
+const PublicRoute = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = React.useState(null);
     const location = useLocation();
 
@@ -20,11 +20,10 @@ const ProtectedRoute = ({ children }) => {
 
     if (!isAuthenticated) {
         logout();
-        return <Navigate to="/login" />;
     }
 
     return children;
 };
 
 
-export default ProtectedRoute;
+export default PublicRoute;

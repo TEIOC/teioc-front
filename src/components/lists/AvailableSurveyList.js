@@ -51,7 +51,7 @@ function AvailableSurveyList() {
                 columnsToShow={['topicName', 'name']}
                 columnTitles={{ topicName: 'Topic', name: 'Survey' }}
                 redirectOnClick={true}
-                onRowClick={isActivated ? handleTakeSurvey : () => {}}
+                onRowClick={isActivated ? handleTakeSurvey : () => { }}
             />
         </div>
 

@@ -22,18 +22,22 @@ import InternCompletedSurveyDetailsList from "./components/lists/InternCompleted
 import InternCompletedSurveyDetailsPage from "./pages/InternAccountPages/InternCompletedSurveyDetailsPage";
 import GuestStatisticsPage from "./pages/GuestPages/GuestStatisticsPage";
 import ProtectedRoute from './services/ProtectedRoute';
+import PublicRoute from './services/PublicRoute';
 
 function AppRoutes() {
     return (
         <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/guest-statistics" element={<GuestStatisticsPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route path="/register" element={<RegisterPage />} />
-            <Route path='/activate/:id' element={<ActivateInternPage />} />
-            <Route path='/deactivate/:id' element={<DeactivateInternPage />} />
-            <Route path='/forgot-password' element={<ForgotPasswordPage />} />
-            <Route path='/reset-password/:id' element={<ResetPasswordPage />} />
+            {/* Routes publiques */}
+            <Route path="/" element={<PublicRoute><HomePage /></PublicRoute>} />
+            <Route path="/guest-statistics" element={<PublicRoute><GuestStatisticsPage /></PublicRoute>} />
+            <Route path="/login" element={<PublicRoute><LoginPage /></PublicRoute>} />
+            <Route path="/register" element={<PublicRoute><RegisterPage /></PublicRoute>} />
+            <Route path='/activate/:id' element={<PublicRoute><ActivateInternPage /></PublicRoute>} />
+            <Route path='/deactivate/:id' element={<PublicRoute><DeactivateInternPage /></PublicRoute>} />
+            <Route path='/forgot-password' element={<PublicRoute><ForgotPasswordPage /></PublicRoute>} />
+            <Route path='/reset-password/:id' element={<PublicRoute><ResetPasswordPage /></PublicRoute>} />
+
+            {/* Routes protégées */}
             <Route path="/account-settings" element={<ProtectedRoute><AccountSettingsPage /></ProtectedRoute>} />
             <Route path="/assessments" element={<ProtectedRoute><InternAllSurveyPage /></ProtectedRoute>} />
             <Route path="/available-assessments" element={<ProtectedRoute><InternAvailableSurveyPage /></ProtectedRoute>} />
@@ -41,7 +45,7 @@ function AppRoutes() {
             <Route path="/completed-assessments-details/:intern_id/:survey_id" element={<ProtectedRoute><InternCompletedSurveyDetailsPage /></ProtectedRoute>} />
             <Route path="/confirm-take-assessment/:survey_id" element={<ProtectedRoute><ConfirmTakeSurveyPage /></ProtectedRoute>} />
             <Route path="/take-assessment/:survey_id" element={<ProtectedRoute><TakeSurveyPage /></ProtectedRoute>} />
-            <Route path="/statistics" element={<InternStatisticsPage />} />
+            <Route path="/statistics" element={<ProtectedRoute><InternStatisticsPage /></ProtectedRoute>} />
         </Routes>
     );
 }
