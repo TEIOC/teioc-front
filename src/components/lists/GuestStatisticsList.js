@@ -28,21 +28,23 @@ const GuestStatisticsList = () => {
     // Convert surveyPerformance and topicPerformance objects into arrays
     const surveyPerformanceArray = Object.keys(surveyPerformance).map((internId) => {
         const surveyData = surveyPerformance[internId];
-        return {
-            surveyName: Object.keys(surveyData)[0], // Assuming only one key in each object
-            averageDuration: surveyData[Object.keys(surveyData)[0]]['Average Duration'],
-            averageScore: surveyData[Object.keys(surveyData)[0]]['Average Score'],
-        };
-    });
+        return Object.keys(surveyData).map((surveyName) => ({
+            internId: internId, // Add intern id
+            surveyName: surveyName,
+            averageDuration: surveyData[surveyName]['Average Duration'],
+            averageScore: surveyData[surveyName]['Average Score'],
+        }));
+    }).flat(); // Flatten the array
 
     const topicPerformanceArray = Object.keys(topicPerformance).map((internId) => {
         const topicData = topicPerformance[internId];
-        return {
-            topicName: Object.keys(topicData)[0], // Assuming only one key in each object
-            averageDuration: topicData[Object.keys(topicData)[0]]['Average Duration'],
-            averageScore: topicData[Object.keys(topicData)[0]]['Average Score'],
-        };
-    });
+        return Object.keys(topicData).map((topicName) => ({
+            internId: internId, // Add intern id
+            topicName: topicName,
+            averageDuration: topicData[topicName]['Average Duration'],
+            averageScore: topicData[topicName]['Average Score'],
+        }));
+    }).flat(); // Flatten the array
 
     return (
         <div>
@@ -55,8 +57,9 @@ const GuestStatisticsList = () => {
                     <h3>Survey Performance</h3>
                     <DataTable
                         data={surveyPerformanceArray}
-                        columnsToShow={['surveyName', 'averageScore', 'averageDuration']}
+                        columnsToShow={['internId', 'surveyName', 'averageScore', 'averageDuration']}
                         columnTitles={{
+                            internId: 'Intern ID', // Add column title
                             surveyName: 'Survey Name',
                             averageScore: 'Average Score',
                             averageDuration: 'Average Duration',
@@ -66,8 +69,9 @@ const GuestStatisticsList = () => {
                     <h3>Topic Performance</h3>
                     <DataTable
                         data={topicPerformanceArray}
-                        columnsToShow={['topicName', 'averageScore', 'averageDuration']}
+                        columnsToShow={['internId', 'topicName', 'averageScore', 'averageDuration']}
                         columnTitles={{
+                            internId: 'Intern ID', // Add column title
                             topicName: 'Topic Name',
                             averageScore: 'Average Score',
                             averageDuration: 'Average Duration',
@@ -80,6 +84,8 @@ const GuestStatisticsList = () => {
 };
 
 export default GuestStatisticsList;
+
+
 
 
 
