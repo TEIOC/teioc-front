@@ -135,7 +135,7 @@
 
 .answer-item:last-child {
     border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
+    padding-bottom: 20px;
 }
 
 .toggle-status-button.deactivate {
