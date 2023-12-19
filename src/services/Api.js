@@ -278,5 +278,26 @@ export const fetchInternRankingByTopic = async (topicId) => {
 	}
 };
 
+// Dans services/Api.js
+export const fetchSurveyPerformance = async () => {
+	try {
+		const response = await axiosInstance.get('/statistics/survey-performance/all');
+		return response.data; // Assurez-vous que response.data est un tableau
+	} catch (error) {
+		console.error('Error fetching survey performance:', error);
+		throw error;
+	}
+};
+
+export const fetchTopicPerformance = async () => {
+	try {
+		const response = await axiosInstance.get('/statistics/topic-performance/all');
+		return response.data; // Assurez-vous que response.data est un tableau
+	} catch (error) {
+		console.error('Error fetching topic performance:', error);
+		throw error;
+	}
+};
+
 
 
