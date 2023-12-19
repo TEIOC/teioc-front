@@ -258,4 +258,25 @@ export const updateLastConnection = async (id) => {
 	}
 };
 
+export const fetchInternRankingBySurvey = async (surveyId) => {
+	try {
+		const response = await axiosInstance.get(`/statistics/ranking/survey/${surveyId}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching intern ranking by survey:', error);
+		throw error;
+	}
+};
+
+export const fetchInternRankingByTopic = async (topicId) => {
+	try {
+		const response = await axiosInstance.get(`/statistics/ranking/topic/${topicId}`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching intern ranking by topic:', error);
+		throw error;
+	}
+};
+
+
 

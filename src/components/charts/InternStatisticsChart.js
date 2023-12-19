@@ -5,7 +5,7 @@ import {
     fetchOverallPerformance,
     fetchIndividualPerformance,
     fetchSurveyPerformanceForIntern,
-    fetchTopicPerformanceForIntern,
+    fetchTopicPerformanceForIntern, fetchInternRankingByTopic, fetchInternRankingBySurvey,
 } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import '../../styles/chart.css';
@@ -19,6 +19,8 @@ const InternStatisticsChart = () => {
     const [individualPerformance, setIndividualPerformance] = useState(null);
     const [topicPerformanceForIntern, setTopicPerformanceForIntern] = useState({});
     const [surveyPerformanceForIntern, setSurveyPerformanceForIntern] = useState({});
+    const [surveyRankings, setSurveyRankings] = useState({});
+    const [topicRankings, setTopicRankings] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
@@ -31,12 +33,40 @@ const InternStatisticsChart = () => {
             setIndividualPerformance(individualPerf);
             setSurveyPerformanceForIntern(surveyPerfForIntern);
             setTopicPerformanceForIntern(topicPerfForIntern);
+
+            const fetchAndProcessRankings = async (fetchRankingFunction, perfData, setRankings) => {
+                const tempRankings = {};
+
+                for (const key in perfData) {
+                    const id = perfData[key]["Survey ID"] || perfData[key]["Topic ID"];
+                    const rankingsData = await fetchRankingFunction(id);
+
+                    // Convert to array, sort by score, and find the intern's position
+                    const sortedRankings = Object.entries(rankingsData)
+                        .sort(([, a], [, b]) => b - a) // Sort by score
+                        .map(([internId,]) => parseInt(internId));
+                    const rank = sortedRankings.indexOf(intern.id) + 1;
+                    const total = sortedRankings.length;
+                    tempRankings[id] = rank ? `${rank} out of ${total}` : 'N/A';
+                }
+
+                setRankings(tempRankings);
+            };
+
+            await fetchAndProcessRankings(fetchInternRankingBySurvey, surveyPerfForIntern, setSurveyRankings);
+            await fetchAndProcessRankings(fetchInternRankingByTopic, topicPerfForIntern, setTopicRankings);
         };
 
         if (intern && intern.id) {
             fetchData();
         }
     }, [intern]);
+
+
+
+
+
+
 
     // Function to create chart data for average score per topic and survey
     const createScoreChartData = (performanceData) => {
@@ -117,6 +147,25 @@ const InternStatisticsChart = () => {
         },
     });
 
+    const displayRankings = (performanceData, rankings) => {
+        return Object.keys(performanceData).map((key, index) => {
+            const id = performanceData[key]["Survey ID"] || performanceData[key]["Topic ID"];
+            const rank = rankings[id];
+
+            return (
+                <div key={index}>
+                    <h4>{key}</h4>
+                    <p>Rank: {rank}</p>
+                </div>
+            );
+        });
+    };
+
+
+
+
+
+
     return (
         <div className="statistics-container">
             <h2 className="statistics-title">Results and Statistics</h2>
@@ -130,6 +179,16 @@ const InternStatisticsChart = () => {
                     <h3>Individual Score Average</h3>
                     <p>{individualPerformance}</p>
                 </div>
+            </div>
+
+            <div>
+                <h3>Survey Rankings</h3>
+                {displayRankings(surveyPerformanceForIntern, surveyRankings)}
+            </div>
+
+            <div>
+                <h3>Topic Rankings</h3>
+                {displayRankings(topicPerformanceForIntern, topicRankings)}
             </div>
 
             <div className="chart-row">
