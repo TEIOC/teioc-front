@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import DataTable from './DataTable';
 import { fetchSurveyPerformance, fetchTopicPerformance } from '../../services/Api';
+import Separator from "../navigation/Separator";
+import '../../styles/list.css';
 
 const GuestStatisticsList = () => {
     const [surveyPerformance, setSurveyPerformance] = useState({});
@@ -48,13 +50,13 @@ const GuestStatisticsList = () => {
 
     return (
         <div>
-            <h2>Guest Statistics</h2>
 
             {loading ? (
                 <p>Loading...</p>
             ) : (
                 <>
-                    <h3>Survey Performance</h3>
+                <div className="data-table-container">
+                    <h2 className="page-title">Survey Performance</h2>
                     <DataTable
                         data={surveyPerformanceArray}
                         columnsToShow={['internId', 'surveyName', 'averageScore', 'averageDuration']}
@@ -65,18 +67,23 @@ const GuestStatisticsList = () => {
                             averageDuration: 'Average Duration',
                         }}
                     />
+                </div>
 
-                    <h3>Topic Performance</h3>
+                    <Separator />
+
+                <div className="data-table-container">
+                    <h2 className="page-title">Topic Performance</h2>
                     <DataTable
                         data={topicPerformanceArray}
                         columnsToShow={['internId', 'topicName', 'averageScore', 'averageDuration']}
                         columnTitles={{
-                            internId: 'Intern ID', // Add column title
+                            internId: 'Intern ID',
                             topicName: 'Topic Name',
                             averageScore: 'Average Score',
                             averageDuration: 'Average Duration',
                         }}
                     />
+                </div>
                 </>
             )}
         </div>
