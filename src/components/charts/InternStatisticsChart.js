@@ -5,16 +5,21 @@ import {
     fetchOverallPerformance,
     fetchIndividualPerformance,
     fetchSurveyPerformanceForIntern,
-    fetchTopicPerformanceForIntern, fetchInternRankingByTopic, fetchInternRankingBySurvey,
+    fetchTopicPerformanceForIntern,
+    fetchInternRankingByTopic,
+    fetchInternRankingBySurvey,
 } from '../../services/Api';
 import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import '../../styles/chart.css';
 
+// Enregistrement des éléments Chart.js nécessaires
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const InternStatisticsChart = () => {
+    // Récupération de l'intern connecté
     const intern = GetLoggedinIntern();
 
+    // États pour stocker les données
     const [overallPerformance, setOverallPerformance] = useState(null);
     const [individualPerformance, setIndividualPerformance] = useState(null);
     const [topicPerformanceForIntern, setTopicPerformanceForIntern] = useState({});
@@ -22,6 +27,7 @@ const InternStatisticsChart = () => {
     const [surveyRankings, setSurveyRankings] = useState({});
     const [topicRankings, setTopicRankings] = useState({});
 
+    // Utilisation de useEffect pour charger les données lorsque l'intern est disponible
     useEffect(() => {
         const fetchData = async () => {
             const overallPerf = await fetchOverallPerformance();
@@ -29,11 +35,13 @@ const InternStatisticsChart = () => {
             const surveyPerfForIntern = await fetchSurveyPerformanceForIntern(intern.id);
             const topicPerfForIntern = await fetchTopicPerformanceForIntern(intern.id);
 
+            // Mise à jour des états avec les données récupérées
             setOverallPerformance(overallPerf);
             setIndividualPerformance(individualPerf);
             setSurveyPerformanceForIntern(surveyPerfForIntern);
             setTopicPerformanceForIntern(topicPerfForIntern);
 
+            // Fonction pour récupérer et traiter les classements
             const fetchAndProcessRankings = async (fetchRankingFunction, perfData, setRankings) => {
                 const tempRankings = {};
 
@@ -41,9 +49,9 @@ const InternStatisticsChart = () => {
                     const id = perfData[key]["Survey ID"] || perfData[key]["Topic ID"];
                     const rankingsData = await fetchRankingFunction(id);
 
-                    // Convert to array, sort by score, and find the intern's position
+                    // Convertir en tableau, trier par score et trouver la position de l'intern
                     const sortedRankings = Object.entries(rankingsData)
-                        .sort(([, a], [, b]) => b - a) // Sort by score
+                        .sort(([, a], [, b]) => b - a) // Tri par score
                         .map(([internId,]) => parseInt(internId));
                     const rank = sortedRankings.indexOf(intern.id) + 1;
                     const total = sortedRankings.length;
@@ -53,22 +61,20 @@ const InternStatisticsChart = () => {
                 setRankings(tempRankings);
             };
 
+            // Récupérer et traiter les classements pour les enquêtes
             await fetchAndProcessRankings(fetchInternRankingBySurvey, surveyPerfForIntern, setSurveyRankings);
+
+            // Récupérer et traiter les classements pour les sujets
             await fetchAndProcessRankings(fetchInternRankingByTopic, topicPerfForIntern, setTopicRankings);
         };
 
+        // Vérifier si l'intern est disponible avant de charger les données
         if (intern && intern.id) {
             fetchData();
         }
     }, [intern]);
 
-
-
-
-
-
-
-    // Function to create chart data for average score per topic and survey
+    // Fonction pour créer les données du graphique pour la moyenne des scores par sujet et enquête
     const createScoreChartData = (performanceData) => {
         const labels = Object.keys(performanceData);
         const scores = labels.map(label => performanceData[label]["Average Score"]);
@@ -83,7 +89,7 @@ const InternStatisticsChart = () => {
         };
     };
 
-    // Function to create chart data for average duration per topic and survey
+    // Fonction pour créer les données du graphique pour la moyenne de la durée par sujet et enquête
     const createDurationChartData = (performanceData) => {
         const labels = Object.keys(performanceData);
         const durations = labels.map(label => performanceData[label]["Average Duration"]);
@@ -98,7 +104,7 @@ const InternStatisticsChart = () => {
         };
     };
 
-    // Function to create chart options for duration
+    // Fonction pour créer les options du graphique pour la durée
     const createDurationChartOptions = (xAxisLabel) => ({
         scales: {
             x: {
@@ -122,7 +128,7 @@ const InternStatisticsChart = () => {
         },
     });
 
-    // Function to create chart options for score
+    // Fonction pour créer les options du graphique pour le score
     const createScoreChartOptions = (xAxisLabel) => ({
         scales: {
             x: {
@@ -147,6 +153,7 @@ const InternStatisticsChart = () => {
         },
     });
 
+    // Fonction pour afficher les classements
     const displayRankings = (performanceData, rankings) => {
         return Object.keys(performanceData).map((key, index) => {
             const id = performanceData[key]["Survey ID"] || performanceData[key]["Topic ID"];
@@ -160,11 +167,6 @@ const InternStatisticsChart = () => {
             );
         });
     };
-
-
-
-
-
 
     return (
         <div className="statistics-container">
@@ -182,13 +184,15 @@ const InternStatisticsChart = () => {
             </div>
 
             <div>
-                <h3>Survey Rankings</h3>
-                {displayRankings(surveyPerformanceForIntern, surveyRankings)}
-            </div>
+                <div className="statistics-card">
+                    <h3>Survey Rankings</h3>
+                    {displayRankings(surveyPerformanceForIntern, surveyRankings)}
+                </div>
 
-            <div>
-                <h3>Topic Rankings</h3>
-                {displayRankings(topicPerformanceForIntern, topicRankings)}
+                <div className="statistics-card">
+                    <h3>Topic Rankings</h3>
+                    {displayRankings(topicPerformanceForIntern, topicRankings)}
+                </div>
             </div>
 
             <div className="chart-row">
@@ -217,5 +221,6 @@ const InternStatisticsChart = () => {
 };
 
 export default InternStatisticsChart;
+
 
 
