@@ -11,21 +11,25 @@ const TakeSurveyForm = () => {
     const [questions, setQuestions] = useState([]);
     const [selectedAnswers, setSelectedAnswers] = useState({});
     const [startTime, setStartTime] = useState(null);
+    const [loading, setLoading] = useState(true); // Set loading to true initially
     const intern = GetLoggedinIntern();
 
     useEffect(() => {
-        fetchSurveyById(survey_id)
-            .then(setSurvey)
-            .catch(error => console.error('Error fetching survey:', error));
-
-        fetchQuestionsAndAnswersForSurvey(survey_id)
-            .then((questionsData) => {
+        const fetchData = async () => {
+            try {
+                const surveyData = await fetchSurveyById(survey_id);
+                const questionsData = await fetchQuestionsAndAnswersForSurvey(survey_id);
+                setSurvey(surveyData);
                 setQuestions(questionsData);
                 setStartTime(Date.now());
-            })
-            .catch((error) => {
-                console.error('Error fetching questions and answers:', error);
-            });
+                setLoading(false); // Update loading to false when data fetching is complete
+            } catch (error) {
+                console.error('Error fetching survey or questions:', error);
+                setLoading(false); // Make sure to update loading in case of an error
+            }
+        };
+
+        fetchData();
     }, [survey_id]);
 
     const handleSelectAnswer = (questionId, answerId) => {
@@ -98,21 +102,29 @@ const TakeSurveyForm = () => {
 
     return (
         <div>
-            <h2 className="specific-form-title">Take Survey: {survey.name || 'Loading...'}</h2>
-            <div className="specific-form-container">
-                <form onSubmit={handleSubmitSurvey}>
-                    {renderQuestions()}
-                    <div className="form-footer">
-                        <button type="submit" className="form-button">Submit</button>
-                        <button type="button" onClick={() => navigate('/available-assessments')} className="form-button">Cancel</button>
+            {loading ? (
+                <p className="loading-indicator">Loading...</p>
+            ) : (
+                <div>
+                    <h2 className="specific-form-title">Take Survey: {survey.name || 'Loading...'}</h2>
+                    <div className="specific-form-container">
+                        <form onSubmit={handleSubmitSurvey}>
+                            {renderQuestions()}
+                            <div className="form-footer">
+                                <button type="submit" className="form-button">Submit</button>
+                                <button type="button" onClick={() => navigate('/available-assessments')} className="form-button">Cancel</button>
+                            </div>
+                        </form>
                     </div>
-                </form>
-            </div>
+                </div>
+            )}
         </div>
     );
 };
 
 export default TakeSurveyForm;
+
+
 
 
 

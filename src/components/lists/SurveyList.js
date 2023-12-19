@@ -5,6 +5,7 @@ import '../../styles/list.css';
 
 function SurveyList() {
     const [surveyTopics, setSurveyTopics] = useState([]);
+    const [loading, setLoading] = useState(true); // Initialize loading as true
 
     useEffect(() => {
         Promise.all([fetchSurveys(), fetchTopics()])
@@ -29,8 +30,12 @@ function SurveyList() {
 
                 console.log('Transformed data:', transformedData);
                 setSurveyTopics(transformedData);
+                setLoading(false); // Set loading to false when data is fetched
             })
-            .catch((error) => console.error('Error fetching surveys, topics, and question counts:', error));
+            .catch((error) => {
+                console.error('Error fetching surveys, topics, and question counts:', error);
+                setLoading(false); // Set loading to false in case of error
+            });
     }, []);
 
     const columnsToShow = ['topicName', 'name', 'questionCount'];
@@ -43,16 +48,21 @@ function SurveyList() {
     return (
         <div className="base-style max-width-600">
             <h2 className="list-title">Topics and Surveys</h2>
-            <DataTable
-                data={surveyTopics}
-                columnsToShow={columnsToShow}
-                columnTitles={columnTitles}
-            />
+            {loading ? (
+                <p className="loading-indicator">Loading...</p> // Render a loading indicator while fetching data
+            ) : (
+                <DataTable
+                    data={surveyTopics}
+                    columnsToShow={columnsToShow}
+                    columnTitles={columnTitles}
+                />
+            )}
         </div>
     );
 }
 
 export default SurveyList;
+
 
 
 

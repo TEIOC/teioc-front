@@ -72,7 +72,7 @@ const TopicPerformanceList = () => {
         <div className="base-style max-width-600">
             <h2 className="list-title">Topic Performance</h2>
             {loading ? (
-                <p>Loading...</p>
+                <p className="loading-indicator">Loading...</p>
             ) : (
                 <DataTable
                     data={topicPerformanceArray}

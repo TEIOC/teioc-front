@@ -7,6 +7,7 @@ import '../../styles/list.css';
 
 function CompletedSurveyList() {
     const [completedSurveys, setCompletedSurveys] = useState([]);
+    const [loading, setLoading] = useState(true); // Ajouter un état de chargement
     const intern = GetLoggedinIntern();
     const navigate = useNavigate();
 
@@ -33,8 +34,12 @@ function CompletedSurveyList() {
                 .then(async pathways => {
                     const surveysWithData = await fetchSurveys(pathways);
                     setCompletedSurveys(surveysWithData);
+                    setLoading(false); // Mettre à jour l'état pour indiquer que le chargement est terminé
                 })
-                .catch(error => console.error('Error fetching pathways:', error));
+                .catch(error => {
+                    console.error('Error fetching pathways:', error);
+                    setLoading(false); // Mettre à jour l'état en cas d'erreur
+                });
         }
     }, [intern]);
 
@@ -49,18 +54,23 @@ function CompletedSurveyList() {
     return (
         <div className="data-table-container">
             <h2 className="page-title">Completed Assessments</h2>
-            <DataTable
-                data={completedSurveys}
-                columnsToShow={['surveyName', 'score', 'duration']}
-                columnTitles={{ surveyName: 'Survey', score: 'Score', duration: 'Duration' }}
-                redirectOnClick={true}
-                onRowClick={handleRowClick}
-            />
+            {loading ? (
+                <p className="loading-indicator">Loading...</p> // Afficher un indicateur de chargement en fonction de l'état de chargement
+            ) : (
+                <DataTable
+                    data={completedSurveys}
+                    columnsToShow={['surveyName', 'score', 'duration']}
+                    columnTitles={{ surveyName: 'Survey', score: 'Score', duration: 'Duration' }}
+                    redirectOnClick={true}
+                    onRowClick={handleRowClick}
+                />
+            )}
         </div>
     );
 }
 
 export default CompletedSurveyList;
+
 
 
 

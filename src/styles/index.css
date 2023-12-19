@@ -7,5 +7,13 @@
 
 .content-container {
     max-width: 600px;
-    margin-left: 20px; /* Add a 20px margin between the sidebar and content */
+    margin-left: 20px;
+}
+
+.loading-indicator {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: #00346bd1;
+    margin: 20px 0;
 }
