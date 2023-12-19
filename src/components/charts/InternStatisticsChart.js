@@ -13,7 +13,6 @@ import GetLoggedinIntern from '../../hooks/GetLoggedinIntern';
 import '../../styles/chart.css';
 import DataTable from '../lists/DataTable';
 
-// Register required Chart.js elements
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 const InternStatisticsChart = () => {
@@ -22,7 +21,16 @@ const InternStatisticsChart = () => {
     const columnsToShow = ["surveyName", "avgScore", "avgDuration", "rank"];
 
     const columnTitles = {
-        surveyName: "Survey Name",
+        surveyName: "Survey",
+        avgScore: "Average Score",
+        avgDuration: "Average Duration",
+        rank: "Rank",
+    };
+
+    const topicColumnsToShow = ["topicName", "avgScore", "avgDuration", "rank"];
+
+    const topicColumnTitles = {
+        topicName: "Topic",
         avgScore: "Average Score",
         avgDuration: "Average Duration",
         rank: "Rank",
@@ -112,20 +120,6 @@ const InternStatisticsChart = () => {
         },
     });
 
-    const displayRankings = (performanceData, rankings) => {
-        return Object.keys(performanceData).map((key, index) => {
-            const id = performanceData[key]["Survey ID"] || performanceData[key]["Topic ID"];
-            const rank = rankings[id];
-
-            return (
-                <div key={index}>
-                    <h4>{key}</h4>
-                    <p>Rank: {rank}</p>
-                </div>
-            );
-        });
-    };
-
     return (
         <div className="statistics-container">
             <h2 className="statistics-title">Results and Statistics</h2>
@@ -140,7 +134,8 @@ const InternStatisticsChart = () => {
                     <p>{individualPerformance}</p>
                 </div>
             </div>
-            <div>
+            <div className="statistics-card">
+                <h3>Individual Survey Performance Summary</h3>
                 <DataTable
                     data={formatDataForDataTable(surveyPerformanceForIntern, surveyRankings)}
                     columnsToShow={columnsToShow}
@@ -148,41 +143,50 @@ const InternStatisticsChart = () => {
                 />
             </div>
 
-            <div>
-                <div className="statistics-card">
-                    <h3>Survey Rankings</h3>
-                    {displayRankings(surveyPerformanceForIntern, surveyRankings)}
-                </div>
-
-                <div className="statistics-card">
-                    <h3>Topic Rankings</h3>
-                    {displayRankings(topicPerformanceForIntern, topicRankings)}
-                </div>
+            <div className="statistics-card">
+                <h3>Individual Topic Performance Summary</h3>
+                <DataTable
+                    data={formatTopicDataForDataTable(topicPerformanceForIntern, topicRankings)}
+                    columnsToShow={topicColumnsToShow}
+                    columnTitles={topicColumnTitles}
+                />
             </div>
 
             <div className="chart-row">
                 <div className="chart-container">
-                    <h3>Topic-wise Average Score</h3>
-                    <Bar data={createChartData(topicPerformanceForIntern, "avgScore", "Average Score", 'rgba(53, 162, 235, 0.5)')} options={createChartOptions('Topics', 'Average Score')} />
-                </div>
-                <div className="chart-container">
-                    <h3>Topic-wise Average Duration</h3>
-                    <Bar data={createChartData(topicPerformanceForIntern, "avgDuration", "Average Duration", 'rgba(255, 99, 132, 0.5)')} options={createChartOptions('Topics', 'Average Duration')} />
-                </div>
-            </div>
-
-            <div className="chart-row">
-                <div className="chart-container">
-                    <h3>Survey-wise Average Score</h3>
+                    <h3>Individual Survey-wise Average Score</h3>
                     <Bar data={createChartData(surveyPerformanceForIntern, "avgScore", "Average Score", 'rgba(53, 162, 235, 0.5)')} options={createChartOptions('Surveys', 'Average Score')} />
                 </div>
                 <div className="chart-container">
-                    <h3>Survey-wise Average Duration</h3>
+                    <h3>Individual Survey-wise Average Duration</h3>
                     <Bar data={createChartData(surveyPerformanceForIntern, "avgDuration", "Average Duration", 'rgba(255, 99, 132, 0.5)')} options={createChartOptions('Surveys', 'Average Duration')} />
+                </div>
+            </div>
+
+            <div className="chart-row">
+                <div className="chart-container">
+                    <h3>Individual Topic-wise Average Score</h3>
+                    <Bar data={createChartData(topicPerformanceForIntern, "avgScore", "Average Score", 'rgba(53, 162, 235, 0.5)')} options={createChartOptions('Topics', 'Average Score')} />
+                </div>
+                <div className="chart-container">
+                    <h3>Individual Topic-wise Average Duration</h3>
+                    <Bar data={createChartData(topicPerformanceForIntern, "avgDuration", "Average Duration", 'rgba(255, 99, 132, 0.5)')} options={createChartOptions('Topics', 'Average Duration')} />
                 </div>
             </div>
         </div>
     );
+};
+
+const formatTopicDataForDataTable = (topicPerformanceData, topicRankings) => {
+    const data = [];
+    for (const key in topicPerformanceData) {
+        const id = topicPerformanceData[key]["Topic ID"];
+        const avgScore = topicPerformanceData[key]["Average Score"];
+        const avgDuration = topicPerformanceData[key]["Average Duration"];
+        const rank = topicRankings[id] || 'N/A';
+        data.push({ topicName: key, avgScore, avgDuration, rank });
+    }
+    return data;
 };
 
 const formatDataForDataTable = (performanceData, rankings) => {
