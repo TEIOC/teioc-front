@@ -299,5 +299,14 @@ export const fetchTopicPerformance = async () => {
 	}
 };
 
+export const fetchQuestionsCountBySurvey = async (surveyId) => {
+	try {
+		const response = await axiosInstance.get(`questions/surveys/${surveyId}/questions-count`);
+		return response.data;
+	} catch (error) {
+		console.error('Error fetching questions count by survey:', error);
+		throw error;
+	}
+};
 
 

@@ -1,30 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import DataTable from './DataTable';
-import { fetchSurveys } from '../../services/Api';
-import '../../styles/datatable.css';
+import { fetchSurveys, fetchTopics, fetchQuestionsCountBySurvey } from '../../services/Api';
+import '../../styles/list.css';
 
 function SurveyList() {
-    const [surveys, setSurveys] = useState([]);
+    const [surveyTopics, setSurveyTopics] = useState([]);
 
     useEffect(() => {
-        fetchSurveys()
-            .then((data) => {
-                const transformedData = data.map(survey => ({ name: survey.name }));
-                setSurveys(transformedData);
+        Promise.all([fetchSurveys(), fetchTopics()])
+            .then(async ([surveys, topics]) => {
+                console.log('Fetched surveys:', surveys);
+                console.log('Fetched topics:', topics);
+
+                const transformedData = await Promise.all(surveys.map(async (survey) => {
+                    const surveyTopic = topics.find(topic => topic.id === survey.topicId);
+                    console.log('Processing survey:', survey);
+                    console.log('Found topic:', surveyTopic);
+
+                    const questionCount = await fetchQuestionsCountBySurvey(survey.id);
+                    console.log('Fetched question count:', questionCount);
+
+                    return {
+                        name: survey.name,
+                        topicName: surveyTopic ? surveyTopic.name : 'No topic',
+                        questionCount: questionCount
+                    };
+                }));
+
+                console.log('Transformed data:', transformedData);
+                setSurveyTopics(transformedData);
             })
-            .catch((error) => console.error('Error fetching surveys:', error));
+            .catch((error) => console.error('Error fetching surveys, topics, and question counts:', error));
     }, []);
 
-    const columnsToShow = ['name'];
+    const columnsToShow = ['topicName', 'name', 'questionCount'];
     const columnTitles = {
-        name: 'Survey'
+        topicName: 'Topic',
+        name: 'Survey',
+        questionCount: 'Questions Number'
     };
 
     return (
         <div className="base-style max-width-600">
-            <h2 className="list-title">Surveys</h2>
+            <h2 className="list-title">Topics and Surveys</h2>
             <DataTable
-                data={surveys}
+                data={surveyTopics}
                 columnsToShow={columnsToShow}
                 columnTitles={columnTitles}
             />
@@ -33,6 +53,8 @@ function SurveyList() {
 }
 
 export default SurveyList;
+
+
 
 
 

@@ -10,8 +10,6 @@ function HomePage() {
         <GuestPageLayout>
             <InternList />
             <Separator />
-            <TopicList />
-            <Separator />
             <SurveyList />
         </GuestPageLayout>
     );
