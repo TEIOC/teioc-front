@@ -135,7 +135,7 @@ const InternStatisticsChart = () => {
                 </div>
             </div>
             <div className="statistics-card">
-                <h3>Survey Performance Summary</h3>
+                <h3>Individual Survey Performance Summary</h3>
                 <DataTable
                     data={formatDataForDataTable(surveyPerformanceForIntern, surveyRankings)}
                     columnsToShow={columnsToShow}
@@ -143,9 +143,8 @@ const InternStatisticsChart = () => {
                 />
             </div>
 
-            {/* DataTable for Topic Performance */}
             <div className="statistics-card">
-                <h3>Topic Performance Summary</h3>
+                <h3>Individual Topic Performance Summary</h3>
                 <DataTable
                     data={formatTopicDataForDataTable(topicPerformanceForIntern, topicRankings)}
                     columnsToShow={topicColumnsToShow}
@@ -155,22 +154,22 @@ const InternStatisticsChart = () => {
 
             <div className="chart-row">
                 <div className="chart-container">
-                    <h3>Survey-wise Average Score</h3>
+                    <h3>Individual Survey-wise Average Score</h3>
                     <Bar data={createChartData(surveyPerformanceForIntern, "avgScore", "Average Score", 'rgba(53, 162, 235, 0.5)')} options={createChartOptions('Surveys', 'Average Score')} />
                 </div>
                 <div className="chart-container">
-                    <h3>Survey-wise Average Duration</h3>
+                    <h3>Individual Survey-wise Average Duration</h3>
                     <Bar data={createChartData(surveyPerformanceForIntern, "avgDuration", "Average Duration", 'rgba(255, 99, 132, 0.5)')} options={createChartOptions('Surveys', 'Average Duration')} />
                 </div>
             </div>
 
             <div className="chart-row">
                 <div className="chart-container">
-                    <h3>Topic-wise Average Score</h3>
+                    <h3>Individual Topic-wise Average Score</h3>
                     <Bar data={createChartData(topicPerformanceForIntern, "avgScore", "Average Score", 'rgba(53, 162, 235, 0.5)')} options={createChartOptions('Topics', 'Average Score')} />
                 </div>
                 <div className="chart-container">
-                    <h3>Topic-wise Average Duration</h3>
+                    <h3>Individual Topic-wise Average Duration</h3>
                     <Bar data={createChartData(topicPerformanceForIntern, "avgDuration", "Average Duration", 'rgba(255, 99, 132, 0.5)')} options={createChartOptions('Topics', 'Average Duration')} />
                 </div>
             </div>
