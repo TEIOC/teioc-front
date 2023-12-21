@@ -6,7 +6,7 @@
 
 Le projet est organisé de la manière suivante :
 
-📁src
+📁src</br>
 ├── 📄 app.js
 ├── 📁 api  
 ├── 📁 components
