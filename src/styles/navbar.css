@@ -9,6 +9,10 @@
         text-align: center;
     }
 
+    .header-logo{
+        width : 70px
+    }
+
     .header-title {
         font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
         font-size: 36px;

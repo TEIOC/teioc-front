@@ -11,7 +11,7 @@ function NavBar({ isLoggedIn, onLogout }) {
 
     return (
         <div className="header-banner">
-            <img src="./logo_teioc.png" alt="TEIOC Logo" className="header-logo" width="75"/>
+            <img src="./logo_teioc.png" alt="TEIOC Logo" className="header-logo"/>
             <h1 className="header-title">TEIOC - Assessment of Interns Platform</h1>
             {isLoginPage && (
                 <Link to="/" className="navbar-button">Home</Link>
