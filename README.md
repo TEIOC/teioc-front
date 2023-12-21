@@ -6,25 +6,26 @@
 
 Le projet est organisé de la manière suivante :
 
-📁src</br>
-├── 📄 app.js
+📁src  
+├── 📄 app.js  
 ├── 📁 api  
-├── 📁 components
-├── 📁 pages
-├── 📁 tests
-│   ├── 📁 unit
-│   ├── 📁 integration
-│   ├── 📁 e2e
-│   └── ...
-├── 📁 utils
-└── 📁 styles
-📁 public
-├── 📁 css
-├── 📁 js
-├── 📁 images
-├── ...
-📁 node_modules
+├── 📁 components  
+├── 📁 pages  
+├── 📁 tests  
+│   ├── 📁 unit  
+│   ├── 📁 integration  
+│   ├── 📁 e2e  
+│   └── ...  
+├── 📁 utils  
+└── 📁 styles  
+📁 public  
+├── 📁 css  
+├── 📁 js  
+├── 📁 images  
+├── ...  
+📁 node_modules  
 📄 .gitignore
+
 
   
 - **`src`**: Ce dossier contient le code source de l'application React. Il est subdivisé en plusieurs dossiers pour mieux organiser le code :
