@@ -10,29 +10,18 @@ const ActivateInternPage = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        handleActivate(id)
-            .then(() => {
-                setSuccessMessage('Your account has been successfully activated.');
-                setIsSuccessVisible(true);
-                setTimeout(() => {
-                    setIsSuccessVisible(false);
-                }, 10000);
-            })
-            .catch(error => {
-                if (error.response) {
-                    setError('Activation error: ' + error.response.data);
-                } else if (error.request) {
-                    setError('No response from the server');
-                } else {
-                    setError('Error setting up request: ' + error.message);
-                }
-            });
+        handleActivate(id);
     }, [id]);
 
     const handleActivate = async (id) => {
         try {
             await activateIntern(id);
             await updateLastConnection(parseInt(id));
+            setSuccessMessage('Your account has been successfully activated.');
+            setIsSuccessVisible(true);
+            setTimeout(() => {
+                setIsSuccessVisible(false);
+            }, 10000);
         } catch (error) {
             console.error('Error activating account:', error);
             setError('Failed to activate account.');
@@ -52,6 +41,7 @@ const ActivateInternPage = () => {
 };
 
 export default ActivateInternPage;
+
 
 
 
